@@ -1,0 +1,104 @@
+<a ng-click="gototop()" style="z-index: 9999; position: fixed; right: 50px; bottom: 50px;"><span class="glyphicon glyphicon-arrow-up"></span>  Top</a>
+<div class="animated fadeInDown">
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="logo">
+						<h1><a href="/home">Big Bang <span class="color">ASQ</span></a></h1>
+						<div class="hmeta">Perfect CSQE Virtual Exam & Practice Website</div>
+					</div>
+				</div>
+				<div style="text-align: right" class="col-md-5 col-md-offset-3 col-sm-5 col-sm-offset-2">
+
+					<br>
+					<!-- Modified for ASQ Upgrade 2.0.Added last name for welcome message. -->
+					<h4>Welcome, {{currentUser.firstName}},{{currentUser.lastName}}</h4>
+					<span class="color customLink"><a href="/home">Home</a></span> |
+					<!-- Added by Srinivas Thungathurti for ASQ Upgrade 2.0.New screen Change Password added. -->
+					<span class="color customLink"><a href="/changePassword">Change Password</a></span> |
+					<span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
+
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<ng-form name="questionInfoUpdate">
+	<div class="content">
+		<div class="container">
+			<!-- Content -->
+			<hr>
+			<div>
+				<p style="font-size: 22px; font-weight: bold">Update Question Information: </p>
+				<font style="color:red;"><b>* indicates Mandatory Fields.</b></font>
+				<br/><br/>
+				<div class="form-group">
+					<label for="qcat" class="col-sm-2" style="font-size: 16px">&nbsp;&nbsp;Category:</label>
+					<div class="form-group col-sm-10">
+						<!-- <input id="qcat" class="form-control" style="width: 200px; height: 27px" type="text" ng-model="searchCat" placeholder="Category for Question" ng-disabled=true> -->
+						<select id="qcat" ng-model="searchCat" style="font-size: 14px; width: 120px; height: 30px; display: inline;" ng-disabled=true>
+							<option value="">Select</option>
+							<option value="gk">GKModel</option>
+							<option value="sqm">SQMModel</option>
+							<option value="ep">EPModel</option>
+							<option value="pm">PMModel</option>
+							<option value="mam">MAModel</option>
+							<option value="SVV">SVVModel</option>
+							<option value="scm">SCMModel</option>
+					</select>
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<label for="cont" class="col-sm-2" style="font-size: 16px">* Question Desc:</label>
+					<div class="form-group col-sm-10">
+						<textarea id="cont" rows="4" cols="6" class="form-control"  ng-model="content" placeholder="Edit Question Description" ng-required="true"></textarea>
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+				<label for="choice" class="col-sm-2" style="font-size: 16px">* Choices:</label>
+				<div class="form-group col-sm-10">
+                <textarea id="choice" rows="4" cols="6" ng-model="choice" class="form-control" placeholder="Edit Question Choices" ng-required="true" ng-blur="testChoice()"></textarea>
+            	</div>
+            	</div>
+            	<br><br>
+            	<div class="form-group">
+				<label for="cor" class="col-sm-2" style="font-size: 16px">* Correct Choice:</label>
+				<div class="form-group col-sm-10">
+                <input id="cor" style="width: 200px; height: 27px" type="text" ng-model="correctChoice" class="form-control" placeholder="Edit Correct Choice" ng-required="true" maxlength="1" ng-change="correctChoice = correctChoice.toUpperCase()">
+            	</div>
+            	</div>
+            	<br><br>
+			</div>
+			<button style="margin: 35px 32px 60px 80px; width: 95px; height: 40px; font-size: 16px" class="btn btn-primary"  ng-click="saveQuestion()" ng-disabled="questionInfoUpdate.$invalid">
+				<span class="glyphicon glyphicon-ok-sign"></span>  Save
+			</button>
+			<button style="margin: 35px 40px 60px 10px; width: 95px; height: 40px; font-size: 16px;" class="btn btn-warning" ng-click="deleteQuestion()">
+				<span class="glyphicon glyphicon-ok-sign"></span>  Delete
+			</button>
+			<button style="margin: 35px 80px 60px 0px; width: 98px; height: 38px; font-size: 16px" class="btn btn-warning" ng-click="searchQuestions(currentUser)">
+				<span class="glyphicon glyphicon-remove-sign"></span>  Cancel
+			</button>
+			<hr>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div style="text-align: center" class="copy">
+						<h5>ASQ CSQE Virtual Exam & Practice</h5>
+						<p>&copy; <a href="/about">2015 Big Bang ASQ Exam</a></p>
+						<p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</footer>
+</div>

@@ -1,0 +1,90 @@
+<div class="animated fadeInDown">
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="logo">
+						<h1><a href="/home">Big Bang <span class="color">ASQ</span></a></h1>
+						<div class="hmeta">Perfect CSQE Virtual Exam & Practice Website</div>
+					</div>
+				</div>
+				<div style="text-align: right" class="col-md-5 col-md-offset-3 col-sm-5 col-sm-offset-2">
+
+					<br>
+					<!-- Modified for ASQ Upgrade 2.0.Added last name for welcome message. -->
+					<h4>Welcome, {{currentUser.firstName}},{{currentUser.lastName}}</h4>
+					<span class="color customLink"><a href="/home">Home</a></span> |
+					<span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
+
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+
+	<div class="content">
+		<div class="container">
+			<!-- Content -->
+			<hr>
+			<h4 style="color: #5BC0DE;">Our Tutor:</h4>
+			<p style="padding: 0 50px; font-size: 16px;">Roxana has over 6 years of experience as software quality engineer and project manager, which she obtained by driving software project and program improvements with worldwide leading car manufacturers. She has her own consulting business, serves on the ASQ Silicon Valley Leadership Team and recently joined a start-up venture that develops an Intelligent Transportation System.</p>
+
+			<h4 style="color: #5BC0DE;">About Us:</h4>
+			<p style="padding: 0 50px; font-size: 16px;">
+				Welcome to Big Bang ASQ Exam Prep! We are excited that you are embarking in the journey of becoming an ASQ professional. Big Bang is dedicated to helping quality professionals achieve their career goals. We believe "Practice makes Perfect" so please make use of the sample tests provided by Quality Council of Indiana and by Linda Westfall. Also, track your progress and see your knowledge increase as you practice! We believe you will find this website useful in your exam preparation. If you have any recommendations on how to improve it, please contact us at <a href="">bigbangASQ@itu.edu</a>.
+			</p>
+			<p style="padding: 0 50px; font-size: 16px;">
+				Big Bang ASQ Exam Prep was formed out of a graduate university program at International Technological University in San Jose, CA under the guidance of Prof. Rhode Roxana.
+			</p>
+			<p style="padding: 0 50px; font-size: 16px;">For information about ITU, visit: <a href=">http://itu.edu" target="_blank">http://itu.edu</a></p>
+			<p style="padding: 0 50px; font-size: 16px;">For information about ASQ, visit: <a href="http://asq.org/index.aspx" target="_blank">http://asq.org/index.aspx</a></p>
+			<p style="padding: 0 50px; font-size: 16px;">For information about the Quality Council of Indiana, visit: <a href="http://www.qualitycouncil.com" target="_blank">http://www.qualitycouncil.com</a></p>
+			<p style="padding: 0 50px; font-size: 16px;">For information about Linda Westfall, visit: <a href="http://www.westfallteam.com" target="_blank">http://www.westfallteam.com</a></p>
+			<br>
+			<div style="text-align: left;padding: 0 50px; font-size: 15px;">
+				The questions were provided by Quality Council of Indiana and by Linda Westfall.ASQ has not participated in the creation of this self-assessment test and has not reviewed it for correctness.
+				This test is for self-assessment only and no guaranty is given for passing the ASQ exam.Some of the names of companies and their products listed and linked to on this page are marks which are registered in various countries.
+				For questions or concerns, contact us at <a href="">bigbangASQ@itu.edu</a><br>
+			</div>
+			<h4 style="text-decoration: underline; color: #5BC0DE; text-align: center; font-weight: bold; margin: 30px;">Meet the Team</h4>
+		    <div style=" float:left;width: 598px; height: 20px; position: relative; "><b style="color:#5BC0DE;font-size: 14px;">Initial Development Team</b></div>
+			<div style=" float:left;width: 498px; height: 20px; position: relative; "><b style="color:#5BC0DE;font-size: 14px;">Upgrade BigBang2.0 Team</b></div>
+			<div style=" float:left;width: 598px; height: 500px; position: relative; background: url(../img/bigbangteam.jpg) no-repeat; background-size: 498px 500px;"></div>
+			<div style=" float:left;width: 498px; height: 500px; position: relative; background: url(../img/team.jpg) no-repeat; background-size: 498px 500px;"></div>
+			<div style="display:inline-block;width: 498px;"></div>
+			<!-- Commented for ASQ Upgrade2.0.Deleted developers information and added upgrade team details.
+			<div>
+				<div ng-mouseover="mouseover1()" style="width: 100px; height: 125px; position: absolute; top: 60px; left: 240px"></div>
+				<div class="divTrigger" id="harry">Harry comes from Shanghai, China and is in his second trimester at ITU. Harry is a front-end developer with a diverse experience in software engineering. He has worked on several industries and is now interning at a NAND manufacturing multinational company. When he is not working, Harry enjoys playing soccer and watching the latest movies.</div>
+				<div ng-mouseover="mouseover2()" style="width: 100px; height: 140px; position: absolute; top: 60px; left: 500px"></div>
+				<div class="divTrigger" id="jaime">Jaime comes from Spain and is in his third trimester at ITU. He has worked in the Construction industry before jumping into the software engineering industry. Currently, he interns in a utilities company where he can leverage his knowledge in both civil engineering and software implementation. His interests are in ERP applications and Big Data. Jaime enjoys swimming and spending time with his family.</div>
+				<div ng-mouseover="mouseover3()" style="z-index: 1; width: 100px; height: 180px; position: absolute; top: 200px; left: 170px"></div>
+				<div class="divTrigger" id="neeru">Neeru is from India and is a graduate student in software engineering at ITU. She has more than 6 years of web application design experience and has worked with a major IT services companies in india before going for her Masters at ITU. She enjoys watching tv and going on hiking with her family.</div>
+				<div ng-mouseover="mouseover4()" style="width: 110px; height: 180px; position: absolute; top: 160px; left: 640px"></div>
+				<div class="divTrigger" id="nikitha">Nikitha Kandukuri is pursuing her Master's Degree in Computer Software Engineering, third trimester at ITU, San Jose. She has a real passion and knowledge for latest developments of mobile platforms and technologies. Working with Big Bang ASQ team has transformed my understanding of work-turns out its fun!</div>
+			</div>
+			-->
+			<br/>
+			
+			<hr>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div style="text-align: center" class="copy">
+						<h5>ASQ CSQE Virtual Exam & Practice</h5>
+						<p>&copy; <a href="#">2015 Big Bang ASQ Exam</a></p>
+						<p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</footer>
+</div>

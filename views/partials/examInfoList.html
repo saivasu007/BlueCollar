@@ -1,0 +1,90 @@
+<div class="animated fadeInDown">
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="logo">
+						<h1><a href="/home">Big Bang <span class="color">ASQ</span></a></h1>
+						<div class="hmeta">Perfect CSQE Virtual Exam & Practice Website</div>
+					</div>
+				</div>
+				<div style="text-align: right" class="col-md-5 col-md-offset-3 col-sm-5 col-sm-offset-2">
+
+					<br>
+					<h4>Welcome, {{currentUser.firstName}},{{currentUser.lastName}}</h4>
+					<span class="color customLink"><a href="/home">Home</a></span> |
+					<span class="color customLink" ng-if="currentUser.role=='admin'"><a href="/admin">Admin</a> |</span>
+					<span class="color customLink"><a href="/profile">Profile</a></span> |
+					<span class="color customLink"><a href="/changePassword">Change Password</a></span> |
+					<span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
+				</div>
+			</div>
+		</div>
+	</header>
+	
+	<ng-form name="examInfoList">
+		<div class="container">
+			<!-- Content -->
+			<hr>
+			<h3>Exam List Screen:</h3>
+			<div class="form-group">
+			<br>
+			<div  style="border:2px solid #5BC0DE;width:950px;" data-ng-init="getCerts()">
+			<table class="table table-striped">
+				<thead>
+				<tr style="background-color:#D3D3D3">
+					<th>Exam Name</th>
+					<th>Description</th>
+					<th></th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="cert in certifications">
+					<td>{{cert.name}}</td>
+					<td>{{cert.description}}</td>
+					<td><input id="act" type="radio" name="cert" ng-model="certName" value="{{cert.name}}" ng-click="getValue(certName)"></td>
+				</tr>
+				<tr ng-show="certifications.length <= 0">
+				<td></td>
+				<td><h4 style="color:red">No Certifications Found.</h4></td>
+				<td></td>
+				</tr>
+				</tbody>
+			</table>
+			</div>
+			<br/>
+			<table>
+			<tr>
+			<td style="width:320px;"></td>
+			<td style="width:320px;" align="center"><button  style="margin: 10px 10px 50px 5px; width: 95px; height: 40px; font-size: 16px" class="btn btn-primary" ng-click="exam()" ng-disabled="wrong">
+	            <span class="glyphicon glyphicon-ok-sign"></span>Start </button>
+	            <a href="/home"><button style="margin: 10px 20px 50px 5px; width: 95px; height: 40px; font-size: 16px" class="btn btn-warning">
+					<span class="glyphicon glyphicon-remove-sign"></span>  Cancel
+				</button></a>
+			</td>
+			<td></td>
+			</tr>
+			</table>
+			<br/>
+			<hr>
+		</div>
+	</div>
+	</ng-form>
+	
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div style="text-align: center" class="copy">
+						<h5>ASQ CSQE Virtual Exam & Practice</h5>
+						<p>&copy; <a href="/about">2015 Big Bang ASQ Exam</a></p>
+						<p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</footer>
+	</div>

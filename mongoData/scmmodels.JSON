@@ -1,0 +1,348 @@
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a57"),
+	"content" : "A particular code unit has had four builds since version 1.0. Three of those builds were the result of design changes. Which of the following version identifiers could describe the current build?",
+	"choices" : {
+		"A" : "3.0",
+		"B" : "3.4",
+		"C" : "4.1",
+		"D" : "4.3"
+	},
+	"correctChoice" : "C",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a58"),
+	"content" : "Which of the following statements is true about software requirements baselines?",
+	"choices" : {
+		"C" : "They are not used until the testing phase",
+		"D" : "hey are placed under version control and not changed until the next release",
+		"A" : "They are the basis for software change control",
+		"B" : "They are established during the planning phase"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a59"),
+	"content" : "One purpose of software configuration management is to",
+	"choices" : {
+		"B" : "help avoid multiple copies of the same information",
+		"C" : "eliminate “fire-fighting” during the development",
+		"D" : "ensure that adequate test cases are developed",
+		"A" : "replace the need for program management"
+	},
+	"correctChoice" : "B",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a5a"),
+	"content" : "A project that is in the implementation phase is six weeks behind schedule. The delivery date for the product is four months away. The project is not allowed to slip the delivery date or compromise on the quality standards established for this product. Which of the following actions would bring this project back on schedule?",
+	"choices" : {
+		"A" : "Eliminate some of the requirements that have not yet been implemented",
+		"B" : "Add more engineers to the project to make up for lost work",
+		"C" : "Ask the current developers to work overtime until the lost work is recovered",
+		"D" : "Hire more software quality assurance personnel"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a5b"),
+	"content" : "Which of the following is responsible for authorizing changes to a controlled library?",
+	"choices" : {
+		"A" : "Corporate entity",
+		"B" : "Configuration control board",
+		"C" : "The development team",
+		"D" : "Configuration manager"
+	},
+	"correctChoice" : "B",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a5c"),
+	"content" : "Which of the following software change management activities is most vital to assessing the impact of proposed software modifications?",
+	"choices" : {
+		"A" : "Baseline identification",
+		"B" : "Configuration auditing",
+		"C" : "Change control",
+		"D" : "Version control"
+	},
+	"correctChoice" : "C",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a5d"),
+	"content" : "The reason that software tools must be under configuration control is:",
+	"choices" : {
+		"B" : "To provide a quick check on tool upgrade status",
+		"C" : "To establish a link with the tool representative throughout the modification process",
+		"D" : "To provide status reports to upper management",
+		"A" : "Future modifications must use the initial tool version in order to assure compatibility"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a5e"),
+	"content" : "During a functional configuration audit, a software auditor’s principal responsibility is to verify that the",
+	"choices" : {
+		"C" : "documentation of the product satisfies the contract",
+		"D" : "documentation accurately represents the product",
+		"A" : "product meets specifications",
+		"B" : "processes used in software development were performed"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a5f"),
+	"content" : "A configuration item list, a specification tree, and an equipment planning diagram are inputs to configuration",
+	"choices" : {
+		"A" : "identification",
+		"B" : "control",
+		"C" : "baselining",
+		"D" : "accounting"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a60"),
+	"content" : "One of the main inputs to the software build process is:",
+	"choices" : {
+		"B" : "Process definitions",
+		"C" : "Change histories",
+		"D" : "Management approval",
+		"A" : "Owner's names"
+	},
+	"correctChoice" : "B",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a61"),
+	"content" : "The plans for the physical off-site storage of software records would most likely be found in the:",
+	"choices" : {
+		"A" : "Disaster recovery plan",
+		"B" : "Project management plan",
+		"C" : "Risk management plan",
+		"D" : "Software configuration plan"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a62"),
+	"content" : "A review of test results to ascertain that all functionality and performance has been validated is called a:",
+	"choices" : {
+		"C" : "Release of the software product",
+		"D" : "Functional configuration audit",
+		"A" : " a. Validated test readiness results",
+		"B" : "Physical configuration audit"
+	},
+	"correctChoice" : "D",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a63"),
+	"content" : "A concurrent process model that includes major technical activities, tasks, and their associated states has what additional characteristic?",
+	"choices" : {
+		"A" : "Events occur concurrently and are coordinated by a central process",
+		"B" : "Tasks are allocated based on priorities set by the project team",
+		"C" : "Technical activities are followed in close approximations",
+		"D" : "All activities exist concurrently, but reside in different states"
+	},
+	"correctChoice" : "D",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a72"),
+	"content" : "Which of the following types of libraries is used for managing baselines?",
+	"choices" : {
+		"A" : "Controlled",
+		"B" : "Public",
+		"C" : "Dynamic",
+		"D" : "Static"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a64"),
+	"content" : "An accepted definition of a software baseline is:",
+	"choices" : {
+		"A" : "A listing of all the Cis on a deliverable tape",
+		"B" : "An arrangement of parts as embodied in a software product",
+		"C" : "A version description document",
+		"D" : "An annotated file description"
+	},
+	"correctChoice" : "B",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a65"),
+	"content" : "Verifying that all the components in a software release and its documentation are in agreement is called a:",
+	"choices" : {
+		"B" : "User documentation audit",
+		"C" : "Functional configuration audit",
+		"D" : "Customer conducted audit",
+		"A" : "Physical configuration audit"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a66"),
+	"content" : "A software build is a process of:",
+	"choices" : {
+		"C" : "Developing a software module from design specification",
+		"D" : "Creating application binaries for a software release",
+		"A" : "Developing software from requirements",
+		"B" : "Manufacturing software products for distribution"
+	},
+	"correctChoice" : "D",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a67"),
+	"content" : "An organization elects to conduct daily incremental backups, cycled weekly, with a full weekly backup being shipped off-site. In case of a disaster, such as a fire, what is the maximum amount of data that would be lost?",
+	"choices" : {
+		"A" : "1 day",
+		"B" : "2 days",
+		"C" : "7 days",
+		"D" : "14 days"
+	},
+	"correctChoice" : "C",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a68"),
+	"content" : "Which of the following statements regarding status accounting would be considered FALSE?",
+	"choices" : {
+		"A" : "Software status accounting places a significant focus on the costs relative to SCI changes",
+		"B" : "Status accounting is also called configuration status reporting by many organizations",
+		"C" : "Status accounting should maintain continuous records of the status of all baseline items",
+		"D" : "Status accounting is an element of configuration management"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a69"),
+	"content" : "The test design method that involves seeding errors into a program is known as:",
+	"choices" : {
+		"B" : "Fault insertion and error handling",
+		"C" : "Equivalence class partitioning",
+		"D" : "Customer defect reports",
+		"A" : "Test cases"
+	},
+	"correctChoice" : "B",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a6a"),
+	"content" : "Which of the following is an appropriate definition for a software program patch?",
+	"choices" : {
+		"C" : "An aggregate of hardware and software that is treated as a single entity",
+		"D" : "The modification of an object program without recompiling the source program",
+		"A" : "A controlled collection of software and related documentation",
+		"B" : "The modification to an object program by deleting a portion of the existing code"
+	},
+	"correctChoice" : "D",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a6b"),
+	"content" : "In an operating environment, the difference between functional and performance testing is that functional tests evaluate the:",
+	"choices" : {
+		"A" : "Run-time of the system",
+		"B" : "Aesthetics, consistency, and documentation",
+		"C" : "Instability of the system",
+		"D" : "Features and capabilities of the system"
+	},
+	"correctChoice" : "D",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a6c"),
+	"content" : "A module is presented by its author to a review group and the author receives immediate feedback. This is known as what kind of software inspection?",
+	"choices" : {
+		"B" : "Fagan inspection",
+		"C" : "Structured walkthrough",
+		"D" : "Management review",
+		"A" : "Peer review"
+	},
+	"correctChoice" : "C",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a6d"),
+	"content" : "Bottom-up testing requires which of the following conditions?",
+	"choices" : {
+		"A" : "All software must exist at the sub-module level",
+		"B" : "Testing must begin at a terminal module",
+		"C" : "All terminal modules must be tested before testing any higher modules",
+		"D" : "Special drivers are required only for critical functions of missing modules"
+	},
+	"correctChoice" : "B",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a6e"),
+	"content" : "Test cases should satisfy which of the following criteria?",
+	"choices" : {
+		"A" : "Combine as many tests in one test case as possible",
+		"B" : "Collect all available data on the function being tested",
+		"C" : "Have at least a 50% chance of catching an error",
+		"D" : "Make program failures obvious and likely to be detected"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a6f"),
+	"content" : "White box testing is distinguished from black box testing by:",
+	"choices" : {
+		"A" : "Use of the control structure to derive test cases",
+		"B" : "Demonstrating that program requirements have been met",
+		"C" : "Letting software engineers test from the bottom up",
+		"D" : "Finding more incorrect or missing function errors"
+	},
+	"correctChoice" : "D",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a70"),
+	"content" : "Typically, a physical configuration audit evaluates which of the following?",
+	"choices" : {
+		"A" : "Product composition and structure",
+		"B" : "Product testing",
+		"C" : "Media storage",
+		"D" : "Computer architecture"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a71"),
+	"content" : "What is the name of the software library which is used to hold newly created or modified software items?",
+	"choices" : {
+		"A" : "Dynamic",
+		"B" : "Controlled",
+		"C" : "Configuration",
+		"D" : "Static"
+	},
+	"correctChoice" : "A",
+	"category" : "scm"
+},
+{
+	"_id" : ObjectId("55d8d8c0e1f8284f46481a73"),
+	"content" : "Change X requires a higher level of authority than Change Y in which of the following pairs? (Change X ; Change Y)",
+	"choices" : {
+		"A" : "Code in development / Code in production",
+		"B" : "Specifications during requirements analysis / Specifications duringsystems test",
+		"C" : "Documents requested by the technical development group / Documents requested by customers",
+		"D" : "A product distributed to several sites / A product with a single user "
+	},
+	"correctChoice" : "D",
+	"category" : "scm"
+}

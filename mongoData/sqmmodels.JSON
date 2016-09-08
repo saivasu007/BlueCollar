@@ -1,0 +1,367 @@
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a74"),
+	"content" : "A software quality assurance plan should be based principally on the quality requirements of ",
+	"choices" : {
+		"B" : "ISO 9001",
+		"C" : "the customer",
+		"D" : "software engineering",
+		"A" : "IEEE 730"
+	},
+	"correctChoice" : "C",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a75"),
+	"content" : "Maintenance releases and technical assistance centers are examples of which of the following costs of quality?",
+	"choices" : {
+		"C" : "Appraisal",
+		"D" : "Prevention",
+		"A" : "External failure",
+		"B" : "Internal failure"
+	},
+	"correctChoice" : "A",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a76"),
+	"content" : "Which of the following is a fundamental principle of software defect prevention?",
+	"choices" : {
+		"A" : "Software quality engineering must evaluate all errors.",
+		"B" : "A balance of white-box and black-box testing is necessary.",
+		"C" : "A single root cause taxonomy should be used by all projects.",
+		"D" : "Feedback to the individuals who introduced the defect is essential."
+	},
+	"correctChoice" : "D",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a77"),
+	"content" : "Which of the following obstacles is most likely to cause a quality management system to fail?",
+	"choices" : {
+		"A" : "Undefined processes",
+		"B" : "Fear that quality improvements will result in job cuts",
+		"C" : "Lack of support from senior management",
+		"D" : "Lack of tools that support the quality infrastructure"
+	},
+	"correctChoice" : "C",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a78"),
+	"content" : "Which of the following is a valid software quality goal?",
+	"choices" : {
+		"A" : "Improve quality by 100% within one year.",
+		"B" : "Implement metrics without increasing project costs.",
+		"C" : "Reduce the average number of defects found during code inspection by 50%.",
+		"D" : "Achieve a cumulative defect removal efficiency greater than 90% within 18 months."
+	},
+	"correctChoice" : "D",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a79"),
+	"content" : "Which of the following is a characteristic of a successful defect prevention program?",
+	"choices" : {
+		"D" : "It is initiated at the end of the design phase.",
+		"A" : "It is performed using a top-down approach.",
+		"B" : "Defects are identified and removed prior to release.",
+		"C" : "A root cause analysis of defects is conducted and defect data are tracked."
+	},
+	"correctChoice" : "C",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a7a"),
+	"content" : "Which of the following is the most important feature of an audit report?",
+	"choices" : {
+		"D" : "It is based on the lead auditor's recommendations.",
+		"A" : "It is verifiable.",
+		"B" : "It follows ISO 19011.",
+		"C" : "It includes responses to all checklist questions."
+	},
+	"correctChoice" : "A",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a7b"),
+	"content" : "Software quality assurance provides a means for:",
+	"choices" : {
+		"D" : "Achieving 100% inspection of all product units",
+		"A" : "Assigning quality responsibilities to all key personnel",
+		"B" : "Assuring state-of-the-art design",
+		"C" : "Attaining minimum fabrication cost"
+	},
+	"correctChoice" : "A",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a7c"),
+	"content" : "Which of the following is a non-value added activity?",
+	"choices" : {
+		"A" : "Design reviews",
+		"B" : "Vender assessments",
+		"C" : "Inventory reductions",
+		"D" : "Receiving inspection"
+	},
+	"correctChoice" : "D",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a7d"),
+	"content" : "Which of the following best describes the purpose of a problem reporting system?",
+	"choices" : {
+		"A" : "To collect and report information on the status of software defects or process nonconformances",
+		"B" : "To report process nonconformances",
+		"C" : "To collect information of software defects or process nonconformances",
+		"D" : "To report and collect information on software defects"
+	},
+	"correctChoice" : "A",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a7e"),
+	"content" : "One of the roles of software quality assurance (SQA) is to ensure compliance with standards and procedures. The benefit of this effort is to:",
+	"choices" : {
+		"A" : "Increase the status of the SQA organization",
+		"B" : "Increase software productivity",
+		"C" : "Improve software quality",
+		"D" : "Reduce the responsibility of top management for quality"
+	},
+	"correctChoice" : "C",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a7f"),
+	"content" : "The goal of software quality assurance should be:",
+	"choices" : {
+		"A" : "Error prediction",
+		"B" : "Error prevention",
+		"C" : "Error detection",
+		"D" : "Error correction"
+	},
+	"correctChoice" : "B",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a80"),
+	"content" : "Most often, a supplier is selected based upon quality, delivery, technology, life cycle cost, and:",
+	"choices" : {
+		"A" : "Location",
+		"B" : "Short-term costs",
+		"C" : "Their track record with other customers",
+		"D" : "management philosophy"
+	},
+	"correctChoice" : "D",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a81"),
+	"content" : "Modifying or redesigning a product would most likely occur during which two of the PDCA phases?",
+	"choices" : {
+		"D" : "Plan and act",
+		"A" : "Plan and do",
+		"B" : "Check and act",
+		"C" : "Do and act"
+	},
+	"correctChoice" : "C",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a82"),
+	"content" : "A prevention versus detection philosophy requires:",
+	"choices" : {
+		"D" : "Independent evaluation of programmer errors",
+		"A" : "Correction of defects upon discovery",
+		"B" : "Prevention effort early in the life cycle",
+		"C" : "Prevention action upon appearance of defects"
+	},
+	"correctChoice" : "B",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a83"),
+	"content" : "Planning the details of the audit and reporting obstacles while performing the audit are the responsibility of the:",
+	"choices" : {
+		"A" : "Audit client",
+		"B" : "Auditee",
+		"C" : "Auditor",
+		"D" : "Lead auditor"
+	},
+	"correctChoice" : "D",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a84"),
+	"content" : "What is potentially the greatest weakness in software problem reporting?",
+	"choices" : {
+		"B" : "Failure to not indicate the time and location of the defect",
+		"C" : "Failure to follow-up with appropriate corrective action",
+		"D" : "Failure to identify the programmer who created the defect",
+		"A" : "Failure to adequately describe the defect"
+	},
+	"correctChoice" : "C",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a85"),
+	"content" : "When outsourcing project work, as compared to process work, which of the following attributes normally applies?",
+	"choices" : {
+		"D" : "It is standardized and structured",
+		"A" : "Repeats in a short time frame",
+		"B" : "It is easily measured",
+		"C" : "It is unique"
+	},
+	"correctChoice" : "C",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a86"),
+	"content" : "What lean technique is most widely used to make problems visible?",
+	"choices" : {
+		"C" : "Kaizen",
+		"D" : "Takt time",
+		"A" : "JIT",
+		"B" : "5S"
+	},
+	"correctChoice" : "B",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a87"),
+	"content" : "Which of the following approaches maintains and improves working standards by small gradual evolutionary improvements",
+	"choices" : {
+		"A" : "PDCA",
+		"B" : "PDSA",
+		"C" : "Poka-yoke",
+		"D" : "Kaizen"
+	},
+	"correctChoice" : "D",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a88"),
+	"content" : "Identify the type of quality goal that cuts across many departments and addresses issues that are applicable organization wide",
+	"choices" : {
+		"A" : "Principles",
+		"B" : "Strategic goals",
+		"C" : "Policies",
+		"D" : "Tactical goals"
+	},
+	"correctChoice" : "B",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a89"),
+	"content" : "The performance of software inspections is considered what type of quality cost?",
+	"choices" : {
+		"A" : "Prevention",
+		"B" : "Appraisal",
+		"C" : "Internal",
+		"D" : "External"
+	},
+	"correctChoice" : "B",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a8a"),
+	"content" : "The DMAIC process followed by many six sigma teams is a:",
+	"choices" : {
+		"A" : "Business improvement methodology",
+		"B" : "Business process improvement methodology",
+		"C" : "Problem solving methodology",
+		"D" : "Quality control methodology"
+	},
+	"correctChoice" : "C",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a8b"),
+	"content" : "Software stakeholder identification primarily consists of which of the following observations?",
+	"choices" : {
+		"A" : "Naming a person to be responsible for the QMS",
+		"B" : "Recognizing those who have an interest in a projects outcome",
+		"C" : "Identifying software requirements for the project managers",
+		"D" : "Finding a coordinator for software planning decisions"
+	},
+	"correctChoice" : "B",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a8c"),
+	"content" : "What method uses mistake-proofing to eliminate defects in software?",
+	"choices" : {
+		"B" : "Poka-yoke",
+		"C" : "Software inspections",
+		"D" : "Statistical process control",
+		"A" : "Plan-Do-Check-Act"
+	},
+	"correctChoice" : "B",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a8d"),
+	"content" : "Which of the following types of audits should be used to ensure that detail design is being done according to the software development plan?",
+	"choices" : {
+		"A" : "A product audit",
+		"B" : "A process audit",
+		"C" : "A quality system audit",
+		"D" : "A quality management audit"
+	},
+	"correctChoice" : "B",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a8e"),
+	"content" : "Which of the following is a method for calculating a quality cost factor due to an external failure?",
+	"choices" : {
+		"A" : "Totaling the penalty fees that must be paid to the customer due to late delivery of a software product ",
+		"B" : "Measuring the amount of effort spent performing code reviews",
+		"C" : "Measuring the amount of time spent fixing defects found during system testing",
+		"D" : "Measuring the customer's system downtime over a one-year period"
+	},
+	"correctChoice" : "D",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a8f"),
+	"content" : "Which of the following would be the most useful criterion to use when determining which subcontractor to select for a project?",
+	"choices" : {
+		"A" : "The subcontractor's prior experience with similar applications",
+		"B" : "The subcontractor's process capability maturity level",
+		"C" : "The prime contractor's costs for evaluating and managing the subcontractor",
+		"D" : "The prime contractor's process capability maturity level"
+	},
+	"correctChoice" : "A",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a90"),
+	"content" : "The most successful quality program requires the support of which of the following groups?",
+	"choices" : {
+		"A" : "Software engineering process group",
+		"B" : "Quality assurance department",
+		"C" : "Upper management",
+		"D" : "Configuration management"
+	},
+	"correctChoice" : "C",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("55d8d8cde1f8284f46481a91"),
+	"content" : "Which of the following is an appropriate reason to use quality assurance test consultants to monitor an inspection process?",
+	"choices" : {
+		"B" : "They increase indirect overhead costs only.",
+		"C" : "They bring specific knowledge that can be retained by the work group.",
+		"D" : "They expedite the task without increasing the labor costs.",
+		"A" : "They bear the liability risk instead of the company that hired them."
+	},
+	"correctChoice" : "C",
+	"category" : "sqm"
+},
+{
+	"_id" : ObjectId("566f8061112f64030e11f1aa"),
+	"category" : "sqm",
+	"content" : "aasdadasda",
+	"correctChoice" : "A",
+	"__v" : 0
+}

@@ -1,0 +1,87 @@
+<head lang="en">
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-datepicker.min.css"/>
+    <link rel="stylesheet" href="css/angular-toggle-switch.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="middle-box text-center loginscreen animated fadeInDown" style="padding-top:0px;">
+    <div>
+        <div>
+			<h1 class="logo-name">ASQ</h1>
+		</div>
+        <h3>Register to Big Bang ASQ</h3>
+        <p>Create account to see it in action.</p>
+        <div class="m-t"  >
+            <div class="form-group">
+				<input type="text" ng-model="user.email" class="form-control" placeholder="Email Address" ng-change="testUsername()">
+				<span ng-show="usernameErr && user.email != ''" style="color:red;display:inline-block;">invalid email address</span>
+			</div>
+            <div class="form-group">
+                <input id="fName" type="text" ng-model="user.firstName" class="form-control" placeholder="First Name" data-toggle="tooltip" data-placement="top" data-original-title="Please use only letters for names">
+            </div>
+            <div class="form-group">
+                <input id="lName" type="text" ng-model="user.lastName" class="form-control" placeholder="Last Name">
+            </div>
+            <!-- Added by Srinivas Thungathurti for ASQ Upgrade 2.0. -->
+            <!-- Updated for ASQ Upgrade2.0 and issue#2 (Github Issues Tab) .Date picker disabled weekends and need to show all the dates as available. -->
+            <div ng-controller="DatepickerCtrl">
+			<div class="row">
+		        <div class="col-md-6">
+		            <p class="input-group">
+		              <input type="text" class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="user.birthDate" is-open="status.opened" 
+		              		 min-date="minDate" max-date="maxDate" datepicker-options="dateOptions"  
+		              		 ng-required="true" close-text="Close" style="width:260px;" placeholder="Date Of Birth"/>
+		              <span class="input-group-btn">
+		                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+		              </span>
+		            </p>
+		        </div>
+		    </div>
+			</div>
+            <div class="form-group">
+                <input type="text" ng-model="user.address1" class="form-control" placeholder="Address1">
+            </div>
+            <div class="form-group">
+                <input type="text" ng-model="user.address2" class="form-control" placeholder="Address2">
+            </div>
+            <div class="form-group">
+                <input type="text" id="city" ng-model="user.city" class="form-control" placeholder="City" ng-blur="testCity()" data-toggle="tooltip3" data-placement="top" data-original-title="Please use only letters.">
+            </div>
+            <!-- <div class="form-group">
+                <input type="text" ng-model="user.state" class="form-control" placeholder="State">
+            </div> -->
+            <div class="form-group">
+            <select ng-model="selectedState" ng-options="state.abbreviation as state.name for state in states" style="font-size: 14px; width: 300px; height: 32px; display: inline;">
+			</select>
+			</div>
+            <div class="form-group">
+                <input type="text" id="zip" ng-model="user.zipcode" class="form-control" placeholder="Zip Code" ng-change="testZipCode()" data-toggle="tooltip2" data-placement="top" data-original-title="Please use only numbers">
+                <span ng-show="zipCodeErr && user.zipcode != ''" style="color:red;">Please enter valid Zipcode.</span>
+            </div>
+            <!-- End Upgrade 2.0 Here. -->
+            <div class="form-group">
+                <span class="{{myClass}}"><input type="password" ng-model="user.passwd1" class="form-control" placeholder="New Password" ng-change="testPassword()"></span>
+    			<span ng-show="passwordShort && user.passwd1 != ''" style="color:red">password must be at least 6 characters</span>
+            </div>
+            <div class="form-group">
+                <span class="{{myClass}}"><input type="password" ng-model="user.passwd2" ng-change="testPassword2()" class="form-control" placeholder="Confirm Password"></span>
+    			<span ng-show="passwordErr && user.passwd2 != undefined" style="color:red">password doesn't match</span>
+            </div>
+            <br>
+            <button ng-click="register(user)" ng-disabled="error" class="btn btn-info block full-width m-b">Register</button>
+            <!-- Added by Srinivas Thungathurti for ASQ Upgrade2.0.Added Clear form button to clear the registration form details. -->
+            <button ng-click="clear(user)" ng-disabled="error" class="btn btn-info block full-width m-b">Clear</button>
+
+            <p class="text-muted text-center"><small>Already have an account?</small></p>
+            <a class="btn btn-info btn-block" href="/login">Login</a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2015 Big Bang ASQ Exam</p>
+            <p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+        </div>
+    </div>
+</div>
+</body>
+

@@ -1,0 +1,117 @@
+<div class="animated fadeInDown">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="logo">
+                        <h1><a href="/home">Big Bang <span class="color">ASQ</span></a></h1>
+                        <div class="hmeta">Perfect CSQE Virtual Exam & Practice Website</div>
+                    </div>
+                </div>
+                <div style="text-align: right" class="col-md-5 col-md-offset-3 col-sm-5 col-sm-offset-2">
+
+                    <br>
+                    <!-- Modified for ASQ Upgrade 2.0.Added last name for welcome message. -->
+					<h4>Welcome, {{currentUser.firstName}},{{currentUser.lastName}}</h4>
+                    <span class="color customLink"><a href="/home">Home</a></span> |
+                    <!-- Modified by Srinivas Thungathurti for ASQ Upgrade 2.0. Added Admin link on Home screen. -->
+					<span class="color customLink" ng-if="currentUser.role=='admin'"><a href="/admin">Admin</a> |</span>
+					<span class="color customLink"><a href="/profile">Profile</a></span> |
+					<span class="color customLink"><a href="/changePassword">Change Password</a></span> |
+					<!-- End changes for ASQ Upgrade 2.0. -->
+                    <span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="container">
+            <!-- Content -->
+            <hr>
+            <table class="table table-striped" style="font-size: 16px; margin: 10px 0;">
+                <thead>
+                <tr>
+                    <th colspan="3" style="padding: 15px 0; font-size: 18px;">SELECT Categories and SET Number of Questions for Your CSQE Practice</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input ng-model="GK" type="checkbox"></td>
+                    <td>Software General Knowledge</td>
+                    <td><input ng-model="GKValue" type="number" min="1" max="18">&nbsp;&nbsp;(1-18)</td>
+                </tr>
+                <tr>
+                    <td><input ng-model="EP" type="checkbox"></td>
+                    <td>Software Engineering Processes</td>
+                    <td><input ng-model="EPValue" type="number" min="1" max="28">&nbsp;&nbsp;(1-28)</td>
+                </tr>
+                <tr>
+                    <td><input ng-model="MA" type="checkbox"></td>
+                    <td>Software Metrics & Analysis</td>
+                    <td><input ng-model="MAValue" type="number" min="1" max="35">&nbsp;&nbsp;(1-35)</td>
+                </tr>
+                <tr>
+                    <td><input ng-model="PM" type="checkbox"></td>
+                    <td>Software Project Management</td>
+                    <td><input ng-model="PMValue" type="number" min="1" max="22">&nbsp;&nbsp;(1-22)</td>
+                </tr>
+                <tr>
+                    <td><input ng-model="SCM" type="checkbox"></td>
+                    <td>Software Configuration Management</td>
+                    <td><input ng-model="SCMValue" type="number" min="1" max="29">&nbsp;&nbsp;(1-29)</td>
+                </tr>
+                <tr>
+                    <td><input ng-model="SQM" type="checkbox"></td>
+                    <td>Software Quality Management</td>
+                    <td><input ng-model="SQMValue" type="number" min="1" max="30">&nbsp;&nbsp;(1-30)</td>
+                </tr>
+                <tr>
+                    <td><input ng-model="SVV" type="checkbox"></td>
+                    <td>Software Verification & Validation</td>
+                    <td><input ng-model="SVVValue" type="number" min="1" max="21">&nbsp;&nbsp;(1-21)</td>
+                </tr>
+                </tbody>
+            </table>
+			<div style="text-align: center;">
+				<button style="margin: 10px 20px 50px 30px; width: 95px; height: 40px; font-size: 16px" class="btn btn-primary" ng-click="submit()">
+					<span class="glyphicon glyphicon-ok-sign"></span>  Submit
+				</button>
+				<a href="/home"><button style="margin: 10px 20px 50px 5px; width: 95px; height: 40px; font-size: 16px" class="btn btn-warning">
+					<span class="glyphicon glyphicon-remove-sign"></span>  Cancel
+				</button></a>
+			</div>
+            <hr>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="text-align: center" class="copy">
+                        <h5>ASQ CSQE Virtual Exam & Practice</h5>
+                        <p>&copy; <a href="/about">2015 Big Bang ASQ Exam</a></p>
+                        <p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </footer>
+</div>
+
+
+
+
+
+
+
+
+
+

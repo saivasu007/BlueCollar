@@ -1,0 +1,216 @@
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e1fd"),
+	"content" : "The reason that software tools must be under configuration control is:",
+	"choices" : {
+		"A" : "Future modifications must use the initial tool version in order to assure compatibility",
+		"B" : "To provide a quick check on tool upgrade status",
+		"C" : "To establish a link with the tool representative throughout the modification process",
+		"D" : "To provide status reports to upper management"
+	},
+	"correctChoice" : "A",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e1fe"),
+	"content" : "A concurrent process model that includes major technical activities, tasks, and their associated states has what additional characteristic?",
+	"choices" : {
+		"C" : "Technical activities are followed in close approximations",
+		"D" : "All activities exist concurrently, but reside in different states",
+		"A" : "Events occur concurrently and are coordinated by a central process",
+		"B" : "Tasks are allocated based on priorities set by the project team"
+	},
+	"correctChoice" : "D",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e1ff"),
+	"content" : "The plans for the physical off-site storage of software records would most likely be found in the:",
+	"choices" : {
+		"A" : "Disaster recovery plan",
+		"B" : "Project management plan",
+		"C" : "Risk management plan",
+		"D" : "Software configuration plan"
+	},
+	"correctChoice" : "A",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e200"),
+	"content" : "One of the main inputs to the software build process is:",
+	"choices" : {
+		"A" : "Owner's names",
+		"B" : "Process definitions",
+		"C" : "Change histories",
+		"D" : "Management approval"
+	},
+	"correctChoice" : "B",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e201"),
+	"content" : "A review of test results to ascertain that all functionality and performance has been validated is called a:",
+	"choices" : {
+		"A" : " a. Validated test readiness results",
+		"B" : "Physical configuration audit",
+		"C" : "Release of the software product",
+		"D" : "Functional configuration audit"
+	},
+	"correctChoice" : "D",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e202"),
+	"content" : "An accepted definition of a software baseline is:",
+	"choices" : {
+		"A" : "A listing of all the Cis on a deliverable tape",
+		"B" : "An arrangement of parts as embodied in a software product",
+		"C" : "A version description document",
+		"D" : "An annotated file description"
+	},
+	"correctChoice" : "B",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e203"),
+	"content" : "Verifying that all the components in a software release and its documentation are in agreement is called a:",
+	"choices" : {
+		"A" : "Physical configuration audit",
+		"B" : "User documentation audit",
+		"C" : "Functional configuration audit",
+		"D" : "Customer conducted audit"
+	},
+	"correctChoice" : "A",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e204"),
+	"content" : "A software build is a process of:",
+	"choices" : {
+		"A" : "Developing software from requirements",
+		"B" : "Manufacturing software products for distribution",
+		"C" : "Developing a software module from design specification",
+		"D" : "Creating application binaries for a software release"
+	},
+	"correctChoice" : "D",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e205"),
+	"content" : "An organization elects to conduct daily incremental backups, cycled weekly, with a full weekly backup being shipped off-site. In case of a disaster, such as a fire, what is the maximum amount of data that would be lost?",
+	"choices" : {
+		"B" : "2 days",
+		"C" : "7 days",
+		"D" : "14 days",
+		"A" : "1 day"
+	},
+	"correctChoice" : "C",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e206"),
+	"content" : "What is the name of the software library which is used to hold newly created or modified software items?",
+	"choices" : {
+		"A" : "Dynamic",
+		"B" : "Controlled",
+		"C" : "Configuration",
+		"D" : "Static"
+	},
+	"correctChoice" : "A",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e207"),
+	"content" : "Which of the following statements regarding status accounting would be considered FALSE?",
+	"choices" : {
+		"A" : "Software status accounting places a significant focus on the costs relative to SCI changes",
+		"B" : "Status accounting is also called configuration status reporting by many organizations",
+		"C" : "Status accounting should maintain continuous records of the status of all baseline items",
+		"D" : "Status accounting is an element of configuration management"
+	},
+	"correctChoice" : "A",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e208"),
+	"content" : "Which of the following is an appropriate definition for a software program patch?",
+	"choices" : {
+		"A" : "A controlled collection of software and related documentation",
+		"B" : "The modification to an object program by deleting a portion of the existing code",
+		"C" : "An aggregate of hardware and software that is treated as a single entity",
+		"D" : "The modification of an object program without recompiling the source program"
+	},
+	"correctChoice" : "D",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e209"),
+	"content" : "The test design method that involves seeding errors into a program is known as:",
+	"choices" : {
+		"D" : "Customer defect reports",
+		"A" : "Test cases",
+		"B" : "Fault insertion and error handling",
+		"C" : "Equivalence class partitioning"
+	},
+	"correctChoice" : "B",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e20a"),
+	"content" : "Bottom-up testing requires which of the following conditions?",
+	"choices" : {
+		"A" : "All software must exist at the sub-module level",
+		"B" : "Testing must begin at a terminal module",
+		"C" : "All terminal modules must be tested before testing any higher modules",
+		"D" : "Special drivers are required only for critical functions of missing modules"
+	},
+	"correctChoice" : "B",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e20b"),
+	"content" : "In an operating environment, the difference between functional and performance testing is that functional tests evaluate the:",
+	"choices" : {
+		"D" : "Features and capabilities of the system",
+		"A" : "Run-time of the system",
+		"B" : "Aesthetics, consistency, and documentation",
+		"C" : "Instability of the system"
+	},
+	"correctChoice" : "D",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e20c"),
+	"content" : "A module is presented by its author to a review group and the author receives immediate feedback. This is known as what kind of software inspection?",
+	"choices" : {
+		"A" : "Peer review",
+		"B" : "Fagan inspection",
+		"C" : "Structured walkthrough",
+		"D" : "Management review"
+	},
+	"correctChoice" : "C",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e20d"),
+	"content" : "White box testing is distinguished from black box testing by:",
+	"choices" : {
+		"A" : "Use of the control structure to derive test cases",
+		"B" : "Demonstrating that program requirements have been met",
+		"C" : "Letting software engineers test from the bottom up",
+		"D" : "Finding more incorrect or missing function errors"
+	},
+	"correctChoice" : "D",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+},
+{
+	"_id" : ObjectId("55abf338d3f44d722a11e20e"),
+	"content" : "Test cases should satisfy which of the following criteria?",
+	"choices" : {
+		"A" : "Combine as many tests in one test case as possible",
+		"B" : "Collect all available data on the function being tested",
+		"C" : "Have at least a 50% chance of catching an error",
+		"D" : "Make program failures obvious and likely to be detected"
+	},
+	"correctChoice" : "A",
+	"category" : "SOFTWARE CONFIGURATION MANAGEMENT QUESTIONS"
+}

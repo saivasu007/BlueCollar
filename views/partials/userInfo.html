@@ -1,0 +1,131 @@
+<div class="animated fadeInDown">
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="logo">
+						<h1><a href="/home">Big Bang <span class="color">ASQ</span></a></h1>
+						<div class="hmeta">Perfect CSQE Virtual Exam & Practice Website</div>
+					</div>
+				</div>
+				<div style="text-align: right" class="col-md-5 col-md-offset-3 col-sm-5 col-sm-offset-2">
+
+					<br>
+					<h4>Welcome, {{currentUser.firstName}} {{currentUser.lastName}}</h4>
+					<span class="color customLink"><a href="/home">Home</a></span> |
+					<span class="color customLink"><a href="/profile">Profile</a></span> |
+					<span class="color customLink"><a href="/changePassword">Change Password</a></span> |
+					<span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
+				</div>
+			</div>
+		</div>
+	</header>
+	<body>
+	<ng-form name="userInfo">
+	<div class="content">
+		<div class="container">
+			<!-- Content -->
+			<hr>
+			<!--<div class="form-group" style="float: right">-->
+				<!--<lable for="search" style="padding: 0 10px 0 46px; font-size: 14px; font-weight: bold;">Search: </lable>-->
+				<!--<input id="search" ng-model="fil" class="form-control" style="width: 150px; height: 30px; display: inline;" type="search">-->
+			<!--</div>-->
+			<h3>User Information Screen:</h3>
+			<br>
+			<!-- 
+			<div class="form-group" style="float: left">
+				<lable for="search" style="padding: 0 10px 0 5px; font-size: 14px; font-weight: bold;">Search User: </lable>
+				<div class="form-group col-sm-10">
+				<input id="search" class="form-control" style="width: 200px; height: 32px;" type="text" ng-model="currentUser.search" placeholder="Search User By Name">
+				</div>
+			</div>
+			-->
+		
+			<div class="form-group">
+				
+				    <table>
+				    <tr>
+				    <td nowrap style="vertical-align:bottom">
+					<label for="search" style="font-size: 16px">Search User:</label>
+					</td><td style="width:20px"></td><td>
+					<input id="search" class="form-control" style="width: 204px; height: 32px" type="text" ng-model="user.search" placeholder="Search User Email ID" ng-required="true">
+					</td><td>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button  style="width: 98px; height: 32px; font-size: 16px;" class="btn btn-primary" ng-click="search(user)" ng-disabled="userInfo.$invalid">
+					<span class="glyphicon glyphicon-ok-sign"></span>  Search
+					</button>
+					</td>
+					<td>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/admin"><button  style="width: 98px; height: 32px; font-size: 16px;" class="btn btn-warning">
+					<span class="glyphicon glyphicon-remove-sign"></span>  Cancel
+					</button></a></td>
+					</tr></table>
+			<br><br>
+			</div>
+			<div  style="border:2px solid #5BC0DE;width:1080px;" ng-show="allUsers.length >= 0" data-ng-init="search(user)">
+			<table class="table table-striped">
+				<thead>
+				<tr style="background-color:#D3D3D3">
+					<!--<th>Number #</th>-->
+					<th>Username</th>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Ative(Y/N)</th>
+					<th>Subscriber</th>
+					<th>Action</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="user in partialUsers">
+					<td>{{user.email}}</td>
+					<td>{{user.firstName}}</td>
+					<td>{{user.lastName}}</td>
+					<td>{{user.activeIn}}</td>
+					<td>{{user.subscriber}}</td>
+					<td><button  class="btn btn-info" ng-click="edit(user.email)">
+					<span class="glyphicon glyphicon-eye-open"></span>Edit 
+					</button></td>
+				</tr>
+				<tr ng-show="allUsers.length <= 0">
+				<td colspan="6" align="center"><h4 style="color:red">No Records Found For Your Search.</h4></td>
+				</tr>
+				</tbody>
+			</table>
+			<table class="table" style="margin-bottom:0px">
+			<tbody>
+			<tr ng-show="partialUsers.length > 0">
+				<td></td><td></td><td></td><td></td><td></td>
+				<td align="right">
+				    <pagination 
+				      ng-model="currentPage"
+				      total-items="allUsers.length"
+				      max-size="maxSize"  
+				      boundary-links="true">
+				    </pagination>
+				</td>
+				</tr>
+			</tbody>
+			</table>
+			</div>
+			<hr>
+		</div>
+	</div>
+	</ng-form>
+	
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div style="text-align: center" class="copy">
+						<h5>ASQ CSQE Virtual Exam & Practice</h5>
+						<p>&copy; <a href="/about">2015 Big Bang ASQ Exam</a></p>
+						<p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</footer>
+	</div>
+	</body>

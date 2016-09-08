@@ -1,0 +1,265 @@
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a41"),
+	"content" : "Which of the following is a primary objective of risk exposure analysis?",
+	"choices" : {
+		"D" : "Assessing whether the identified risks should be accepted or mitigated",
+		"A" : "Collecting information that can be used for future risk analysis",
+		"B" : "Defining risk aversion steps",
+		"C" : "Estimating the impact of the risk on the project and the product"
+	},
+	"correctChoice" : "C",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a42"),
+	"content" : "Actions in the risk management continuous process consist of:",
+	"choices" : {
+		"C" : "Accepting, mitigating, or transferring the risk",
+		"D" : "Assigning work and following up to make sure its completed",
+		"A" : "Accepting or rejecting the primary risk",
+		"B" : "Contingency planning for the primary risk"
+	},
+	"correctChoice" : "C",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a43"),
+	"content" : "Cost variance is computed as the difference between:",
+	"choices" : {
+		"A" : "BSCS and BCWS",
+		"B" : "BCWP and ACWP",
+		"C" : "ACWP and BCWS",
+		"D" : "BCWS and BCWP"
+	},
+	"correctChoice" : "B",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a44"),
+	"content" : "The use of program evaluation and review technique (PERT) requires:",
+	"choices" : {
+		"D" : "Less data than a Gantt chart",
+		"A" : "The critical path to be known in advance",
+		"B" : "Slack times to be added to the critical path",
+		"C" : "Time estimates for each activity in the network"
+	},
+	"correctChoice" : "C",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a45"),
+	"content" : "Work breakdown structure means",
+	"choices" : {
+		"C" : "The project plan received the support of upper management",
+		"D" : "The statement of work is divided into a detailed listing of activities",
+		"A" : "All potential development activities have been crashed",
+		"B" : "That either a PERT or CPM chart has been developed and used"
+	},
+	"correctChoice" : "D",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a46"),
+	"content" : "The concept of software security is based principally on:",
+	"choices" : {
+		"A" : "Protecting against carelessness and eavesdropping",
+		"B" : "The time and resources required to compromise an asset",
+		"C" : "Applying tools to avoid the risk of compromise",
+		"D" : "Having a security department staffed with competent people"
+	},
+	"correctChoice" : "B",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a47"),
+	"content" : "Software defense is based on the principle of:",
+	"choices" : {
+		"B" : "Identifying, isolating, dividing, and conquering threats",
+		"C" : "Avoiding, detecting, masking, and catching threats",
+		"D" : "Mixing different functions across the environment",
+		"A" : "Reducing the possibility of compromise to zero"
+	},
+	"correctChoice" : "D",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a48"),
+	"content" : "Which of the following is the critical path in the activity network above?",
+	"choices" : {
+		"C" : "A, B, D, E, F, H, I, J",
+		"D" : "A, K, L, M, J",
+		"A" : "A, B, C, F, G, I, J",
+		"B" : "A, B, D, E, F, G, I, J"
+	},
+	"correctChoice" : "D",
+	"image" : "pathToImage/image25.png",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a49"),
+	"content" : "In a project network, if the earliest an event can take place is week 45, the most likely time it will take place is week 49, and the latest it can take place, without delaying the project completion, is week 51, what is the event slack time?",
+	"choices" : {
+		"A" : "2 weeks",
+		"B" : "4 weeks",
+		"C" : "6 weeks",
+		"D" : "Cannot be determined from the given information"
+	},
+	"correctChoice" : "C",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a4a"),
+	"content" : "One advantage of Gantt chart usage is:",
+	"choices" : {
+		"A" : "The charts are easy to understand",
+		"B" : "The details of activities are easily displayed",
+		"C" : "Each bar represents several activities",
+		"D" : "Estimates of optimistic, most likely, and pessimistic times are"
+	},
+	"correctChoice" : "A",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a4b"),
+	"content" : "Four software engineers are capable of individually producing 5,000 LOG/year. When assigned as members of a project their combined productivity is 18,500 LOO/year. What is the reason for this anomaly?",
+	"choices" : {
+		"C" : "Complex communication paths",
+		"D" : "Poor project management",
+		"A" : "Lack of team skills",
+		"B" : "Inadequate matrix"
+	},
+	"correctChoice" : "C",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a4c"),
+	"content" : "Layering multiple security functions in order to improve the risk level is called:",
+	"choices" : {
+		"A" : "Hardening a computer",
+		"B" : "A honey pot",
+		"C" : "Distracting the hacker",
+		"D" : "Defense in depth"
+	},
+	"correctChoice" : "D",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a4d"),
+	"content" : "A security penetration of a targeted system is most likely if:",
+	"choices" : {
+		"A" : "The target seems vulnerable",
+		"B" : "The password is known",
+		"C" : "The system is connected to the internet",
+		"D" : "Escalation is successful"
+	},
+	"correctChoice" : "A",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a4e"),
+	"content" : "Risk analysis planning should:",
+	"choices" : {
+		"B" : "Identify associated contingency plans",
+		"C" : "Identify and implement a metrics program",
+		"D" : "Be reviewed only at the end of a project",
+		"A" : "Start at the risk handling phase"
+	},
+	"correctChoice" : "B",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a4f"),
+	"content" : "A software project is 8 weeks into development. The following cost information is available: <br/>Planned Value $12,000 <br/>Earned Value $16,000 <br/>Actual Cost $15,000  <br/>What is the cost variance of the project?",
+	"choices" : {
+		"C" : "+$4,000",
+		"D" : "-$3,000",
+		"A" : "+$1,000",
+		"B" : "-$1,000"
+	},
+	"correctChoice" : "A",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a50"),
+	"content" : "A burn-down chart shows:",
+	"choices" : {
+		"A" : "The number of tests remaining",
+		"B" : "A weekly status dashboard",
+		"C" : "The work remaining in a Sprint",
+		"D" : "The scheduled work for a release"
+	},
+	"correctChoice" : "C",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a51"),
+	"content" : "Estimating software size, based on process and problem knowledge, is known as:",
+	"choices" : {
+		"A" : "Empirical estimation models",
+		"B" : "Automated estimation tools",
+		"C" : "Similar project estimating",
+		"D" : "Decomposition techniques"
+	},
+	"correctChoice" : "D",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a52"),
+	"content" : "What process describes action items that are assigned, reviewed, and tracked to closure?",
+	"choices" : {
+		"A" : "Project tracking and oversight",
+		"B" : "Senior management reviews",
+		"C" : "Closed loop",
+		"D" : "Open loop"
+	},
+	"correctChoice" : "C",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a53"),
+	"content" : "A PERT diagram was drawn showing the fifteen activities required for the implementation of a new computer system for a particular firm. With major activities identified by letters, the five paths through the network and their lengths were: <br/>Path 1 A-C-G-M 10 weeks <br/>2: B-D-F-N 15 weeks <br/>3: A-H-I-J-K-O 12 weeks <br/>4: A-Ed-L-N 10 weeks <br/>5: A-C-K-L-M 13 weeks <br/>The critical path(s) is/are:",
+	"choices" : {
+		"C" : "Path 3 ",
+		"B" : "Path 2",
+		"A" : "Paths 1 and 4",
+		"D" : "Path 5"
+	},
+	"correctChoice" : "B",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a54"),
+	"content" : "Which of the following approaches would reduce the length of a total project schedule?",
+	"choices" : {
+		"A" : "An overlap of activities that are on the critical path",
+		"B" : "An overlap of activities that are not on the critical path",
+		"C" : "A decrease in the duration of activities that are on the critical path",
+		"D" : "A decrease in the duration of activities that are not on the critical path"
+	},
+	"correctChoice" : "C",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a55"),
+	"content" : "Which of the following sets of components is critical to an internal problem-tracking system?",
+	"choices" : {
+		"B" : "Tester name, test case identification, log number",
+		"C" : "Date, source of the problem, original developer's name",
+		"D" : "Frequency, repair comments, maintenance schedule",
+		"A" : "Problem description, severity, category"
+	},
+	"correctChoice" : "A",
+	"category" : "pm"
+},
+{
+	"_id" : ObjectId("55d8d8aee1f8284f46481a56"),
+	"content" : "Determine the schedule variance from the information below: <br/>Hours expended = 138 <br/>complete = 40 <br/>project time elapsed = 40 <br/>Total hours budgeted = 400",
+	"choices" : {
+		"C" : "+22 hours",
+		"D" : "+55.2 hours",
+		"A" : "0 hours",
+		"B" : "-22 hours"
+	},
+	"correctChoice" : "C",
+	"category" : "pm"
+}

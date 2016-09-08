@@ -1,0 +1,81 @@
+<div>
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="logo">
+						<h1><a href="#">Big Bang <span class="color">ASQ</span></a></h1>
+						<div class="hmeta">Perfect CSQE Virtual Exam & Practice Website</div>
+					</div>
+				</div>
+				<div style="text-align: right" class="col-md-5 col-md-offset-3 col-sm-5 col-sm-offset-2">
+
+					<br>
+					<!-- Modified for ASQ Upgrade 2.0.Added last name for welcome message. -->
+					<h4>Welcome, {{currentUser.firstName}},{{currentUser.lastName}}</h4>
+					<span class="color customLink"><a href="" ng-click="quit()">Quit Practice</a></span> |
+					<span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
+
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+
+	<div class="content">
+		<div class="container">
+			<!-- Content -->
+			<hr>
+			<button style="float: right" class="btn btn-warning" ng-click="submit()">
+				<span class="glyphicon glyphicon-open"></span>  Submit Answers
+			</button>
+			<h3>CSQE Practice Mode</h3>
+			<br><br>
+			<div style="background-color: #F0F8FF; padding: 20px">
+				<p style="font-size: 20px; font-weight: bold">Q{{index + 1}}: {{questions[index].content}}</p>
+				<br><br>
+				<input name="choices" id="choiceA" type="radio" ng-click="choose(index, 'A')" ng-checked="questions[index].answer=='A'">
+				<label for="choiceA">A: &nbsp;{{questions[index].choices.A}}</label>
+				<br><br>
+				<input name="choices" id="choiceB" type="radio" ng-click="choose(index, 'B')" ng-checked="questions[index].answer=='B'">
+				<label for="choiceB">B: &nbsp;{{questions[index].choices.B}}</label>
+				<br><br>
+				<input name="choices" id="choiceC" type="radio" ng-click="choose(index, 'C')" ng-checked="questions[index].answer=='C'">
+				<label for="choiceC">C: &nbsp;{{questions[index].choices.C}}</label>
+				<br><br>
+				<input name="choices" id="choiceD" type="radio" ng-click="choose(index, 'D')" ng-checked="questions[index].answer=='D'">
+				<label for="choiceD">D: &nbsp;{{questions[index].choices.D}}</label>
+				<br><br>
+			</div>
+			<br><br>
+			<button style="float: left;" class="btn btn-success" ng-click="previous()" ng-disabled="index == 0">
+				<span class="glyphicon glyphicon-chevron-left"></span>  Previous
+			</button>
+			<button style="float: right;" class="btn btn-success" ng-click="next()" ng-disabled="index == questions.length - 1">
+				Next  <span class="glyphicon glyphicon-chevron-right"></span>
+			</button>
+			<br><br>
+			<hr>
+		</div>
+	</div>
+
+
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div style="text-align: center" class="copy">
+						<h5>ASQ CSQE Virtual Exam & Practice</h5>
+						<p>&copy; <a href="#">2015 Big Bang ASQ Exam</a></p>
+						<p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</footer>
+</div>

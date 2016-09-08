@@ -1,0 +1,35 @@
+<div class="setting-change">
+	<a class="btn btn-success" data-toggle="modal" href="#resetPW"  data-backdrop="true">Change Password</a>
+	<br />
+	<a class="btn btn-success" data-toggle="modal" href="#changeHstr"  data-backdrop="true">Progress Chart Settings</a>
+
+</div>
+
+<div  class="modal fade" id="changeHstr" role="dialogue">
+	<div class="modal-dialogue">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4>Change Progress Chart Setting</h4>
+			</div>
+			<div   class="modal-body">
+			<!-- Popup Div Starts Here -->
+				<label for="settings"><strong>Number of historical scores on progress chart</strong><br>
+				<select ng-model="numbers" style="width: 50px" convert-to-number>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select><br>
+				
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" data-dismiss="modal" ng-click="init(numbers)">Save</button>
+			</div>
+		</div>
+	</div>
+</div>

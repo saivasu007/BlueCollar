@@ -1,0 +1,424 @@
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481aa7"),
+	"content" : "Software process evaluations are used to determine",
+	"choices" : {
+		"C" : "potential risks to the assigned projects",
+		"D" : "whether a project is ready to make the transition to the next phase",
+		"A" : "how much progress the supplier is making toward completing assigned tasks",
+		"B" : "how much progress the supplier is making toward process improvement"
+	},
+	"correctChoice" : "C",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481aa8"),
+	"content" : " Which of the following is a benefit of using the goalquestion-metric paradigm when software metrics are selected?",
+	"choices" : {
+		"A" : " Only well-defined metrics are selected",
+		"B" : "Metrics are selected on the basis of organizational objectives",
+		"C" : "Buy-in from the project personnel is achieved for the selected metrics",
+		"D" : "Metric models are simplified to include only the most important elements"
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481aa9"),
+	"content" : "With respect to sample size and its relationship to confidence level and margin of error, which of the following statements is true?",
+	"choices" : {
+		"A" : "No correlation exists between sample size and either confidence level or margin of error",
+		"B" : "The smaller the acceptable margin for error, the smaller the sample size",
+		"C" : "The larger the sample size, the higher the confidence level",
+		"D" : "The smaller the sample size, the higher the confidence level"
+	},
+	"correctChoice" : "C",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481aaa"),
+	"content" : "Which of the following statements is true about white-box testing?",
+	"choices" : {
+		"A" : "It includes functional testing",
+		"B" : "It includes loop testing",
+		"C" : "It is usually done after black-box testing",
+		"D" : "It is usually done during the integration testing phase."
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481aab"),
+	"content" : "Which of the following is most likely to compromise the integrity of data collected in a software metrics program?",
+	"choices" : {
+		"B" : "Using nonparametric statistical methods",
+		"C" : "Using the data to monitor team performance",
+		"D" : "Using the data to monitor individual performance",
+		"A" : "Using automated data collection tools"
+	},
+	"correctChoice" : "D",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481aac"),
+	"content" : "Which of the following techniques is used in identifying underlying problems?",
+	"choices" : {
+		"A" : "Cause and effect analysis",
+		"B" : "Prioritization matrix",
+		"C" : "Force field analysis",
+		"D" : "Pareto analysis"
+	},
+	"correctChoice" : "A",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481aad"),
+	"content" : "The most appropriate driver for developing metrics is",
+	"choices" : {
+		"A" : "poor results in internal quality audits",
+		"B" : "management goals",
+		"C" : "customer complaints",
+		"D" : "missed milestones"
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481aae"),
+	"content" : "A company is experiencing competitive pressures for market share from a low-cost competitor. The company is in the process of adding new functionality to their software products. If their goal is to minimize development costs, which of the following metrics is best suited to measure the achievement of that goal?",
+	"choices" : {
+		"A" : "Engineering effort",
+		"B" : "Code coverage",
+		"C" : "Customer surveys",
+		"D" : "Process maturity"
+	},
+	"correctChoice" : "A",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481aaf"),
+	"content" : "What is the standard deviation of the population below?<br/>10, 4, 16, 12, 8",
+	"choices" : {
+		"B" : "4.47",
+		"C" : "16.00",
+		"D" : "20.00",
+		"A" : "4.00"
+	},
+	"correctChoice" : "A",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ab0"),
+	"content" : "The number of lines of code to be developed during a software project is defined as a/an:",
+	"choices" : {
+		"A" : "Attribute of the software",
+		"B" : "Measure of the software",
+		"C" : "Entity of the software",
+		"D" : "Software metric"
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ab1"),
+	"content" : "In general, Perto analysis is an application measure of software quality because:",
+	"choices" : {
+		"C" : "Software defects tend to cluster in the most complex component",
+		"D" : "Software defects tend to cluster in a random number of components",
+		"A" : "Software defects tend to cluster in a small number of components",
+		"B" : "Software defects tend to cluster in a majority of components"
+	},
+	"correctChoice" : "A",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ab2"),
+	"content" : "A performance dashboard displays:",
+	"choices" : {
+		"A" : "Flashbone diagrams showing root causes",
+		"B" : "Performance histograms and bar charts",
+		"C" : "Many different types of chars and displays",
+		"D" : "Dial gauges (like an automobile dashboard)"
+	},
+	"correctChoice" : "C",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ab3"),
+	"content" : "Volatility metrics are typically applied to:",
+	"choices" : {
+		"A" : "Requirements",
+		"B" : "Cyclomatic complextiy",
+		"C" : "Project acceleration",
+		"D" : "Function points"
+	},
+	"correctChoice" : "A",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ab4"),
+	"content" : "Which of the following is the best tool to determine if there is a relationship between the amount of time a customer is in the showroom compared to the amount of maney the customer spends?",
+	"choices" : {
+		"A" : "Scatter diagram",
+		"B" : "Nominal group technique",
+		"C" : "Histogram",
+		"D" : "Cause and effect diagram"
+	},
+	"correctChoice" : "A",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ab6"),
+	"content" : "The acronym KSLOC represents which type of software attribute?",
+	"choices" : {
+		"A" : "Defects",
+		"B" : "Productivity",
+		"C" : "Coverage",
+		"D" : "Size"
+	},
+	"correctChoice" : "D",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ab5"),
+	"content" : "The sum of the squared deviations of a group of measurements from their mean divided by the number of measurements equals the:",
+	"choices" : {
+		"A" : "Standard deviation",
+		"B" : "Variance",
+		"C" : "Range",
+		"D" : "Mean deviation"
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ab7"),
+	"content" : "The Likert scale is what type of scale?",
+	"choices" : {
+		"A" : "Norminal",
+		"B" : "Ordinal",
+		"C" : "Interval",
+		"D" : "Ratio"
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ab8"),
+	"content" : "A metric established to measure the number of error messages a tester can test per hour can be used to:",
+	"choices" : {
+		"B" : "Determine the number of error messages used in future computer programs",
+		"C" : "Improve the tester's performance",
+		"D" : "Reduce the number of error messages tested for the next module",
+		"A" : "Predict the useability of the computer program"
+	},
+	"correctChoice" : "C",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ab9"),
+	"content" : "The ideal value for defect removal efficiency is:",
+	"choices" : {
+		"A" : "0",
+		"B" : "1",
+		"C" : "Greater than 1",
+		"D" : "Less than 0"
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481aba"),
+	"content" : "Which of the following techniques would be considered a framework to select the appropriate metric for project use?",
+	"choices" : {
+		"A" : "Goal/Question/Metric paradigm",
+		"B" : "Halstead's software science",
+		"C" : "The SLIM model",
+		"D" : "The COCOMO model"
+	},
+	"correctChoice" : "A",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481abb"),
+	"content" : "The cyclomatic complexity metric, developed by McCabe, is used to measure the complexity of a software program. This metric directly measures the:",
+	"choices" : {
+		"C" : "Commands executed in the source code",
+		"D" : "Source code statements expected",
+		"A" : "Thousand source lines of code (KSLOC)",
+		"B" : "Paths through the source code"
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481abc"),
+	"content" : "The level of usage of debugging tools by programmers is listed below:",
+	"choices" : {
+		"A" : "No debuggin tool used at all other than an editor",
+		"B" : "Editor with trace aide used ",
+		"C" : "Editor with trace and flow aide used ",
+		"D" : "Editor with trace, flow and cross-reference used"
+	},
+	"correctChoice" : "A",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481abd"),
+	"content" : "lnterrelationship digraphs should be used in which of the following situations? ",
+	"choices" : {
+		"A" : "When the course of events is known",
+		"B" : "When critical times must be developed",
+		"C" : "When value analysis needs to be done",
+		"D" : "When root causes and effects are needed"
+	},
+	"correctChoice" : "D",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481abe"),
+	"content" : "What will be the impact on results when only the best or easiest to collect data is taken?",
+	"choices" : {
+		"A" : "Data will be normalized",
+		"B" : "Data will be biased",
+		"C" : "Data will be skewed left or right",
+		"D" : "Data will stratify"
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481abf"),
+	"content" : "From the table below, what is the approximate defect removal effectiveness at the design phase?",
+	"choices" : {
+		"A" : "23%",
+		"B" : "13%",
+		"C" : "9%",
+		"D" : "15%"
+	},
+	"correctChoice" : "D",
+	"category" : "mam",
+	"image" : "pathToImage/met6_13.jpg"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ac0"),
+	"content" : "The primary difference between dashboards and scorecards is:",
+	"choices" : {
+		"A" : "Interactive programs versus static pictures",
+		"B" : "Data exceptions versus graph alerts",
+		"C" : "Different types of charts versus raw data",
+		"D" : "Monitoring operations versus charting strategic goals"
+	},
+	"correctChoice" : "D",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ac1"),
+	"content" : "From a software quality engineering perspective, what factor must always be taken into account in measurement programs?",
+	"choices" : {
+		"A" : "The spread of the data",
+		"B" : "Mean values",
+		"C" : "Human psychology",
+		"D" : "Deviations from the mean"
+	},
+	"correctChoice" : "C",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ac2"),
+	"content" : "On the basis of the control chart above, which of the following statements is true?",
+	"choices" : {
+		"A" : "Components 1, 2, 3, and 5 should be reinspected because they are below the mean.",
+		"B" : "Only component 4 should be investigated because it is closest to the upper control limit.",
+		"C" : "Components 4, 6, 7, 8 and 9 should be investigated because they are above the mean",
+		"D" : "No action is required; all data points are within acceptable statistical variance."
+	},
+	"correctChoice" : "D",
+	"category" : "mam",
+	"image" : "pathToImage/sma_1.jpg"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ac3"),
+	"content" : "After the control chart above was generated, three more components were inspected at the following rates:10: 312 LOC per hour11: 420 LOC per hour12: 29 LOC per hourIn this situation, which of the following actions should be taken, if any?",
+	"choices" : {
+		"A" : "A reinspection should be performed on component 10.",
+		"B" : "Unit testing of component 12 should be increased.",
+		"C" : "The high inspection rate of component 11 should be investigated.",
+		"D" : "No action is required."
+	},
+	"correctChoice" : "C",
+	"category" : "mam",
+	"image" : "pathToImage/sma_1.jpg"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ac4"),
+	"content" : "According to the CMMISM, the purpose of software project planning is to ",
+	"choices" : {
+		"D" : "allow the software engineering group to participate actively with the other engineering groups",
+		"A" : "provide management with the actual project processes so that effective corrective actions can be taken",
+		"B" : "provide a common understanding of the functional requirements between the customer and the software project engineering group",
+		"C" : "establish and maintain plans that define project activities"
+	},
+	"correctChoice" : "C",
+	"category" : "mam",
+	"image" : "pathToImage/sma_1.jpg"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ac5"),
+	"content" : "A customer satisfaction survey used the following rating scale: 1 = very satisfied 2 = satisfied 3 = neutral 4 = dissatisfied 5 = very dissatisfied This is an example of which of the following measurement scales?",
+	"choices" : {
+		"D" : "Interval",
+		"C" : "Ratio",
+		"B" : "Ordinal",
+		"A" : "Nominal"
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ac6"),
+	"content" : "A defect-seeding program inserts 81 defects into an application. Inspections and testing found 5,832 defects. Of these, 72 were seeded defects. How many errors or defects are predicted to remain in the application?",
+	"choices" : {
+		"A" : "523",
+		"B" : "640",
+		"C" : "648",
+		"D" : "729"
+	},
+	"correctChoice" : "D",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ac7"),
+	"content" : "If the entire area under the Rayleigh curve becomes smaller, then the projected defect rate will be",
+	"choices" : {
+		"A" : "higher at later testing phases",
+		"B" : "higher during maintenance ",
+		"C" : "lower in production",
+		"D" : "unchanged during the coding phase"
+	},
+	"correctChoice" : "C",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ac8"),
+	"content" : "Which of the following is the most important criterion for selecting a software reliability model?",
+	"choices" : {
+		"D" : "Capability",
+		"A" : "Quality of assumptions",
+		"B" : "Predictive validity",
+		"C" : "Simplicity"
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+},
+{
+	"_id" : ObjectId("55d8d9cfe1f8284f46481ac9"),
+	"content" : "A project manager has been transferred to a major software development project that is in the implementation phase. The highest priority for this project manager should be to",
+	"choices" : {
+		"A" : "establish a relationship with the customer",
+		"B" : "learn the project objectives and the existing project plan",
+		"C" : "modify the project’s organizational structure to meet the manager’s management style",
+		"D" : "ensure that the project proceeds at its current pace"
+	},
+	"correctChoice" : "B",
+	"category" : "mam"
+}

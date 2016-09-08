@@ -1,0 +1,187 @@
+<a ng-click="gototop()" style="z-index: 9999; position: fixed; right: 50px; bottom: 50px;"><span class="glyphicon glyphicon-arrow-up"></span>  Top</a>
+<div class="animated fadeInDown">
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="logo">
+						<h1><a href="/home">Big Bang <span class="color">ASQ</span></a></h1>
+						<div class="hmeta">Perfect CSQE Virtual Exam & Practice Website</div>
+					</div>
+				</div>
+				<div style="text-align: right" class="col-md-5 col-md-offset-3 col-sm-5 col-sm-offset-2">
+
+					<br>
+					<!-- Modified for ASQ Upgrade 2.0.Added last name for welcome message. -->
+					<h4>Welcome, {{currentUser.firstName}} {{currentUser.lastName}}</h4>
+					<span class="color customLink"><a href="/home">Home</a></span> |
+					<!-- Added by Srinivas Thungathurti for ASQ Upgrade 2.0.New screen Change Password added. -->
+					<span class="color customLink"><a href="/changePassword">Change Password</a></span> |
+					<span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
+
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+    <ng-form name="userInfoUpdate">
+	<div class="content">
+		<div class="container">
+			<!-- Content -->
+			<hr>
+			<div>
+				<p style="font-size: 22px; font-weight: bold">Update User Information:{{user.firstName}} {{user.lastName}} </p>
+				<font style="color:red;"><b>* indicates Mandatory Fields.</b></font>
+				<br/><br/>
+				<div class="form-group">
+					<label for="first" class="col-sm-2" style="font-size: 16px">* First Name:</label>
+					<div class="form-group col-sm-10">
+						<input id="first" class="form-control" style="width: 200px; height: 29px" type="text" ng-model="user.firstName" placeholder="Edit Your First Name" ng-required="true">
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<label for="last" class="col-sm-2" style="font-size: 16px">* Last Name:</label>
+					<div class="form-group col-sm-10">
+						<input id="last" class="form-control" style="width: 200px; height: 29px" type="text" ng-model="user.lastName" placeholder="Edit Your Last Name" ng-required="true">
+					</div>
+				</div>
+				<br><br>
+				<!-- Added by Srinivas Thungathurti for ASQ Upgrade 2.0.Added additional user input fields.-->
+				<!-- Updated for ASQ Upgrade2.0 and issue#2 (Github Issues Tab) .Date picker disabled weekends and need to show all the dates as available. -->
+            	<div class="form-group" ng-controller="DatepickerCtrl">
+				<label for="dob" class="col-sm-2" style="font-size: 16px">* Birth Date:</label>
+		        <div class="form-group col-sm-10" style="width:180px;">
+		        <input id="dob" type="text"  class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="user.birthDate" is-open="status.opened" 
+		              	min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" 
+		              	ng-required="true" close-text="Close" style="width:200px;height: 29px;" placeholder="Date Of Birth"/ ng-required="true">
+		         </div>
+		         <span class="input-group-btn">
+		          <button type="button" class="btn btn-default" ng-click="open($event)" style="height: 30px;"><i class="glyphicon glyphicon-calendar"></i></button>
+		         </span>
+		    	</div>
+				<!-- End Birth Date field here. -->
+            	<br>
+				<div class="form-group">
+					<label for="addr" class="col-sm-2" style="font-size: 16px">* Address:</label>
+					<div class="form-group col-sm-10">
+						<input id="addr" class="form-control" style="width: 200px; height: 29px" type="text" ng-model="user.address1" placeholder="Enter Your Address" ng-required="true">
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<label for="addr1" class="col-sm-2" style="font-size: 16px"></label>
+					<div class="form-group col-sm-10">
+						<input id="addr1" class="form-control" style="width: 200px; height: 29px" type="text" ng-model="user.address2" placeholder="Apt# or Suite#">
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<label for="city" class="col-sm-2" style="font-size: 16px">* City:</label>
+					<div class="form-group col-sm-10">
+						<input id="city" class="form-control" style="width: 200px; height: 29px" type="text" ng-model="user.city" placeholder="Enter City" ng-required="true">
+					</div>
+				</div>
+				<br><br>
+				<!-- USA States dropdown information. -->
+				<div class="form-group">
+				<label for="st" class="col-sm-2" style="font-size: 16px">* State:</label>
+				<div class="form-group col-sm-10">
+				<select id="st" ng-model="user.state" ng-options="state.abbreviation as state.name for state in states" style="font-size: 14px; width: 160px; height: 29px; display: inline;" ng-required="true">
+				</select>
+				</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<label for="zip" class="col-sm-2" style="font-size: 16px">* Zip Code:</label>
+					<div class="form-group col-sm-10">
+						<input id="zip" class="form-control" style="width: 150px; height: 29px" type="text" ng-model="user.zipcode" placeholder="Enter ZipCode" ng-required="true">
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<label for="em" class="col-sm-2" style="font-size: 16px">* Email:</label>
+					<div class="form-group col-sm-10">
+						<input id="em" class="form-control" style="width: 260px; height: 29px" type="text" ng-model="user.email" disabled=true>
+					</div>
+				</div>
+				<br><br>
+				<!-- Updated for ASQ Upgrade2.0 and issue#2 (Github Issues Tab) .Date picker disabled weekends and need to show all the dates as available. -->
+				<div class="form-group" ng-controller="DatepickerCtrl">
+				<label for="exp" class="col-sm-2" style="font-size: 16px">* Expiry Date:</label>
+		        <div class="form-group col-sm-10" style="width:180px;">
+		        <input id="exp" type="text"  class="form-control" uib-datepicker-popup="MM/dd/yyyy" ng-model="user.expiryDate" is-open="status.opened" 
+		              	min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" 
+		              	ng-required="true" close-text="Close" style="width:200px;height: 29px;" placeholder="Expiry Date in ASQ"/ ng-required="true">
+		         </div>
+		         <span class="input-group-btn">
+		          <button type="button" class="btn btn-default" ng-click="open($event)" style="height: 29px;"><i class="glyphicon glyphicon-calendar"></i></button>
+		         </span>
+		    	</div>
+				<br>
+				<div class="form-group">
+					<label for="role" class="col-sm-2" style="font-size: 16px">&nbsp;&nbsp;Role:</label>
+					<div class="form-group col-sm-10">
+						<select id="role" ng-model="user.role" style="font-size: 14px; width: 120px; height: 29px; display: inline;">
+							<option value="admin">Admin</option>
+							<option value="user">User</option>
+						</select>
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<label for="act" class="col-sm-2" style="font-size: 16px">&nbsp;&nbsp;Active:</label>
+					<div class="form-group col-sm-10">
+						<select id="act" ng-model="user.activeIn" style="font-size: 14px; width: 120px; height: 29px; display: inline;">
+							<option value="Y">Yes</option>
+							<option value="N">No</option>
+						</select>
+					</div>
+				</div>
+				<br><br>
+				<div class="form-group">
+					<label for="sub" class="col-sm-2" style="font-size: 16px">&nbsp;&nbsp;Subscriber:</label>
+					<div class="form-group col-sm-10">
+						<select id="sub" ng-model="user.subscriber" style="font-size: 14px; width: 120px; height: 29px; display: inline;">
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+						</select>
+					</div>
+				</div>
+				<br><br>
+			</div>
+
+			<button style="margin: 35px 32px 60px 140px; width: 95px; height: 40px; font-size: 16px" class="btn btn-primary" ng-disabled="userInfoUpdate.$invalid" ng-click="saveUser(user)">
+				<span class="glyphicon glyphicon-ok-sign"></span>  Save
+			</button>
+			<button style="margin: 35px 32px 60px 0px; width: 95px; height: 40px; font-size: 16px;" class="btn btn-warning" ng-click="del(user)">
+				<span class="glyphicon glyphicon-ok-sign"></span>  Delete
+			</button>
+			<a href="/userInfo"><button style="margin: 35px 35px 60px 0px; width: 98px; height: 38px; font-size: 16px" class="btn btn-warning">
+				<span class="glyphicon glyphicon-remove-sign"></span>  Cancel
+			</button></a>
+
+			<hr>
+		</div>
+	</div>
+    </ng-form>
+
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div style="text-align: center" class="copy">
+						<h5>ASQ CSQE Virtual Exam & Practice</h5>
+						<p>&copy; <a href="/about">2015 Big Bang ASQ Exam</a></p>
+						<p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</footer>
+</div>

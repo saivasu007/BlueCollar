@@ -1,0 +1,377 @@
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a13"),
+	"content" : " In which phase of a project's development life cycle does the lack of requirements control prove most costly?  ",
+	"choices" : {
+		"A" : "Requirements",
+		"B" : "Design",
+		"C" : "Test",
+		"D" : "Maintenance"
+	},
+	"correctChoice" : "D",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a14"),
+	"content" : "A module that performs a single task within a software procedure and requires little interaction with procedures being performed in other parts of a program is defined as having high  ",
+	"choices" : {
+		"B" : "coupling",
+		"C" : "abstraction",
+		"D" : "complexity",
+		"A" : "cohension"
+	},
+	"correctChoice" : "A",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a15"),
+	"content" : "Quality function d'ep'loyment (QFD) is a methodology for",
+	"choices" : {
+		"A" : "removing bugs from code",
+		"B" : "identifying and defining key customer demands",
+		"C" : "measuring the reliability of a software product",
+		"D" : "training employees in quality issues"
+	},
+	"correctChoice" : "B",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a16"),
+	"content" : "Rank order, from first to last, the following elements to be developed when a software engineer is translating customer expectations. <br/>1. Actual results <br/>2. Design specifications <br/>3. Code <br/>4. Functional specifications ",
+	"choices" : {
+		"C" : "4, 2, 3, 1",
+		"D" : "4, 3, 2, 1",
+		"A" : "2, 3, 4, 1",
+		"B" : "3, 4, 1, 2"
+	},
+	"correctChoice" : "C",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a17"),
+	"content" : "Which of the following models is characterized as being suitable for a software development project that has well-defined requirements?",
+	"choices" : {
+		"A" : "Prototyping",
+		"B" : "Spiral",
+		"C" : "Waterfall",
+		"D" : "Iterative"
+	},
+	"correctChoice" : "C",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a18"),
+	"content" : "Which of the following characteristics is primarily associated with software reusability?",
+	"choices" : {
+		"B" : "The extent to which the software can be used by many different users",
+		"C" : "The capability of the software to be moved to a different platform",
+		"D" : "The capability of one system to be coupled with another system",
+		"A" : "The extent to which the software can be used in other applications"
+	},
+	"correctChoice" : "A",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a19"),
+	"content" : "An architectural model should be used to",
+	"choices" : {
+		"A" : "document design procedures",
+		"B" : "develop a system design",
+		"C" : "verify code",
+		"D" : "d'ep'loy a system model"
+	},
+	"correctChoice" : "B",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a1a"),
+	"content" : "The primary difference between the waterfall and the spiral lifecycle models is the",
+	"choices" : {
+		"C" : "degree of completeness required for one phase in order to enter the next phase",
+		"D" : "amount of temporary code used during development",
+		"A" : "level of proficiency required of the programmers",
+		"B" : "level of support required of upper management"
+	},
+	"correctChoice" : "C",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a1b"),
+	"content" : "When more than one subsystem must be violated to compromise the integrity of system information, this design technique is referred to as a/an:",
+	"choices" : {
+		"B" : "Defense in d'ep'th",
+		"C" : "Automated theorem",
+		"D" : "Least privilege princ'ep'le",
+		"A" : "Cascading princ'ep'le"
+	},
+	"correctChoice" : "B",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a1c"),
+	"content" : "A software development technique in which two programmers work together at the same workstation is most likely referred to as:",
+	"choices" : {
+		"C" : "Extreme programming",
+		"D" : "Pair programming",
+		"A" : "Real-time programming",
+		"B" : "UML programming"
+	},
+	"correctChoice" : "D",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a1d"),
+	"content" : "Rigorous application of FDD prescibes that a feature or feature set will",
+	"choices" : {
+		"A" : "Take no more than two weeks to complete",
+		"B" : "Be complete when the entire build is complete",
+		"C" : "Be complete at the completion of integration",
+		"D" : "Take no more than a month to complete"
+	},
+	"correctChoice" : "A",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a1e"),
+	"content" : "One method for ke'ep'ing track of the apportionment of higher level specifications to the design is called a traceability matrix. Another method is called a:",
+	"choices" : {
+		"A" : "Specification and design tool",
+		"B" : "System specification tree",
+		"C" : "Graphical design aid",
+		"D" : "System verification diagram"
+	},
+	"correctChoice" : "D",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a1f"),
+	"content" : "When would extensive regression testing and requalification be necessary for a plug and play component?",
+	"choices" : {
+		"A" : "If the reliability of the component were questionable",
+		"B" : "If the cost savings for usage warranted it",
+		"C" : "If the component were to be reused into another software system",
+		"D" : "If the issue of efficiency were of paramount importance"
+	},
+	"correctChoice" : "C",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a20"),
+	"content" : "Software function-oriented, problem analysis might logically involve which of the following techniques?",
+	"choices" : {
+		"A" : "Jackson system development",
+		"B" : "Data flow diagrams",
+		"C" : "Object-oriented analysis",
+		"D" : "Business modeling"
+	},
+	"correctChoice" : "B",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a21"),
+	"content" : "Software mantenance changes made to extend capabilities are called:",
+	"choices" : {
+		"A" : "Creative",
+		"B" : "Perfective",
+		"C" : "Adaptive",
+		"D" : "Corrective"
+	},
+	"correctChoice" : "B",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a22"),
+	"content" : "Which of the following is the principle reason for developing a prototype?",
+	"choices" : {
+		"B" : "It may solve a problem that is not included in the requirements.",
+		"C" : "It allows the customer to provide feedback about requirements.",
+		"D" : "It reduces the schedule for development through alpha testing.",
+		"A" : "It can be used as an early production tool."
+	},
+	"correctChoice" : "C",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a23"),
+	"content" : "A disadvantage of using design patterns includes which  of the following?",
+	"choices" : {
+		"C" : "They speed up development with tested solutions",
+		"D" : "They are programmed into each application that uses it",
+		"A" : "They prevent subtle issues that cause major problems",
+		"B" : "They enhance code readability for architects and coders"
+	},
+	"correctChoice" : "D",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a24"),
+	"content" : "When pairing an expert programmer with a novice programmer, the expert should be pr'ep'ared to play the role of:",
+	"choices" : {
+		"A" : "Driver",
+		"B" : "Mentor",
+		"C" : "Observer",
+		"D" : "Manager"
+	},
+	"correctChoice" : "B",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a25"),
+	"content" : "Identify the life cycle model that would be most applicable for a large software development project moving an existing application to a new platform without changing any features or user interfaces:",
+	"choices" : {
+		"A" : "Waterfall",
+		"B" : "Prototyping",
+		"C" : "Degenerative",
+		"D" : "Spiral"
+	},
+	"correctChoice" : "A",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a26"),
+	"content" : "What is displayed in the roof of the house of quality:",
+	"choices" : {
+		"A" : "Interaction of design features",
+		"B" : "Design target values",
+		"C" : "Competitor comparisons",
+		"D" : "Customer needs"
+	},
+	"correctChoice" : "A",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a27"),
+	"content" : "Software development tools are acquired to improve productivity and assist project team members in:",
+	"choices" : {
+		"A" : "Identify resources needed to operate the tool",
+		"B" : "Tracking and r'ep'orting status of project activities",
+		"C" : "Determining costs to pay for vendor support",
+		"D" : "Participating in training to learn how to use the tool"
+	},
+	"correctChoice" : "B",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a28"),
+	"content" : "Which of the following best describes the three phases of the software engineering process?",
+	"choices" : {
+		"A" : "Code, test, and ship",
+		"B" : "Definition, development, and mantenance",
+		"C" : "Generate requirements, hire developers, and code",
+		"D" : "Specify documentation, code, and deliver product"
+	},
+	"correctChoice" : "B",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a29"),
+	"content" : "The belief that as an evolving program changes, its structure tends to become more complex, is known as:",
+	"choices" : {
+		"B" : "Lehman's law",
+		"C" : "Agile development methodology",
+		"D" : "Reverse engineering",
+		"A" : "McCabe's cyclomatic complexity"
+	},
+	"correctChoice" : "B",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a2a"),
+	"content" : "A software engineering methodology focusing on the programming aspect of software development that is more responsive to customer needs is a description of:",
+	"choices" : {
+		"D" : "Pair programming",
+		"A" : "Incremental change",
+		"B" : "Extreme programming",
+		"C" : "Collocated teams"
+	},
+	"correctChoice" : "B",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a2b"),
+	"content" : "Which of the following is intended to result in the creation of program components that are inherently reusable?",
+	"choices" : {
+		"C" : "Object-oriented programming",
+		"D" : "Prototyping",
+		"A" : "Structured analysis",
+		"B" : "Structured programming"
+	},
+	"correctChoice" : "C",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a2c"),
+	"content" : "A joint application design (JAD) session involves:",
+	"choices" : {
+		"A" : "Customer and product design teams",
+		"B" : "Marketing and sales teams",
+		"C" : "Hardware and software designers",
+		"D" : "Test and QA validation teams"
+	},
+	"correctChoice" : "A",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a2d"),
+	"content" : "Identify an object-oriented problem analysis technique from the options below:",
+	"choices" : {
+		"A" : "Data flow diagrams",
+		"B" : "Jackson system development",
+		"C" : "Modern structured analysis",
+		"D" : "Decision trees and tables"
+	},
+	"correctChoice" : "B",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("55d8d77ce1f8284f46481a2e"),
+	"content" : "An iterative software development life cycle is defined as:",
+	"choices" : {
+		"A" : "An linear and sequential view of the software development process",
+		"B" : "Implementation st'ep's that create other reusable components",
+		"C" : "A cyclical cycle progressing through smaller, self-contained, phases",
+		"D" : "Delivering business value once, at the very end of the project"
+	},
+	"correctChoice" : "C",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("562b9f0dc98aa29401b7c7bd"),
+	"category" : "ep",
+	"content" : "Whtz up Srinivas? Which Software Model your like Overall?",
+	"choices" : "{\"D\":\"Spiral\",\"C\":\"Degenerative\",\"B\":\"Prototyping\",\"A\":\"Waterfall\"}",
+	"__v" : 0,
+	"correctChoice" : "B"
+},
+{
+	"_id" : ObjectId("562ba92b6997e1b801449737"),
+	"category" : "ep",
+	"content" : "Question for Unit Testing? So answer as you wish and enjoy..",
+	"choices" : {
+		"A" : "Waterfall",
+		"B" : "Extreme",
+		"C" : "Test Driven",
+		"D" : "Spiral"
+	},
+	"__v" : 0,
+	"correctChoice" : "C"
+},
+{
+	"_id" : ObjectId("562b10480a6ca7b2b3f839f0"),
+	"content" : "how are you?",
+	"choices" : "{ \"D\" : \"Spiral\" , \"C\" : \"Degenerative\" , \"B\" : \"Prototyping\" , \"A\" : \"Waterfall\"}",
+	"correctChoice" : "A",
+	"category" : "ep"
+},
+{
+	"_id" : ObjectId("563c37fa0ecd50dc01dff0bb"),
+	"category" : "ep",
+	"content" : "Test Question for ASQ Upgrade2.0 testing.",
+	"choices" : {
+		"A" : "Dynamic1",
+		"B" : "Controlled1",
+		"C" : "Configuration1",
+		"D" : "Static1"
+	},
+	"correctChoice" : "B",
+	"__v" : 0
+}

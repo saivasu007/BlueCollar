@@ -1,0 +1,130 @@
+
+<!--<span>{{report}}</span>-->
+
+<a ng-click="gototop()" style="z-index: 9999; position: fixed; right: 50px; bottom: 50px;"><span class="glyphicon glyphicon-arrow-up"></span>  Top</a>
+<div class="animated fadeInDown">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="logo">
+                        <h1><a id="top" href="/home">Big Bang <span class="color">ASQ</span></a></h1>
+                        <div class="hmeta">Perfect CSQE Virtual Exam & Practice Website</div>
+                    </div>
+                </div>
+                <div style="text-align: right" class="col-md-5 col-md-offset-3 col-sm-5 col-sm-offset-2">
+
+                    <br>
+                    <h4>Welcome, {{currentUser.firstName}} {{currentUser.lastName}}</h4>
+                    <span class="color customLink"><a href="/history">History</a></span> |
+                    <span class="color customLink"><a href="/home">Home</a></span> |
+                    <span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <div class="content">
+        <div class="container">
+            <!-- Content -->
+            <hr>
+            <br>
+            <a href="/history"><button style="float: right;background-color:#5BC0DE" class="btn btn-primary" ng-click="submit()">
+                <span class="glyphicon glyphicon-search"></span>  View History
+            </button></a>
+            <button class="btn btn-info" ng-show="vis" ng-click="detail(historyProgressDetail[0].date)" style="background-color:#5BC0DE;float:right;margin:0px 10px 50px 40px;">Back</button>
+
+            <div>
+                <h3 style="display: inline;">Your score is {{historyProgressDetail[0].score}}! ({{historyProgressDetail[0].total - historyProgressDetail[0].report.wrong.length}}/{{historyProgressDetail[0].total}})</h3>
+                <meter style="height: 20px; width: 200px; margin: 0 30px" low="60" high="80" max="100" optimum="100" value="{{historyProgressDetail[0].score}}">{{historyProgressDetail[0].score}}</meter>
+            </div>
+            <!--<div>-->
+            <!--<p style="font-size: 20px; margin: 30px 0">Sub scores in each category:</p>-->
+            <!--<blockquote>gk: 11/11 100% <meter style="height: 20px; width: 200px; margin: 0 30px" low="60" high="80" max="100" optimum="100" value="{{report.score}}">{{report.score}}</meter></blockquote>-->
+            <!--<blockquote>ep</blockquote>-->
+            <!--<blockquote>ma</blockquote>-->
+            <!--<blockquote>pm</blockquote>-->
+            <!--<blockquote>scm</blockquote>-->
+            <!--<blockquote>sqm</blockquote>-->
+            <!--<blockquote>sw</blockquote>-->
+            <!--</div>-->
+
+            <!--============exam table=========-->
+            <table class="table table-striped" style="font-size: 16px; margin: 50px 0;">
+                <thead>
+                <tr>
+                    <th colspan="4">Sub scores in each category:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-if="historyProgressDetail[0].gkNumber">
+                    <td>Software General Knowledge</td>
+                    <td>{{historyProgressDetail[0].gkNumber - historyProgressDetail[0].gkWrong}}/{{historyProgressDetail[0].gkNumber}}</td>
+                    <td>{{historyProgressDetail[0].report.gkScore}}%</td>
+                    <td><meter style="height: 18px; width: 160px; margin: 0 30px" low="60" high="80" max="100" optimum="100" value="{{historyProgressDetail[0].report.gkScore}}">{{historyProgressDetail[0].report.gkScore}}</meter></td>
+                </tr>
+                <tr ng-if="historyProgressDetail[0].epNumber">
+                    <td>Software Engineering Processes</td>
+                    <td>{{historyProgressDetail[0].epNumber - historyProgressDetail[0].epWrong}}/{{historyProgressDetail[0].epNumber}}</td>
+                    <td>{{historyProgressDetail[0].report.epScore }}%</td>
+                    <td><meter style="height: 18px; width: 160px; margin: 0 30px" low="60" high="80" max="100" optimum="100" value="{{historyProgressDetail[0].report.epScore }}">{{historyProgressDetail[0].report.epScore }}</meter></td>
+                </tr>
+                <tr ng-if="historyProgressDetail[0].maNumber">
+                    <td>Software Metrics & Analysis</td>
+                    <td>{{historyProgressDetail[0].maNumber - historyProgressDetail[0].maWrong}}/{{historyProgressDetail[0].maNumber}}</td>
+                    <td>{{historyProgressDetail[0].report.maScore }}%</td>
+                    <td><meter style="height: 18px; width: 160px; margin: 0 30px" low="60" high="80" max="100" optimum="100" value="{{historyProgressDetail[0].report.maScore }}">{{historyProgressDetail[0].report.maScore }}</meter></td>
+                </tr>
+                <tr ng-if="historyProgressDetail[0].pmNumber">
+                    <td>Software Project Management</td>
+                    <td>{{historyProgressDetail[0].pmNumber - historyProgressDetail[0].pmWrong}}/{{historyProgressDetail[0].pmNumber}}</td>
+                    <td>{{historyProgressDetail[0].report.pmScore }}%</td>
+                    <td><meter style="height: 18px; width: 160px; margin: 0 30px" low="60" high="80" max="100" optimum="100" value="{{historyProgressDetail[0].report.pmScore }}">{{historyProgressDetail[0].report.pmScore }}</meter></td>
+                </tr>
+                <tr ng-if="historyProgressDetail[0].scmNumber">
+                    <td>Software Configuration Management</td>
+                    <td>{{historyProgressDetail[0].scmNumber - historyProgressDetail[0].scmWrong}}/{{historyProgressDetail[0].scmNumber}}</td>
+                    <td>{{historyProgressDetail[0].report.scmScore }}%</td>
+                    <td><meter style="height: 18px; width: 160px; margin: 0 30px" low="60" high="80" max="100" optimum="100" value="{{historyProgressDetail[0].report.scmScore }}">{{historyProgressDetail[0].report.scmScore }}</meter></td>
+                </tr>
+                <tr ng-if="historyProgressDetail[0].sqmNumber">
+                    <td>Software Quality Management</td>
+                    <td>{{historyProgressDetail[0].sqmNumber - historyProgressDetail[0].sqmWrong}}/{{historyProgressDetail[0].sqmNumber}}</td>
+                    <td>{{historyProgressDetail[0].report.sqmScore}}%</td>
+                    <td><meter style="height: 18px; width: 160px; margin: 0 30px" low="60" high="80" max="100" optimum="100" value="{{historyProgressDetail[0].report.sqmScore}}">{{historyProgressDetail[0].report.sqmScore}}</meter></td>
+                </tr>
+                <tr ng-if="historyProgressDetail[0].svvNumber">
+                    <td>Software Verification & Validation</td>
+                    <td>{{historyProgressDetail[0].svvNumber - historyProgressDetail[0].svvWrong}}/{{historyProgressDetail[0].svvNumber}}</td>
+                    <td>{{historyProgressDetail[0].report.svvScore}}%</td>
+                    <td><meter style="height: 18px; width: 160px; margin: 0 30px" low="60" high="80" max="100" optimum="100" value="{{historyProgressDetail[0].report.svvScore}}">{{historyProgressDetail[0].report.svvScore}}</meter></td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <hr>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="text-align: center" class="copy">
+                        <h5>ASQ CSQE Virtual Exam & Practice</h5>
+                        <p>&copy; <a href="/about">2015 Big Bang ASQ Exam</a></p>
+                        <p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </footer>
+</div>

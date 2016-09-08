@@ -1,0 +1,124 @@
+
+<a ng-click="gototop()" style="z-index: 9999; position: fixed; right: 50px; bottom: 50px;"><span class="glyphicon glyphicon-arrow-up"></span>  Top</a>
+
+<div class="animated fadeInDown">
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="logo">
+						<h1><a id="top" href="/home">Big Bang <span class="color">ASQ</span></a></h1>
+						<div class="hmeta">Perfect CSQE Virtual Exam & Practice Website</div>
+					</div>
+				</div>
+				<div style="text-align: right" class="col-md-5 col-md-offset-3 col-sm-5 col-sm-offset-2">
+
+					<br>
+					<!-- Modified for ASQ Upgrade 2.0.Added last name for welcome message. -->
+					<h4>Welcome, {{currentUser.firstName}} {{currentUser.lastName}}</h4>
+					<span class="color customLink"><a href="/home">Home</a></span> |
+					<!-- Modified by Srinivas Thungathurti for ASQ Upgrade 2.0. Added Admin link on Home screen. -->
+					<span class="color customLink" ng-if="currentUser.role=='admin'"><a href="/admin">Admin</a> |</span>
+					<span class="color customLink"><a href="/profile">Profile</a></span> |
+					<span class="color customLink"><a href="/changePassword">Change Password</a></span> |
+					<!-- End changes for ASQ Upgrade 2.0. -->
+					<span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
+
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+
+	<div class="content">
+		<div class="container">
+			<!-- Content -->
+			<hr>
+			<!--<div class="form-group" style="float: right">-->
+				<!--<lable for="search" style="padding: 0 10px 0 46px; font-size: 14px; font-weight: bold;">Search: </lable>-->
+				<!--<input id="search" ng-model="fil" class="form-control" style="width: 150px; height: 30px; display: inline;" type="search">-->
+			<!--</div>-->
+			<div class="form-group" style="float: right">
+				<lable for="sort" style="padding: 0 10px 0 46px; font-size: 14px; font-weight: bold;">Sort by: </lable>
+				<select id="sort" ng-model="sor" class="form-control" style="font-size: 14px; width: 160px; height: 30px; display: inline;">
+					<!--<option value="">&#45;&#45; Please Select &#45;&#45;</option>-->
+					<option value="date">Time</option>
+					<!--<option value="time">time</option>-->
+					<option value="mode">Mode</option>
+					<option value="score">Score</option>
+				</select>
+			</div>
+			<h3>Your CSQE Exam & Practice History:</h3>
+			<br><br>
+			<div style="border:2px solid #5BC0DE">
+			<table class="table table-striped">
+				<thead>
+				<!-- Updated for ASQ Upgrade2.0.Added background color to table headings. -->
+				<tr style="background-color:#D3D3D3">
+					<!--<th>Number #</th>-->
+					<th>Date</th>
+					<th>Time</th>
+					<th>Mode</th>
+					<th>Score</th>
+					<th></th>
+					<th>Detail</th>
+				</tr>
+				</thead>
+				<tbody>
+				<!-- Modified table row to show only 10 records per page as per pagination setup. -->
+				<!-- <tr ng-repeat="history in histories | orderBy:sor | filter:fil"> -->
+				<tr ng-repeat="history in partialHistory | orderBy:sor | filter:fil">
+					<td>{{history.date | date: 'MM-dd-yyyy'}}</td>
+					<td>{{history.date | date: 'HH:mm:ss'}}</td>
+					<td>{{history.mode}}</td>
+					<td>{{history.score}} ({{history.total - history.report.wrong.length}}/{{history.total}})</td>
+					<td><meter low="60" high="80" max="100" optimum="100" value="{{history.score}}">{{history.score}}</meter></td>
+					<td>
+						<button class="btn btn-info" ng-click="detail(history.date)">
+							<span class="glyphicon glyphicon-eye-open"></span>  View
+						</button>
+					</td>
+				</tr>
+
+				</tbody>
+			</table>
+			<table class="table" style="margin-bottom:0px">
+			<tbody>
+			<tr ng-show="partialHistory.length > 0">
+				<td></td><td></td><td></td><td></td><td></td>
+				<td align="right">
+				    <pagination 
+				      ng-model="currentPage"
+				      total-items="allHistory.length"
+				      max-size="maxSize"  
+				      boundary-links="true">
+				    </pagination>
+				</td>
+				</tr>
+			</tbody>
+			</table>
+			</div>
+			<hr>
+		</div>
+	</div>
+
+
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div style="text-align: center" class="copy">
+						<h5>ASQ CSQE Virtual Exam & Practice</h5>
+						<p>&copy; <a href="/about">2015 Big Bang ASQ Exam</a></p>
+						<p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</footer>
+</div>

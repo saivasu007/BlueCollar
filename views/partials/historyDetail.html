@@ -1,0 +1,141 @@
+
+<!--<span>{{report}}</span>-->
+
+<a ng-click="gototop()" style="z-index: 9999; position: fixed; right: 50px; bottom: 50px;"><span class="glyphicon glyphicon-arrow-up"></span>  Top</a>
+<div class="animated fadeInDown">
+    <!-- Header -->
+    <header>	
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="logo">
+                        <h1><a id="top" href="/home">Big Bang <span class="color">ASQ</span></a></h1>
+                        <div class="hmeta">Perfect CSQE Virtual Exam & Practice Website</div>
+                    </div>
+                </div>
+                <div style="text-align: right" class="col-md-5 col-md-offset-3 col-sm-5 col-sm-offset-2">
+
+                    <br>
+                    <!-- Modified for ASQ Upgrade 2.0.Added last name for welcome message. -->
+					<h4>Welcome, {{currentUser.firstName}} {{currentUser.lastName}}</h4>
+					<!-- Updated by Srinivas Thungathurti for deleting the duplicate link on history detail screen -->
+					<!-- <span class="color customLink"><a href="/history">History</a></span> | -->
+                    <span class="color customLink"><a href="/home">Home</a></span> |
+                    <!-- Updated by Srinivas Thungathurti for ASQ Upgrade 2.0. Added Admin link on Home screen. -->
+					<span class="color customLink" ng-if="currentUser.role=='admin'"><a href="/admin">Admin</a> |</span>
+					<!-- Added by Srinivas Thungathurti for ASQ Upgrade 2.0.New screen Change Password added. -->
+					<span class="color customLink"><a href="/profile">Profile</a></span> |
+					<span class="color customLink"><a href="/changePassword">Change Password</a></span> |
+					<!-- End changes for ASQ Upgrade 2.0. -->
+                    <span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <div class="content" data-ng-init="init(numbers)">
+        <div class="container">
+            <!-- Content -->
+            <hr>
+            <br>
+            <!-- Added for ASQ Upgrade2.0.Added button to show the history details with Progress Bar. -->
+            <button  style="float: right" class="btn btn-info" ng-click="detailProgress(historyDetail[0].date)">
+                <span class="glyphicon glyphicon-eye-open"></span>  View Details
+            </button>
+            <a href="/history"><button style="float: right;margin:0px 30px 50px 20px;" class="btn btn-info" ng-click="submit()">
+                <span class="glyphicon glyphicon-search"></span>  View History
+            </button></a>
+            <a href="#changeHstr" data-toggle="modal" data-backdrop="true"><button style="float: right;margin:0px 10px 50px 20px;" class="btn btn-success">
+                <span class="glyphicon glyphicon-eye-open"></span>  Chart Settings
+            </button></a>
+            <div>
+                <h3 style="display: inline;">Your score is {{historyDetail[0].score}}! ({{historyDetail[0].total - historyDetail[0].report.wrong.length}}/{{historyDetail[0].total}})</h3>
+                <!-- <meter style="height: 20px; width: 200px; margin: 0 30px" low="60" high="80" max="100" optimum="100" value="{{historyDetail[0].score}}">{{historyDetail[0].score}}</meter> -->
+            </div>
+            <div style="align:center;" ng-if="historyDetail[0].mode == 'Practice'">
+                <br/>
+    			<highchart config="practiseChartConfig" style="width:60%;height:50%;border:2px solid #5BC0DE"></highchart>
+    			<br/>
+			</div>
+			<div style="align:center" ng-if="historyDetail[0].mode == 'Exam'">
+    			<br/>
+    			<highchart config="quizChartConfig" style="width:60%;height:50%;border:2px solid #5BC0DE"></highchart>
+    			<br/>
+			</div>
+            <button class="btn btn-info" ng-show="vis" ng-click="review()">Wrong Answers Review</button>
+            <button class="btn btn-info" ng-show="invis" ng-click="hide()">Hide Questions</button>
+
+            <br><br>
+            <!-- Modified for ASQ Upgrade2.0.Border color has been changed inline with ASQ Application color pattern. -->
+            <!-- <section ng-if="showReview" style="color: navy; padding: 20px; border: 2px silver solid;"> -->
+            	<section ng-if="showReview" style="color: navy; padding: 20px; border:2px solid #5BC0DE;">
+                <div ng-repeat="item in historyDetail[0].report.wrong" style="font-size: 17px; margin: 25px;">
+                    <h4 style="color: black; font-weight: bold">Question: {{item.content}}</h4>
+                    <div style="margin: 18px 10px; text-indent: 10px;">
+                        <p>A: {{item.choices.A}}</p>
+                        <p>B: {{item.choices.B}}</p>
+                        <p>C: {{item.choices.C}}</p>
+                        <p>D: {{item.choices.D}}</p>
+                    </div>
+                    <h4>Your choice was <span style="color: red">{{item.answer? item.answer: 'Not Chosen'}}</span></h4>
+                    <h4>Correct answer is <span style="color: green; font-weight: 700;">{{item.correctChoice}}</span></h4>
+                    <h4>Category: <span style="font-weight: 700;">{{cate(item.category)}}</span></h4>
+                    <br>
+                </div>
+            </section>
+            <br>
+            <hr>
+        </div>
+    
+    
+    <div  class="modal fade" id="changeHstr" role="dialogue" style="z-index:0">
+	<div class="modal-dialogue" style="padding-top:180px; padding-left:320px; padding-right:320px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4>Change Progress Chart Setting</h4>
+			</div>
+			<div class="modal-body" style="display:block;">
+			<!-- Popup Div Starts Here -->
+				<label for="settings"><strong>Number of historical scores on progress chart</strong><br>
+				<select ng-model="numbers" style="width:80px;" convert-to-number>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+					<option value="6">6</option>
+					<option value="7">7</option>
+					<option value="8">8</option>
+					<option value="9">9</option>
+					<option value="10">10</option>
+				</select><br>
+				
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" data-dismiss="modal" ng-click="init(numbers)" style="margin-right:270px">Save</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div style="text-align: center" class="copy">
+                        <h5>ASQ CSQE Virtual Exam & Practice</h5>
+                        <p>&copy; <a href="/about">2015 Big Bang ASQ Exam</a></p>
+                        <p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </footer>
+</div>

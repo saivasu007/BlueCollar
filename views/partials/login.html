@@ -1,0 +1,51 @@
+<!--<head>-->
+
+    <!--<meta charset="utf-8">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+    <!--<title>ASQ | Login</title>-->
+
+    <!--<link href="css/bootstrap.min.css" rel="stylesheet">-->
+    <!--<link href="font-awesome/css/font-awesome.css" rel="stylesheet">-->
+
+    <!--<link href="css/animate.css" rel="stylesheet">-->
+    <!--<link href="css/style.css" rel="stylesheet">-->
+
+    <!--&lt;!&ndash; Favicon &ndash;&gt;-->
+    <!--<link rel="shortcut icon" href="img/favicon/bb.png">-->
+<!--</head>-->
+
+<ng-form name="loginForm">
+<div class="middle-box text-center loginscreen  animated fadeInDown" style="padding-top:0px;">
+    <div>
+        <div>
+
+            <h1 class="logo-name">BlueCollar</h1>
+
+        </div>
+        <h3>Welcome to BlueCollar Jobs Portal!</h3>
+        <p>Perfect website for you to Search and Apply the Jobs.</p>
+        <p>Login to see it in action.</p>
+        <div class="m-t">
+            <div class="form-group">
+                <input type="text" ng-model="user.email" class="form-control" style="display:inline-block;" placeholder="Email" ng-change="testLoginName()" ng-required="true">
+                <span ng-show="loginEmailErr && user.email != undefined" style="color:red;display:inline-block;">invalid email address</span>
+            </div>
+            <div class="form-group">
+                <input type="password" ng-model="user.password" ng-keydown="pressEnter($event,user)" class="form-control" placeholder="Password" ng-change="testPassword()" ng-required="true">
+                <span ng-show="passwordShort && user.password != undefined" style="color:red">&nbsp;&nbsp;Password must be at least 6 characters</span>
+            </div>
+            <br>
+            <button ng-click="login(user)" class="btn btn-info block full-width m-b" ng-disabled="loginForm.$invalid">Login</button>
+
+            <a href="/forgetPasswd"><small>Forgot password?</small></a><br/><br/>
+            <!-- <p class="text-muted text-center"><small>Do not have an account?</small></p> -->
+            <a class="btn btn-info btn-block" href="/register">Create an account</a>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2016 BlueCollar Jobs</a></p>
+        </div>
+    </div>
+</div>
+</ng-form>
+

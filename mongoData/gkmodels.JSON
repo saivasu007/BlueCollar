@@ -1,0 +1,229 @@
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a3f"),
+	"content" : "The nominal group technique uses which of the following voting methods?",
+	"choices" : {
+		"A" : "Anonymous",
+		"B" : "Consensus",
+		"C" : "Democratic",
+		"D" : "Multi-voting"
+	},
+	"correctChoice" : "A",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a2f"),
+	"content" : "A software manager for a company that provides embedded, real-time software is asked to benchmark the department’s development and test processes. It would be appropriate for the manager to select a process model from a company that develops software for",
+	"choices" : {
+		"A" : "data processing applications",
+		"B" : "database management systems",
+		"C" : "robotic systems",
+		"D" : "graphical user interfaces"
+	},
+	"correctChoice" : "C",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a30"),
+	"content" : "Which of the following is likely to contribute most to an effective project meeting?",
+	"choices" : {
+		"A" : "Distributing and following an agenda",
+		"B" : "Assigning action items during the meeting",
+		"C" : "Limiting interruptions",
+		"D" : "Recording minutes during the meeting"
+	},
+	"correctChoice" : "A",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a31"),
+	"content" : "Major changes to a software process should start with",
+	"choices" : {
+		"A" : "conducting a formal assessment.",
+		"B" : "obtaining management commitment.",
+		"C" : "developing a project plan.",
+		"D" : "establishing firm requirements."
+	},
+	"correctChoice" : "B",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a32"),
+	"content" : "One person has been dominating the current software process improvement meeting. Which of the following techniques should the facilitator use to bring other team members into the discussion?",
+	"choices" : {
+		"C" : "Switch the topic to an issue about which the person does not have a strong opinion.",
+		"D" : "Express an opinion that differs from the person’s opinion in order to encourage others to express their ideas.",
+		"A" : "Confront the person and ask that other team members be allowed to express their opinions.",
+		"B" : "Wait for the person to pause, acknowledge the person’s opinion, and ask for someone else’s opinion."
+	},
+	"correctChoice" : "B",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a33"),
+	"content" : "According to ISO 9001, quality records must be maintained in order to",
+	"choices" : {
+		"B" : "demonstrate progress in accordance with the associated quality plan",
+		"C" : "justify the current funding and staffing of the quality organization",
+		"D" : "demonstrate that the design and coding activities have alleviated the need for unit testing",
+		"A" : "demonstrate achievement of the required quality and the effective operation of the quality system"
+	},
+	"correctChoice" : "A",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a34"),
+	"content" : "The benefits of software quality include:",
+	"choices" : {
+		"A" : "Satisfied customers, improved reliability, and reduced operating errors",
+		"B" : "Increased customer demands and new customer requirements",
+		"C" : "Reduced staff levels, and decreased verification efforts",
+		"D" : "Process experimentation, capabilities, and extended process limits"
+	},
+	"correctChoice" : "A",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a35"),
+	"content" : "Comparing an organization's customer service function to a customer service function of another organization is referred to as a:",
+	"choices" : {
+		"A" : "Process benchmark",
+		"B" : "Performance benchmark",
+		"C" : "Strategic benchmarking",
+		"D" : "Customer service index"
+	},
+	"correctChoice" : "B",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a36"),
+	"content" : "Copyright law protects the literal form taken by expressive work. However, copyright law:",
+	"choices" : {
+		"D" : "Protects the ideas and concepts in related patents",
+		"A" : "Protects the ideas but not the concepts underlying an expressive work",
+		"B" : "Does not protect the ideas and concepts underlying an expressive work",
+		"C" : "Protects the concepts but not the ideas underlying an expressive work"
+	},
+	"correctChoice" : "B",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a37"),
+	"content" : "Which of the following techniques is most appropriate in resolving conflict?",
+	"choices" : {
+		"D" : "Avoiding conflict at all cost",
+		"A" : "Accommodating everyone's interests",
+		"B" : "Negotiating between the parties",
+		"C" : "Addressing the situation's issues"
+	},
+	"correctChoice" : "C",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a38"),
+	"content" : "A critical awareness item in dealing with international business activities to ensure timely communications and responsiveness is the:",
+	"choices" : {
+		"A" : "Cultural attitudes at diverse locations",
+		"B" : "Management philosophies within the international market",
+		"C" : "Differences in time within the international markets and organizations",
+		"D" : "Communication expenses in the international marketplace"
+	},
+	"correctChoice" : "C",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a39"),
+	"content" : "Which of the following is a true statement about ISO/IEC 90003?",
+	"choices" : {
+		"C" : "It has fewer areas of emphasis on measurement and analysis",
+		"D" : "It is an interpretation guideline for applying ISO 9001 to software",
+		"A" : "It is used instead of ISO 9001 in software development organizations",
+		"B" : "It has more elements in common with IEEE Standard 830 than ISO 9001"
+	},
+	"correctChoice" : "D",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a3a"),
+	"content" : "The problem solving method that allows each participant to choose several items they feel are most important is called:",
+	"choices" : {
+		"A" : "Brainstorming",
+		"B" : "The nominal group technique",
+		"C" : "Majority election",
+		"D" : "Multi-voting"
+	},
+	"correctChoice" : "D",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a3b"),
+	"content" : "Regardless of when new laws are enacted, any software development must already consider how the data will be secured and how access will be controlled. These are:",
+	"choices" : {
+		"A" : "Data integrity issues",
+		"B" : "Data validity issues",
+		"C" : "Data privacy issues",
+		"D" : "Data control issues"
+	},
+	"correctChoice" : "C",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a3c"),
+	"content" : "A SWOT analysis will cause the company to look at opportunities and threats as part of its analysis. The best area to look for opportunities is in:",
+	"choices" : {
+		"A" : "New technologies",
+		"B" : "External environment",
+		"C" : "Emerging technologies",
+		"D" : "Internal environment"
+	},
+	"correctChoice" : "B",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a3d"),
+	"content" : "Periodic, statutory, financial reporting is a requirement of the Sarbanes-Oxley Act (Section 302) and include certifications through which:",
+	"choices" : {
+		"A" : "Signing officers ensure that the financial reports have a notary signoff",
+		"B" : "Company officers ensure that reporting is under configuration control",
+		"C" : "Company officers are approved by the company's board of directors",
+		"D" : "Signing officers are responsible for controls and have evaluated them"
+	},
+	"correctChoice" : "D",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a3e"),
+	"content" : "National software engineering standards are developed by:",
+	"choices" : {
+		"A" : "ANSI committees and subcommittees",
+		"B" : "IEEE committees and subcommittees",
+		"C" : "ASQ committees and subcommittees",
+		"D" : "Industry committees and subcommittees"
+	},
+	"correctChoice" : "B",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("55d8d7a4e1f8284f46481a40"),
+	"content" : "Effective process benchmarking for a company begins with an understanding of its",
+	"choices" : {
+		"B" : "own improvement goals",
+		"C" : "competitor’s processes",
+		"D" : "competitor’s organizational structure",
+		"A" : "own existing processes"
+	},
+	"correctChoice" : "A",
+	"category" : "gk"
+},
+{
+	"_id" : ObjectId("566f8e09112f64030e11f1b1"),
+	"category" : "gk",
+	"content" : "Test Question 1",
+	"choices" : {
+		"A" : "asdfasa",
+		"B" : "qwerasa",
+		"C" : "zxcvasa",
+		"D" : "mnzbasas"
+	},
+	"correctChoice" : "C",
+	"__v" : 0
+}

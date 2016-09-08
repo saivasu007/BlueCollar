@@ -1,0 +1,130 @@
+<div class="animated fadeInDown">
+	<!-- Header -->
+	<header>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4">
+					<div class="logo">
+						<h1><a href="/home">Big Bang <span class="color">ASQ</span></a></h1>
+						<div class="hmeta">Perfect CSQE Virtual Exam & Practice Website</div>
+					</div>
+				</div>
+				<div style="text-align: right" class="col-md-5 col-md-offset-3 col-sm-5 col-sm-offset-2">
+
+					<br>
+					<h4>Welcome, {{currentUser.firstName}} {{currentUser.lastName}} </h4>
+					<span class="color customLink"><a href="/home">Home</a></span> |
+					<span class="color customLink"><a href="/profile">Profile</a></span> |
+					<span class="color customLink"><a href="/changePassword">Change Password</a></span> |
+					<span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
+				</div>
+			</div>
+		</div>
+	</header>
+	<body>
+	<div class="content">
+		<div class="container">
+			<!-- Content -->
+			<hr>
+			<h3>Question Information Screen:</h3>
+			<div class="form-group">
+				
+				    <table style="width:1184px">
+				    <tr>
+				    <td nowrap style="width:200px">
+					<label for="searchCat" style="font-size: 16px;">Search Category:</label>
+					<select id="searchCat" ng-model="currentUser.searchCat" style="font-size: 14px; width: 120px; height: 30px; margin: 0px 20px 30px 15px;display: inline;" ng-change="disableSearch()">
+							<option value="Select">Select</option>
+							<option value="GKModel">GKModel</option>
+							<option value="SQMModel">SQMModel</option>
+							<option value="EPModel">EPModel</option>
+							<option value="PMModel">PMModel</option>
+							<option value="MAModel">MAModel</option>
+							<option value="SVVModel">SVVModel</option>
+							<option value="SCMModel">SCMModel</option>
+					</select>
+					</td><td style="width:120px">
+					<button  style="width: 98px; height: 32px; font-size: 16px;margin: 10px 0px 45px 10px;" class="btn btn-primary" ng-disabled="wrong" ng-click="searchQuestions(currentUser)">
+					<span class="glyphicon glyphicon-ok-sign"></span>  Search
+					</button>
+					</td>
+					<td>
+					<a href="/admin"><button  style="width: 98px; height: 32px; font-size: 16px;margin: 10px 40px 45px 10px;" class="btn btn-warning">
+					<span class="glyphicon glyphicon-remove-sign"></span>  Cancel
+					</button></a>
+					</td>
+					<td align="right">
+					<a href="/addQuestionInfo"><button  style="width: 147px; height: 32px; font-size: 16px;margin: 10px 40px 45px 120px;" class="btn btn-info">
+					<span class="glyphicon glyphicon-ok-sign"></span>  Add Question
+					</button></a>
+					</td>
+					</tr>
+					</table>
+				
+			</div>
+			<div  style="border:2px solid #5BC0DE" ng-show="allQuestions.length >= 0">
+			<table class="table table-striped">
+				<thead>
+				<tr style="background-color:#D3D3D3">
+					<!--<th>Number #</th>-->
+					<th>Category</th>
+					<th>Short Question Desc</th>
+					<th>Correct Choice</th>
+					<th>Action</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="question in partialQuestions">
+					<td>{{question.category}}</td>
+					<td>{{question.content}}</td>
+					<td>{{question.correctChoice}}</td>
+					<td><button  class="btn btn-info" ng-click="editQuestion(question)">
+					<span class="glyphicon glyphicon-eye-open"></span>Edit 
+					</button></td>
+				</tr>
+				<tr ng-show="partialQuestions.length <= 0">
+					<td></td>
+					<td></td>
+					<td><h4 style="color:red">No Questions available in ASQ for your Search.</h4></td>
+					<td></td>
+				</tr>
+				</tbody>
+			</table>
+			<br/>
+			<table class="table" style="margin-bottom:0px" ng-show="partialQuestions.length >= 0">
+			<tbody>
+			<tr>
+				<td></td><td></td><td></td>
+				<td align="right">
+				    <pagination 
+				      ng-model="currentPage"
+				      total-items="allQuestions.length"
+				      max-size="maxSize"  
+				      boundary-links="true">
+				    </pagination>
+				</td>
+				</tr>
+			</tbody>
+			</table>
+			</div>
+			<hr>
+		</div>
+	</div>
+	
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div style="text-align: center" class="copy">
+						<h5>ASQ CSQE Virtual Exam & Practice</h5>
+						<p>&copy; <a href="/about">2015 Big Bang ASQ Exam</a></p>
+						<p>Questions Provided by <a href="http://www.qualitycouncil.com/CSQE.html" target="_blank">Quality Council of Indiana</a> and by <a href="http://www.westfallteam.com/quiz_listing" target="_blank">Linda Westfall</a></p>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+	</footer>
+	</div>
+	</body>

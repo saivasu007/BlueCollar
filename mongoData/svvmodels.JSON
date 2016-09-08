@@ -1,0 +1,252 @@
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a92"),
+	"content" : "Software trouble reports should be analyzed by a developer or a maintainer to determine",
+	"choices" : {
+		"A" : "whether the software errors are distinguishable and reproducible",
+		"B" : "whether the maximum number of allowable errors and anomalies has been reached",
+		"C" : "the problem effect and the fix rate",
+		"D" : "what regression testing is required and when"
+	},
+	"correctChoice" : "A",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a93"),
+	"content" : "Repeating past tests to ensure that modifications have not introduced faults into previously operational software is called",
+	"choices" : {
+		"A" : "beta testing",
+		"B" : "functional testing",
+		"C" : "bottom-up testing",
+		"D" : "regression testing"
+	},
+	"correctChoice" : "D",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a94"),
+	"content" : "The difference between verification and validation is that verification",
+	"choices" : {
+		"A" : "is performed by developers and testers, whereas validation is performed by a software quality assurance group",
+		"B" : "refers to reviews and inspections, whereas validation refers to testing",
+		"C" : "ensures that software phase output correctly implements phase input requirements, whereas validation ensures that software meets customer requirements",
+		"D" : "starts before a complete product is ready, whereas validation is done only on a completed product"
+	},
+	"correctChoice" : "C",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a95"),
+	"content" : "Which of the following is the best resource for validation testing of an object-oriented system?",
+	"choices" : {
+		"C" : "Entity relationship diagrams",
+		"D" : "Decomposition matrices",
+		"A" : "PERT charts",
+		"B" : "Use case scenarios"
+	},
+	"correctChoice" : "B",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a96"),
+	"content" : "The primary attributes of a test plan consist of which of the following?",
+	"choices" : {
+		"A" : "Generators and stubs",
+		"B" : "Analyzers and processors",
+		"C" : "Comparators and harnesses",
+		"D" : "Resources and schedules"
+	},
+	"correctChoice" : "D",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a97"),
+	"content" : "A combination of hardware and software that provides an approximation of the working environment of a software product is called a:",
+	"choices" : {
+		"A" : "Reliability model",
+		"B" : "Logic analyzer",
+		"C" : "Simulator",
+		"D" : "Requirements tracer"
+	},
+	"correctChoice" : "C",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a98"),
+	"content" : "The following code segment contains a potential 'divide by 0' error.<br/>J=50<br/>K=1<br/>while(N>=-10) and (N<=10) loop<br/>M[K]=J/N<br/>K=K+1<br/>N=N-1<br/>end loop<br/>Which of the following is the most effective way of detecting this error?",
+	"choices" : {
+		"D" : "Source code inspection",
+		"A" : "Boundary testing",
+		"B" : "Condition testing",
+		"C" : "Compilation of the source code"
+	},
+	"correctChoice" : "D",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a99"),
+	"content" : "The review that involves the presentation of an author's software element is called a:",
+	"choices" : {
+		"A" : "Peer review",
+		"B" : "Walkthrough",
+		"C" : "Technical review",
+		"D" : "Fagan inspection"
+	},
+	"correctChoice" : "B",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a9a"),
+	"content" : "A computer program that has 10 edges, 6 nodes, and 1 unconnected part of the graph has a cyclomatic complexity of:",
+	"choices" : {
+		"A" : "15",
+		"B" : "6",
+		"C" : "5",
+		"D" : "17"
+	},
+	"correctChoice" : "B",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a9b"),
+	"content" : "Security testing is the process of attempting to devise test cases that:",
+	"choices" : {
+		"A" : "Convert the program's security checks",
+		"B" : "Subvert the program's security checks",
+		"C" : "Invert the program's security checks",
+		"D" : "Revert the program's security checks"
+	},
+	"correctChoice" : "B",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a9c"),
+	"content" : "The kitting process involves:",
+	"choices" : {
+		"B" : "The development of packaging inserts",
+		"C" : "Building the configuration items",
+		"D" : "The assembly of components for delivery",
+		"A" : "The CD-ROM production process"
+	},
+	"correctChoice" : "D",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a9d"),
+	"content" : "The principal reason for establishing an entry criteria during the software inspection process is to:",
+	"choices" : {
+		"C" : "Meet quality assurance requirements",
+		"D" : "Ensure that the inspection team is prepared",
+		"A" : "Meet project schedules",
+		"B" : "Ensure time is not wasted"
+	},
+	"correctChoice" : "B",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a9e"),
+	"content" : "Regression tests are run to:",
+	"choices" : {
+		"B" : "Verify that system parameters are working as planned",
+		"C" : "Verify that a previously solved problem does not recur",
+		"D" : "Examine error handling when extreme values are used",
+		"A" : "Study program behavior at boundary conditions"
+	},
+	"correctChoice" : "C",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481a9f"),
+	"content" : "Worst-case testing can be described as:",
+	"choices" : {
+		"A" : "Regression testing with specific performance constraints",
+		"B" : "Introducing new usability constraints within a series of regression tests",
+		"C" : "Repeating a series of tests to ensure that the system has not degraded",
+		"D" : "Testing error handling at boundary or extreme values"
+	},
+	"correctChoice" : "D",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481aa0"),
+	"content" : "Black box testing should be performed in conjunction with which of the following other test strategies?",
+	"choices" : {
+		"A" : "White box testing",
+		"B" : "Beta testing",
+		"C" : "Top-down testing",
+		"D" : "Bottom-up testing"
+	},
+	"correctChoice" : "A",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481aa1"),
+	"content" : "Testing a software product or system to determine if modifications have introduced faults or defects is called:",
+	"choices" : {
+		"B" : "Bottom-up testing",
+		"C" : "Integrated testing",
+		"D" : "Regression testing",
+		"A" : "System testing"
+	},
+	"correctChoice" : "D",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481aa2"),
+	"content" : "A software requirements interface analysis is performed to ensure that:",
+	"choices" : {
+		"A" : "External and internal interfaces are completely specified",
+		"B" : "Software design interfaces are completely and accurately specified",
+		"C" : "The information and control flow between and within components is accurate",
+		"D" : "External interfaces between software functions are completely specified"
+	},
+	"correctChoice" : "A",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481aa3"),
+	"content" : "The use of test automation would provide the best return on investment for which of the following?",
+	"choices" : {
+		"A" : "Unit testing",
+		"B" : "Usability testing",
+		"C" : "Regression testing",
+		"D" : "Acceptance testing"
+	},
+	"correctChoice" : "C",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481aa4"),
+	"content" : "Records of the results of inspections should include which of the following?",
+	"choices" : {
+		"A" : "Identification of inspectors, list of defects, and date performed",
+		"B" : "Work product, list of defects, and configuration status",
+		"C" : "dentification of inspectors, their qualifications, and their training records",
+		"D" : "Date performed, management approval, and resources used"
+	},
+	"correctChoice" : "A",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481aa5"),
+	"content" : "Equivalence class partitioning is a testing technique best defined as the organization of each",
+	"choices" : {
+		"A" : "element of the specification into workable pieces",
+		"B" : "combination of states into two or more groups",
+		"C" : "program function by intuition and experience",
+		"D" : " input domain into two or more groups"
+	},
+	"correctChoice" : "D",
+	"category" : "SVV"
+},
+{
+	"_id" : ObjectId("55d8d8dce1f8284f46481aa6"),
+	"content" : "The primary goal of comparing a user manual with the actual behavior of the running program during system testing is to",
+	"choices" : {
+		"C" : "ensure the ease of use of the document",
+		"D" : "ensure that the program is the latest version",
+		"A" : "find bugs in the program ",
+		"B" : "check the technical accuracy of the document"
+	},
+	"correctChoice" : "B",
+	"category" : "SVV"
+}
