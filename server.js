@@ -9,7 +9,9 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var passPort = require('passport');
 var localStrategy = require('passport-local').Strategy;
+var LinkedinStrategy = require("passport-linkedin-oauth2").Strategy;
 var facebookStrategy = require('passport-facebook').Strategy;
+var GoogleStrategy = require('passport-google-oauth2').Strategy;
 var session = require('express-session');
 var async = require("async");
 var mailer = require("nodemailer");
@@ -58,6 +60,7 @@ var pwdResetSubject = properties.get("app.email.subjectResetPwd");
 var resetPwdTemplate = properties.get("app.email.resetPwdTem");
 var resetConfirmSubject = properties.get("app.email.subjectConfirmResetPwd");
 var resetConfirmTemplate = properties.get("app.email.resetConfirmTem");
+var config = require('./oauth.js');
 
 // Utils
 function randomNfromM(N, A) {
@@ -195,6 +198,125 @@ passPort.serializeUser(function(user, done) {
 passPort.deserializeUser(function(user, done) {
 	done(null, user);
 });
+
+//Linkedin Social login
+passPort.use(new LinkedinStrategy({
+	  clientID: config.linkedin.consumerKey,
+	  clientSecret: config.linkedin.consumerSecret,
+	  callbackURL: config.linkedin.callbackURL,
+	  scope: config.linkedin.scope
+	  },
+	  function(accessToken, refreshToken, profile, done) {
+	    userModel.findOne({ email: profile.emails[0].value }, function(err, user) {
+	      if(err) {
+	        console.log(err);  // handle errors!
+	      }
+	      if (!err && user !== null) {
+	        done(null, user);
+	      } else {
+	    	// if there is no user found with that facebook id, create them
+              var newUser = new userModel();
+              // set all of the facebook information in our user model
+              //newUser._id  = profile.id;                
+              newUser.firstName  = profile.name.givenName;
+              newUser.lastName = profile.name.familyName; 
+              newUser.email = profile.emails[0].value;
+              newUser.role = "user";
+              newUser.activeIn = "Y";
+              newUser.subscriber = "No";
+              newUser.authType = "linkedin";
+              // save our user to the database
+              newUser.save(function(err) {
+	          if(err) {
+	            console.log(err);  // handle errors!
+	          } else {
+	            console.log("saving user ...");
+	            done(null, user);
+	          }
+	        });
+		   console.log(profile.id);
+	      }
+	    });
+	  }
+));
+
+//Facebook Social Login
+passPort.use(new facebookStrategy({
+	  clientID: config.facebook.clientID,
+	  clientSecret: config.facebook.clientSecret,
+	  callbackURL: config.facebook.callbackURL,
+	  profileFields: ['id', 'displayName', 'photos', 'email','name']
+  },function(token, refreshToken, profile, done) {
+          userModel.findOne({email:profile.emails[0].value}, function(err, user) {
+              if (err) {
+            	  console.debug("err"+err);
+            	  console.log(err);
+            	  console.error(err);
+                  return done(err);
+              }
+              if (user) {
+            	  console.log("User exists in application");
+            	  console.log(user);
+                  return done(null, user); // If user found then return the same user.
+              } else {
+                  // if there is no user found in the application with that facebook user-id then create them.
+                  var newUser = new userModel();
+                  // Set all of the facebook information in application user model.        
+                  newUser.firstName  = profile.name.givenName;
+                  newUser.lastName = profile.name.familyName; 
+                  newUser.email = profile.emails[0].value;
+                  newUser.role = "user";
+                  newUser.activeIn = "Y";
+                  newUser.subscriber = "No";
+                  newUser.authType = "facebook";
+                  newUser.accessToken = token;
+                  console.log("Before saving user info");
+                  // save our user to the database
+                  newUser.save(function(err) {
+                      if (err)
+                          throw err;
+                      	return done(null, user);
+                  });
+              }
+          });
+  }));
+
+//Google Social Login
+passPort.use(new GoogleStrategy({
+	  clientID: config.google.clientID,
+	  clientSecret: config.google.clientSecret,
+	  callbackURL: config.google.returnURL
+	  },
+	  function(request, accessToken, refreshToken, profile, done) {
+	    userModel.findOne({email: profile.email }, function(err, user) {
+	      if(err) {
+	        console.log(err);  // handle errors!
+	      }
+	      if (!err && user !== null) {
+	        done(null, user);
+	      } else {
+	        var user = new userModel();
+              	// set all of the facebook information in our user model
+              	//newUser._id  = profile.id;                
+              	user.firstName  = profile.name.givenName;
+              	user.lastName = profile.name.familyName; 
+              	user.email = profile.emails[0].value;
+              	user.role = "user";
+              	user.activeIn = "Y";
+              	user.subscriber = "No";
+              	user.authType = "google";
+	        user.save(function(err) {
+	          if(err) {
+	            console.log(err);  // handle errors!
+	          } else {
+	            console.log("saving user ...");
+	            done(null, user);
+	          }
+	        });
+	      }
+	    });
+	  }
+));
 
 // routes
 app.post('/register', function(req, res) {
