@@ -5,8 +5,8 @@ var ids = {
     callbackURL: 'https://itubluecollar.herokuapp.com/auth/facebook/callback'
   },
   google: {
-    clientID: ' 806639223559-nr1vj3i5207s1njf866cevhmtbe4u2fu.apps.googleusercontent.com ',
-    clientSecret: '6pG05FGf8cAhCl-V2HAspna0',
+    clientID: '8146498752-hdommt7s414bmhlpocl3euaklqsqriel.apps.googleusercontent.com',
+    clientSecret: '78cFdH1dYrKXtRDsyckA1s4Z',
     returnURL: 'https://itubluecollar.herokuapp.com/auth/google/callback'
   },
    linkedin: {
