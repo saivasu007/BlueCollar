@@ -374,6 +374,47 @@ app.post('/login', passPort.authenticate('local'),function(req, res) {
 	res.json(user);
 });
 
+app.get('/auth/facebook', passPort.authenticate('facebook',{ scope : 'email' }), function(req, res, next){
+	var user = req.user;
+	res.json(user);
+});
+
+app.get('/auth/facebook/callback',
+	passPort.authenticate('facebook', { failureRedirect: '/' , successRedirect : '/home', scope: 'email' }),function(req, res, next) {
+	var user = req.user;
+	res.json(user);
+});
+
+app.get('/auth/google',
+		  passPort.authenticate('google', { scope: [
+		    'https://www.googleapis.com/auth/plus.login',
+		    'https://www.googleapis.com/auth/plus.profile.emails.read'
+		  ] }),function(req, res) {
+		    	var user = req.user;
+		    	res.json(user);
+});
+
+app.get('/auth/google/callback',
+		  passPort.authenticate('google', { failureRedirect: '/', successRedirect : '/home' }),
+		  function(req, res) {
+		    var user = req.user;
+		    res.json(user);
+});
+
+app.get('/auth/linkedin',
+		  passPort.authenticate('linkedin',{state:'CA'}),
+		  function(req, res){
+			var user = req.user;
+			res.json(user);
+});
+		
+app.get('/auth/linkedin/callback',
+		  passPort.authenticate('linkedin', { failureRedirect: '/' , successRedirect : '/home' }),
+		  function(req, res) {
+			var user = req.user;
+			res.json(user);
+});
+
 
 app.post('/logout', function(req, res) {
 	console.log(req.user.email + " has logged out.")
