@@ -465,6 +465,10 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 	};
 });
 
+app.controller('landingCtrl', function ($scope, $rootScope, $http, $routeParams, $location) {
+	
+});
+
 app.controller('loginCtrl', function ($scope, $rootScope, $http, $routeParams, $location) {
 	$scope.login = function (user){
 		$http.post('/login', user).success(function (response){
@@ -2593,8 +2597,8 @@ app.config(function ($routeProvider, $httpProvider, $locationProvider) {
 	$locationProvider.html5Mode(true);
 	$routeProvider.
 		when('/', {
-			templateUrl: 'partials/login.html',
-			controller: 'loginCtrl'
+			templateUrl: 'partials/landing.html',
+			controller: 'landingCtrl'
 		}).
 		when('/login', {
 			templateUrl: 'partials/login.html',

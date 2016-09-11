@@ -1,0 +1,23 @@
+<body width="1280" height="800">
+<img class="banner" src="img/bluecollar.jpg" alt="background" width="1265" height="255"/>
+<ng-form name="loginForm">
+<div class="middle-box text-center loginscreen  animated fadeInDown" style="padding-top:0px;">
+    <div>
+        <h3>Welcome to BlueCollar Jobs Portal!</h3>
+        <p>Perfect website for you to Search and Apply the Blue Collar Jobs.</p>
+        <div class="m-t">
+            <div class="form-group">
+                <input type="text" ng-model="user.search" class="form-control" style="display:inline-block;" placeholder="Search" ng-change="testLoginName()" ng-required="true">
+            </div>
+            <div class="form-group">
+                <input type="text" ng-model="user.location"  class="form-control" placeholder="Location" ng-change="" ng-required="true">
+            </div>
+            <br>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2016 BlueCollar Jobs</a></p>
+        </div>
+    </div>
+</div>
+</ng-form>
+</body>
