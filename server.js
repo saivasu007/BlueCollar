@@ -7,12 +7,12 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var passPort = require('passport');
 var localStrategy = require('passport-local').Strategy;
 var LinkedinStrategy = require("passport-linkedin-oauth2").Strategy;
 var facebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
-var session = require('express-session');
 var async = require("async");
 var mailer = require("nodemailer");
 var propertiesReader = require("properties-reader");
@@ -44,6 +44,8 @@ var historyModel = require('./models/historyModels.js');
 var certModel = require('./models/certModel.js');
 var fs  = require('fs');
 var ejs = require('ejs');
+var config = require('./oauth.js');
+var Dropzone = require("dropzone");
 
 var emailTransport = properties.get('app.email.transport');
 var serviceUser = properties.get('SMTP.service.user');
@@ -60,7 +62,6 @@ var pwdResetSubject = properties.get("app.email.subjectResetPwd");
 var resetPwdTemplate = properties.get("app.email.resetPwdTem");
 var resetConfirmSubject = properties.get("app.email.subjectConfirmResetPwd");
 var resetConfirmTemplate = properties.get("app.email.resetConfirmTem");
-var config = require('./oauth.js');
 
 // Utils
 function randomNfromM(N, A) {
@@ -199,6 +200,7 @@ passPort.deserializeUser(function(user, done) {
 	done(null, user);
 });
 
+
 //Linkedin Social login
 passPort.use(new LinkedinStrategy({
 	  clientID: config.linkedin.consumerKey,
@@ -318,6 +320,7 @@ passPort.use(new GoogleStrategy({
 	  }
 ));
 
+
 // routes
 app.post('/register', function(req, res) {
 	var password = encrypt(req.body.password);
@@ -372,47 +375,6 @@ app.post('/register', function(req, res) {
 app.post('/login', passPort.authenticate('local'),function(req, res) {
 	var user = req.user;
 	res.json(user);
-});
-
-app.get('/auth/facebook', passPort.authenticate('facebook',{ scope : 'email' }), function(req, res, next){
-	var user = req.user;
-	res.json(user);
-});
-
-app.get('/auth/facebook/callback',
-	passPort.authenticate('facebook', { failureRedirect: '/' , successRedirect : '/home', scope: 'email' }),function(req, res, next) {
-	var user = req.user;
-	res.json(user);
-});
-
-app.get('/auth/google',
-		  passPort.authenticate('google', { scope: [
-		    'https://www.googleapis.com/auth/plus.login',
-		    'https://www.googleapis.com/auth/plus.profile.emails.read'
-		  ] }),function(req, res) {
-		    	var user = req.user;
-		    	res.json(user);
-});
-
-app.get('/auth/google/callback',
-		  passPort.authenticate('google', { failureRedirect: '/', successRedirect : '/home' }),
-		  function(req, res) {
-		    var user = req.user;
-		    res.json(user);
-});
-
-app.get('/auth/linkedin',
-		  passPort.authenticate('linkedin',{state:'CA'}),
-		  function(req, res){
-			var user = req.user;
-			res.json(user);
-});
-		
-app.get('/auth/linkedin/callback',
-		  passPort.authenticate('linkedin', { failureRedirect: '/' , successRedirect : '/home' }),
-		  function(req, res) {
-			var user = req.user;
-			res.json(user);
 });
 
 
@@ -1035,6 +997,6 @@ app.all('/*', function(req, res, next) {
 	});
 });
 
-app.listen(process.env.PORT || 1337,function() {
+app.listen(port,function() {
 	console.log('http://127.0.0.1:' + port + '/');
 });

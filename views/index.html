@@ -13,6 +13,7 @@
 	<link href="css/bootstrap.css.map" rel="stylesheet">
 	<link href="css/bootstrap.css" rel="stylesheet">
 	<link href="css/angular-toggle-switch.css" rel="stylesheet">
+	<link href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css" rel="stylesheet">
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="img/favicon/bb.png">
@@ -44,9 +45,9 @@
     <script src="js/datepicker/angular.js"></script>
     <script src="js/datepicker/ui-bootstrap-tpls-0.14.3.js"></script>
     
-	<title>Big Bang ASQ</title>
+	<title>Blue Collar Jobs</title>
 </head>
-<body class="gray-bg" ng-app="quizApp" ng-controller = 'indexCtrl'>
+<body class="gray-bg" ng-app="blueCollarApp" ng-controller = 'indexCtrl'>
 	<timer style="text-decoration: underline; filter: alpha(opacity: 0.6); opacity: 0.6; color: red; font-weight: bold; font-size: 22px; position: fixed; top: 30px; left: 44%;" ng-if="timer" interval="1000" countdown="7200">Time Remains: {{hours}}:{{minutes}}:{{seconds}}</timer>
 	<div ng-view></div>
 </body>
