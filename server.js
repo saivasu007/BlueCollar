@@ -1037,6 +1037,6 @@ app.all('/*', function(req, res, next) {
 	});
 });
 
-app.listen(port,function() {
+app.listen(process.env.PORT || 1337,function() {
 	console.log('http://127.0.0.1:' + port + '/');
 });
