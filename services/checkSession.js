@@ -1,4 +1,4 @@
-angular.module('quizApp').factory('checkSession', function ($rootScope, $http) {
+angular.module('blueCollarApp').factory('checkSession', function ($rootScope, $http) {
     var fac = {};
     fac.check = function () {
         $http.get('/loggedin').success(function (user) {
