@@ -45,7 +45,7 @@ var certModel = require('./models/certModel.js');
 var fs  = require('fs');
 var ejs = require('ejs');
 var config = require('./oauth.js');
-
+var Dropzone = require("dropzone");
 
 var emailTransport = properties.get('app.email.transport');
 var serviceUser = properties.get('SMTP.service.user');
@@ -198,6 +198,47 @@ passPort.serializeUser(function(user, done) {
 
 passPort.deserializeUser(function(user, done) {
 	done(null, user);
+});
+
+app.get('/auth/facebook', passPort.authenticate('facebook',{ scope : 'email' }), function(req, res, next){
+	var user = req.user;
+	res.json(user);
+});
+
+app.get('/auth/facebook/callback',
+	passPort.authenticate('facebook', { failureRedirect: '/' , successRedirect : '/home', scope: 'email' }),function(req, res, next) {
+	var user = req.user;
+	res.json(user);
+});
+
+app.get('/auth/google',
+		  passPort.authenticate('google', { scope: [
+		    'https://www.googleapis.com/auth/plus.login',
+		    'https://www.googleapis.com/auth/plus.profile.emails.read'
+		  ] }),function(req, res) {
+		    	var user = req.user;
+		    	res.json(user);
+});
+
+app.get('/auth/google/callback',
+		  passPort.authenticate('google', { failureRedirect: '/', successRedirect : '/home' }),
+		  function(req, res) {
+		    var user = req.user;
+		    res.json(user);
+});
+
+app.get('/auth/linkedin',
+		  passPort.authenticate('linkedin',{state:'CA'}),
+		  function(req, res){
+			var user = req.user;
+			res.json(user);
+});
+		
+app.get('/auth/linkedin/callback',
+		  passPort.authenticate('linkedin', { failureRedirect: '/' , successRedirect : '/home' }),
+		  function(req, res) {
+			var user = req.user;
+			res.json(user);
 });
 
 
@@ -997,6 +1038,6 @@ app.all('/*', function(req, res, next) {
 	});
 });
 
-app.listen(process.env.PORT || 1337,function() {
+app.listen(port,function() {
 	console.log('http://127.0.0.1:' + port + '/');
 });
