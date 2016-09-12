@@ -45,7 +45,6 @@ var certModel = require('./models/certModel.js');
 var fs  = require('fs');
 var ejs = require('ejs');
 var config = require('./oauth.js');
-var Dropzone = require("dropzone");
 
 var emailTransport = properties.get('app.email.transport');
 var serviceUser = properties.get('SMTP.service.user');
