@@ -8,7 +8,7 @@
  * Manages all events inside the application
  *
  */
-angular.module('quizApp')
+angular.module('blueCollarApp')
   .factory('ObserverService', [ function() {
     /* Initialize list of observers */
     var _observerService= {};
