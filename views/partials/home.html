@@ -1,3 +1,13 @@
+<head>
+        <title>Resume Upload</title>
+        <style>
+            .my-drop-zone { border: dotted 3px lightgray; }
+            .nv-file-over { border: dotted 3px red; } 
+            .another-file-over-class { border: dotted 3px green; }
+            html, body { height: 100%; }
+        </style>
+
+</head>
 <div class="animated fadeInUp">
 	<!-- Header -->
 	<header>
@@ -17,6 +27,7 @@
 					<span class="color customLink" ng-if="currentUser.role=='admin'"><a href="/admin">Admin</a> |</span>
 					<!-- End changes for ASQ Upgrade 2.0. -->
 					<span class="color customLink"><a href="/profile">Profile</a></span> |
+					<span class="color customLink"><a href="/upload">Upload Resume</a></span> |
 					<!-- Added by Srinivas Thungathurti for ASQ Upgrade 2.0.New screen Change Password added. -->
 					<span class="color customLink"><a href="/changePassword">Change Password</a></span> |
 					<span class="color customLink"><a href="" ng-click="logout()">Logout</a></span>
@@ -30,13 +41,7 @@
 		<div class="container">
 			<!-- Content -->
 			<hr>
-			<div style="text-align: center">
-				<form action="/file-upload" class="dropzone">
-  				<div class="fallback">
-    			<input name="file" type="file" multiple />
-  				</div>
-				</form>
-			</div>
+			
 			<hr>
 		</div>
 	</div>

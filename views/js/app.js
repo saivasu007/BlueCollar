@@ -3,7 +3,7 @@
  * @author : Srinivas Thungathurti
  * @description : Modified for ASQ Upgrade 2.0 changes for Sprint 1 (Registration and Login requirements).
  */
-var app = angular.module('blueCollarApp', ['ngRoute', 'highcharts-ng','toggle-switch','timer','ui.bootstrap','ngAutocomplete']);
+var app = angular.module('blueCollarApp', ['ngRoute', 'highcharts-ng','toggle-switch','timer','ui.bootstrap','ngAutocomplete','angularFileUpload']);
 
 //Added by Srinivas Thungathurti for ASQ Upgrade2.0 for adding calendar fields on register/profile/updateUserInfo screens.
 app.controller('DatepickerCtrl', function ($scope) {
@@ -570,10 +570,11 @@ app.controller('loginCtrl', function ($scope, $rootScope, $http, $routeParams, $
 	};
 });
 
-app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $interval) {
+app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $interval,FileUploader) {
 
 	$rootScope.wrong = 0;
 	$rootScope.report = {type:'',wrong:[]};
+	$scope.uploader = new FileUploader();
 	$scope.exam = function (){
 		$rootScope.submited = false;
 		$http.get('/quiz').success(function (response) {
@@ -2617,6 +2618,13 @@ app.config(function ($routeProvider, $httpProvider, $locationProvider) {
 		}).
 		when('/home', {
 			templateUrl: 'partials/home.html',
+			controller: 'homeCtrl',
+			resolve: {
+				loggedin: checkLoggedIn
+			}
+		}).
+		when('/upload', {
+			templateUrl: 'partials/upload.html',
 			controller: 'homeCtrl',
 			resolve: {
 				loggedin: checkLoggedIn
