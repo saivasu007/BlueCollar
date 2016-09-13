@@ -2604,6 +2604,10 @@ app.config(function ($routeProvider, $httpProvider, $locationProvider) {
 			templateUrl: 'partials/landing.html',
 			controller: 'landingCtrl'
 		}).
+		when('/empSignIn', {
+			templateUrl: 'partials/empSignIn.html',
+			controller: 'landingCtrl'
+		}).
 		when('/login', {
 			templateUrl: 'partials/login.html',
 			controller: 'loginCtrl'
@@ -2645,8 +2649,8 @@ app.config(function ($routeProvider, $httpProvider, $locationProvider) {
 				loggedin: checkLoggedIn
 			}
 		}).
-		when('/register', {
-			templateUrl: 'partials/register.html',
+		when('/empRegister', {
+			templateUrl: 'partials/empRegister.html',
 			controller: 'registerCtrl'
 		}).
 		when('/exam/:id', {

@@ -1,0 +1,72 @@
+<head lang="en">
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-datepicker.min.css"/>
+    <link rel="stylesheet" href="css/angular-toggle-switch.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div class="middle-box text-center loginscreen animated fadeInDown" style="padding-top:0px;">
+    <div>
+        <h3>Register to Blue Collar Jobs Portal</h3>
+        <div class="m-t"  >
+            <div class="form-group">
+				<input type="text" ng-model="user.email" class="form-control" placeholder="Employer User ID" ng-change="testUsername()">
+				<span ng-show="usernameErr && user.email != ''" style="color:red;display:inline-block;">invalid email address</span>
+			</div>
+			<div class="form-group">
+                <input id="fName" type="text" ng-model="user.firstName" class="form-control" placeholder="Employer Name" data-toggle="tooltip" data-placement="top" data-original-title="Please use only letters for names">
+            </div>
+            <div class="form-group">
+				<input type="text" ng-model="user.email" class="form-control" placeholder="Email Address" ng-change="testUsername()">
+				<span ng-show="usernameErr && user.email != ''" style="color:red;display:inline-block;">invalid email address</span>
+			</div>
+            <div class="form-group">
+                <input id="lName" type="text" ng-model="user.lastName" class="form-control" placeholder="Contact Number">
+            </div>
+            <div class="form-group">
+                <input type="text" ng-model="user.address1" class="form-control" placeholder="Address1">
+            </div>
+            <div class="form-group">
+                <input type="text" ng-model="user.address2" class="form-control" placeholder="Address2">
+            </div>
+            <div class="form-group">
+                <input type="text" id="zip" ng-model="user.zipcode" class="form-control" placeholder="Zip Code" ng-change="testZipCode()" data-toggle="tooltip2" data-placement="top" data-original-title="Please use only numbers">
+                <span ng-show="zipCodeErr && user.zipcode != ''" style="color:red;">Please enter valid Zipcode.</span>
+            </div>
+            <!-- End Upgrade 2.0 Here. -->
+            <div class="form-group">
+                <span class="{{myClass}}"><input type="password" ng-model="user.passwd1" class="form-control" placeholder="New Password" ng-change="testPassword()"></span>
+    			<span ng-show="passwordShort && user.passwd1 != ''" style="color:red">password must be at least 6 characters</span>
+            </div>
+            <div class="form-group">
+                <span class="{{myClass}}"><input type="password" ng-model="user.passwd2" ng-change="testPassword2()" class="form-control" placeholder="Confirm Password"></span>
+    			<span ng-show="passwordErr && user.passwd2 != undefined" style="color:red">password doesn't match</span>
+            </div>
+            <!-- Payment Info -->
+            <div style="border-style:solid;border-width:2px;border-color:#5BC0DE">
+            <br/>
+            <div class="form-group">
+      		<input type="text" size="30" autocomplete="off" class="form-control" placeholder="Card Number" />
+    		</div>
+    		<div class="form-group">
+      		<input type="text" style="width:80px;display:inline" autocomplete="off" class="form-control" placeholder="CVC"/>
+    		</div>
+    		<div class="form-group">
+      		<input type="text" style="width:80px;display:inline" class="form-control" placeholder="MM"/>
+      		<input type="text" style="width:80px;display:inline;" class="form-control" placeholder="YYYY"/>
+    		</div>
+    		</div>
+            <!-- Payment Info -->
+            <br>
+            <button ng-click="register(user)" ng-disabled="error" class="btn btn-info block full-width m-b">Register</button>
+            <!-- Added by Srinivas Thungathurti for ASQ Upgrade2.0.Added Clear form button to clear the registration form details. -->
+            <button ng-click="clear(user)" ng-disabled="error" class="btn btn-info block full-width m-b">Clear</button>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2016 Blue Collar Jobs</p>
+        </div>
+    </div>
+</div>
+</body>
+
