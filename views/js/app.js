@@ -574,41 +574,42 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
 
 	$rootScope.wrong = 0;
 	$rootScope.report = {type:'',wrong:[]};
-	$scope.uploader = new FileUploader();
-	$scope.exam = function (){
-		$rootScope.submited = false;
-		$http.get('/quiz').success(function (response) {
-			$rootScope.questions = response;			
-			$location.path('/exam/0');
-		});
-	};
-	
-	//Added by Srinivas Thungathurti for ASQ Upgrade 2.0.Get the all available certifications on the application.
-	$scope.getCerts = function (){
-		$scope.wrong = true;
-		$http.post('/getCerts','').success(function (response) {
-			$scope.certifications = response;
-		  if ($scope.certifications[0] != undefined) {
-			console.log(response);
-			$location.url('/examInfoList');
-		  }else {
-			alert("No Certification found.");
-		  }
-		}).error(function (err) {
-			alert("Error!");
-			console.log(err);
-		})
-	};
-	
-	$scope.getValue = function(value) {
-		if(value == "CSQE") { 
-			$scope.wrong = false;
-		} else {
-			$scope.wrong = true;
-		}
-		$scope.selectedValue = value;
-    }
-	//End changes for ASQ Upgrade2.0.
+	var uploader = $scope.uploader = new FileUploader();
+	uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+        console.log('onWhenAddingFileFailed', item, filter, options);
+    };
+    uploader.onAfterAddingFile = function(fileItem) {
+        console.log('onAfterAddingFile', fileItem);
+    };
+    uploader.onAfterAddingAll = function(addedFileItems) {
+        console.log('onAfterAddingAll', addedFileItems);
+    };
+    uploader.onBeforeUploadItem = function(item) {
+        console.log('onBeforeUploadItem', item);
+    };
+    uploader.onProgressItem = function(fileItem, progress) {
+        console.log('onProgressItem', fileItem, progress);
+    };
+    uploader.onProgressAll = function(progress) {
+        console.log('onProgressAll', progress);
+    };
+    uploader.onSuccessItem = function(fileItem, response, status, headers) {
+        console.log('onSuccessItem', fileItem, response, status, headers);
+    };
+    uploader.onErrorItem = function(fileItem, response, status, headers) {
+        console.log('onErrorItem', fileItem, response, status, headers);
+    };
+    uploader.onCancelItem = function(fileItem, response, status, headers) {
+        console.log('onCancelItem', fileItem, response, status, headers);
+    };
+    uploader.onCompleteItem = function(fileItem, response, status, headers) {
+        console.log('onCompleteItem', fileItem, response, status, headers);
+    };
+    uploader.onCompleteAll = function() {
+        console.log('onCompleteAll');
+    };
+
+console.log('uploader', uploader);
 	
 
 	$scope.logout = function () {

@@ -23,6 +23,7 @@ var templatesDir = path.resolve(__dirname + '/views/templates');
 var pageDir = path.resolve(__dirname + '/views/partials');
 var properties = propertiesReader('applicationResources.file');
 var crypto = require("crypto");
+var multer = require("multer");
 
 var app = express();
 var port = properties.get('process.env.port');
@@ -45,6 +46,8 @@ var certModel = require('./models/certModel.js');
 var fs  = require('fs');
 var ejs = require('ejs');
 var config = require('./oauth.js');
+var DIR = './uploads/';
+var upload = multer({dest: DIR});
 
 var emailTransport = properties.get('app.email.transport');
 var serviceUser = properties.get('SMTP.service.user');
@@ -165,6 +168,30 @@ app.use(session({
 }));
 app.use(passPort.initialize());
 app.use(passPort.session());
+
+app.use(multer({
+	  dest: DIR,
+	  limits: { fileSize: 10 * 1024 * 1024},
+	  onFileUploadStart: function (file) {
+	    console.log(file.originalname + ' is starting ...');
+	  },
+	  onFileUploadComplete: function (file) {
+	    console.log(file.fieldname + ' uploaded to  ' + file.path);
+	  }
+}).array('file'));
+
+app.get('/api', function (req, res) {
+	  res.end('file catcher example');
+});
+
+app.post('/api', function (req, res) {
+	  upload(req, res, function (err) {
+	    if (err) {
+	      return res.end(err.toString());
+	    }
+	    res.end('File is uploaded');
+	  });
+});
 
 // passport config
 passPort.use(new localStrategy({
