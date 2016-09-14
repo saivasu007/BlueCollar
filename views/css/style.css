@@ -7,8 +7,22 @@
 .middle-box {
     max-width: 400px;
     z-index: 100;
-    margin: 0 auto;
+    margin: 0 400px auto;
     padding-top: 40px;
+    float:left;   
+}
+.space_line { 
+	line-height:0.7 
+}
+.right-box {
+    max-width: 400px;
+    z-index: 100;
+    margin: 0 0 0 -300px;
+    
+     padding-left: 20px;
+    padding-right: 20px;
+    float:left;
+    display: inline-block;
 }
 /*.lockscreen.middle-box {
     width: 200px;
@@ -240,11 +254,6 @@ hr {
     color: white;
 }
 
-#Added for ASQ Upgrade2.0.
-.chart-container {
-    padding:0px 5px
-}
-
 .copyright {
     text-align: center; font-size: 12px; margin: 15px;
 }
@@ -280,16 +289,6 @@ hr {
     box-shadow: 3px 3px 2px hsla(0,0%,0%,.3); /* Opera, IE 9 */
     text-shadow: 1px 1px 1px hsla(0,0%,100%,.7); /* FF, Opera, Safari, Chrome */
 }
-
-#Added for ASQ Upgrade2.0.
-.chart-container {
-	width: 70%;
-	float:right;
-    padding:0px 5px;
-	margin: 0;
-	display:inline-block;
-}
-
 #harry {
      top: -40px;
      left: -280px;
