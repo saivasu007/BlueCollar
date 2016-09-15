@@ -5,6 +5,7 @@
  */
 var app = angular.module('blueCollarApp', ['ngRoute', 'highcharts-ng','toggle-switch','timer','ui.bootstrap','ngAutocomplete','angularFileUpload']);
 
+
 //Added by Srinivas Thungathurti for ASQ Upgrade2.0 for adding calendar fields on register/profile/updateUserInfo screens.
 app.controller('DatepickerCtrl', function ($scope) {
 	  	  $scope.today = function() {
@@ -345,6 +346,13 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
         }
     };
     
+    $scope.empClear = function () {
+        if(confirm("Are you sure to clear the form?")) { 
+        	$scope.emp = {}
+        	$scope.selectedState = "";
+        }
+    };
+    
     //Added by Srinivas Thungathurti for ASQ Upgrade2.0.Added Frontend validations for Registration fields.
     
     //listen to keypress on first and last name input boxes.
@@ -463,6 +471,75 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 			})
 		}
 	};
+	
+	$scope.empRegister = function(emp) {
+		//For Stripe card transactions.
+		Stripe.setPublishableKey('pk_test_obXvmdYNSzC5Ou0vL9x9sI6Q');
+		var amount = emp.amount;
+		if(emp.passwd1 == emp.passwd2) emp.password = emp.passwd1;
+		Stripe.card.createToken({
+		    number: emp.cardNumber,
+		    cvc: emp.cvc,
+		    exp_month: emp.cardMM,
+		    exp_year: emp.cardYYYY
+		  }, amount, function(status,response) {
+			  alert(response.toSource());
+			  emp.stripeToken = response.id;
+				alert(emp.stripeToken);
+				var empData = {
+						email: emp.email,
+						uid: emp.uid,
+						password: emp.password,
+						contactNum: emp.contactNum,
+						name: emp.name,
+						address1: emp.address1,
+						city: emp.city,
+						state: emp.state,
+						zipcode: emp.zipcode,
+						activeIn: emp.activeIn,
+						expiryDate: emp.expiryDate,
+						subscriber: emp.subscriber,
+						saveCC: emp.saveCC,
+						card:{
+							uid: emp.uid,
+							cardNumber: emp.cardNumber,
+							cardMM: emp.cardMM,
+							cardYYYY: emp.cardYYYY,
+							cardName: emp.cardName,
+							cvc: emp.cvc
+						}
+				}
+				$http.post('/plans/bluecollarhunt_dev', empData).success(function (resp) {
+					alert("In post");
+					if (resp != "0") {
+						alert("Success! Please login with your registered credentials as created.");
+						$rootScope.currentUser = resp;					
+						$location.path('/login');
+					} else {
+						alert("Sorry, the account \"" + emp.email + "\" has already been registered! Please create a new one.")
+					}
+				})
+				return;
+		  });
+	}
+	
+	/*$scope.stripeResponseHandler = function(status,response) {
+		alert("before call post");
+		alert(response);
+		emp.stripeToken = response.id;
+		alert(emp.stripeToken);
+		$http.post('/plans/bluecollarhunt_dev', emp).success(function (response) {
+			alert("In post");
+			if (response != "0") {
+				alert("Success! Please login with your registered email \"" + user.email + "\" and password you created.");
+				$rootScope.currentUser = response;					
+				$location.path('/login');
+			} else {
+				alert("Sorry, the account \"" + user.email + "\" has already been registered! Please create a new one.")
+			}
+		})
+		return;
+	} */
 });
 
 app.controller('landingCtrl', function ($scope, $rootScope, $http, $routeParams, $location) {
@@ -2580,6 +2657,16 @@ app.controller('navCtrl', function ($scope, $http, $location, $rootScope){
     }
 });
 
+app.controller('testCtrl', function ($scope, $http, $location, $rootScope){
+    $scope.logout = function () {
+        $http.post('/logout',$rootScope.user).success(function () {
+            $location.url('/');
+            $rootScope.currentUser = undefined;
+            $rootScope.user = undefined;
+        })
+    }
+});
+
 app.config(function ($routeProvider, $httpProvider, $locationProvider) {
 	var checkLoggedIn = function ($q, $timeout, $http, $location, $rootScope) {
 		var deferred = $q.defer();
@@ -2767,11 +2854,8 @@ app.config(function ($routeProvider, $httpProvider, $locationProvider) {
 			}
 		}).
 		when('/testDynamic', {
-			templateUrl: 'partials/TestDynamic.html',
-			controller: 'historyCtrl',
-			resolve: {
-				loggedin: checkLoggedIn
-			}
+			templateUrl: 'partials/test.html',
+			controller: 'testCtrl'
 		}).
 		when('/404', {
 			templateUrl: 'partials/404.html'

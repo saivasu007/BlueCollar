@@ -43,11 +43,17 @@ var SCMModel = require('./models/SCMModel.js');
 var PMModel = require('./models/PMModel.js');
 var historyModel = require('./models/historyModels.js');
 var certModel = require('./models/certModel.js');
+var empModel = require("./models/empModel.js");
+var paymentModel = require("./models/paymentModel.js");
 var fs  = require('fs');
 var ejs = require('ejs');
 var config = require('./oauth.js');
 var DIR = './uploads/';
 var upload = multer({dest: DIR});
+//For Stripe payment
+var stripeApiKey = "sk_test_uipgrU7ikmbLSRJVJ9vf7mgI";
+var stripeApiKeyTesting = "pk_test_obXvmdYNSzC5Ou0vL9x9sI6Q";
+var stripe = require('stripe')(stripeApiKey);
 
 var emailTransport = properties.get('app.email.transport');
 var serviceUser = properties.get('SMTP.service.user');
@@ -463,6 +469,86 @@ app.get('/loggedin', function(req, res) {
 		res.send("0");
 	}
 });
+
+//For Stripe payments.
+app.post("/plans/bluecollarhunt_dev", function(req, res) {
+	  //Create user in the Database
+	//var password = encrypt(req.body.password);
+	//req.body.password = password;
+	console.log(req.body.id);
+	empModel.findOne({
+		id : req.body.uid
+	}, function(err, result) {
+		if (result) {
+			res.send("0");
+		} else {
+			var newUser = new empModel(req.body);
+			newUser.save(function(err, user) {
+				req.login(user, function() {
+					res.json(user);
+				});
+				/*
+				//send email after successful registration.
+				var smtpTransport = mailer.createTransport(emailTransport, {
+					service : "Gmail",
+					auth : {
+						user : serviceUser,
+						pass : servicePasswd
+					}
+				});
+				var data = {
+						email: user.email,
+			            password: decrypt(user.password),
+			            url: "http://"+req.headers.host+"/login",
+			            name: user.firstName
+				}
+				var mail = {
+					from : emailFrom,
+					to : req.body.email,
+					subject : emailSubject,
+					html: renderTemplate(regTemplate,data)
+				}
+
+				smtpTransport.sendMail(mail, function(error, response) {
+					if (error) {
+						console.log(error);
+					} else {
+						console.log("Message sent: " + response.message);
+					}
+				   smtpTransport.close();
+				});
+			    //End email communication here.
+			    */
+			});
+			if(req.body.saveCC == "Y") { 
+			var newPayment = new paymentModel(req.body.card);
+			newPayment.save(function(err, user) {
+				
+			});
+			}
+	  } 
+	});
+	
+	 //Process the payment information.
+	  stripe.customers.create({
+	    card : req.body.stripeToken,
+	    email : req.body.email, // customer's email
+	    plan : "bluecollarhunt_dev"
+	  }, function (err, customer) {
+	    if (err) {
+	      //var msg = customer.error.message || "Unknown";
+	      var msg = err || "Unknown";
+	      console.log(msg);
+	      res.send("Error while processing your payment: " + msg);
+	    }
+	    else {
+	      var id = customer.id;
+	      console.log('Success! Customer with Stripe ID ' + id + ' just signed up!');
+	      // save this customer to your database here!
+	      res.send('success');
+	    }
+	  });
+	});
 
 //Forgot Password functionality.
 app.post('/forgot', function(req, res) {

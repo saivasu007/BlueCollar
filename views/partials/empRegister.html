@@ -5,63 +5,106 @@
     <link rel="stylesheet" href="css/style.css"/>
     <meta charset="UTF-8">
 </head>
-<body>
+<style>
+.credit-card-div  span {
+    padding-top:10px;
+        }
+.credit-card-div img {
+    padding-top:30px;
+}
+.credit-card-div .small-font {
+    font-size:9px;
+}
+.credit-card-div .pad-adjust {
+    padding-top:10px;
+}
+</style>
+<body width="1280" height="800">
+<img class="banner" src="img/bluecollar.jpg" alt="background" width="1265" height="255"/>
 <div class="middle-box text-center loginscreen animated fadeInDown" style="padding-top:0px;">
     <div>
         <h3>Register to Blue Collar Jobs Portal</h3>
         <div class="m-t"  >
             <div class="form-group">
-				<input type="text" ng-model="user.email" class="form-control" placeholder="Employer User ID" ng-change="testUsername()">
-				<span ng-show="usernameErr && user.email != ''" style="color:red;display:inline-block;">invalid email address</span>
+				<input type="text" ng-model="emp.uid" class="form-control" placeholder="Employer User ID">
 			</div>
 			<div class="form-group">
-                <input id="fName" type="text" ng-model="user.firstName" class="form-control" placeholder="Employer Name" data-toggle="tooltip" data-placement="top" data-original-title="Please use only letters for names">
+                <input type="text" ng-model="emp.name" class="form-control" placeholder="Employer Name">
             </div>
             <div class="form-group">
-				<input type="text" ng-model="user.email" class="form-control" placeholder="Email Address" ng-change="testUsername()">
-				<span ng-show="usernameErr && user.email != ''" style="color:red;display:inline-block;">invalid email address</span>
+				<input type="text" ng-model="emp.email" class="form-control" placeholder="Email Address" ng-change="">
 			</div>
             <div class="form-group">
-                <input id="lName" type="text" ng-model="user.lastName" class="form-control" placeholder="Contact Number">
+                <input type="text" ng-model="emp.contactNum" class="form-control" placeholder="Contact Number">
             </div>
             <div class="form-group">
-                <input type="text" ng-model="user.address1" class="form-control" placeholder="Address1">
+                <input type="text" ng-model="emp.address1" class="form-control" placeholder="Address1">
             </div>
             <div class="form-group">
-                <input type="text" ng-model="user.address2" class="form-control" placeholder="Address2">
+                <input type="text" ng-model="emp.address2" class="form-control" placeholder="Address2">
             </div>
             <div class="form-group">
-                <input type="text" id="zip" ng-model="user.zipcode" class="form-control" placeholder="Zip Code" ng-change="testZipCode()" data-toggle="tooltip2" data-placement="top" data-original-title="Please use only numbers">
-                <span ng-show="zipCodeErr && user.zipcode != ''" style="color:red;">Please enter valid Zipcode.</span>
-            </div>
-            <!-- End Upgrade 2.0 Here. -->
-            <div class="form-group">
-                <span class="{{myClass}}"><input type="password" ng-model="user.passwd1" class="form-control" placeholder="New Password" ng-change="testPassword()"></span>
-    			<span ng-show="passwordShort && user.passwd1 != ''" style="color:red">password must be at least 6 characters</span>
+                <input type="text" id="zip" ng-model="emp.zipcode" class="form-control" placeholder="Zip Code" ng-change="testZipCode()" data-toggle="tooltip2" data-placement="top" data-original-title="Please use only numbers">
+                <span ng-show="zipCodeErr && emp.zipcode != ''" style="color:red;">Please enter valid Zipcode.</span>
             </div>
             <div class="form-group">
-                <span class="{{myClass}}"><input type="password" ng-model="user.passwd2" ng-change="testPassword2()" class="form-control" placeholder="Confirm Password"></span>
-    			<span ng-show="passwordErr && user.passwd2 != undefined" style="color:red">password doesn't match</span>
+                <span class="{{myClass}}"><input type="password" ng-model="emp.passwd1" class="form-control" placeholder="New Password" ng-change="testPassword()"></span>
+            </div>
+            <div class="form-group">
+                <span class="{{myClass}}"><input type="password" ng-model="emp.passwd2" ng-change="testPassword2()" class="form-control" placeholder="Confirm Password"></span>
             </div>
             <!-- Payment Info -->
-            <div style="border-style:solid;border-width:2px;border-color:#5BC0DE">
-            <br/>
-            <div class="form-group">
-      		<input type="text" size="30" autocomplete="off" class="form-control" placeholder="Card Number" />
-    		</div>
-    		<div class="form-group">
-      		<input type="text" style="width:80px;display:inline" autocomplete="off" class="form-control" placeholder="CVC"/>
-    		</div>
-    		<div class="form-group">
-      		<input type="text" style="width:80px;display:inline" class="form-control" placeholder="MM"/>
-      		<input type="text" style="width:80px;display:inline;" class="form-control" placeholder="YYYY"/>
-    		</div>
-    		</div>
+            <div class="credit-card-div" style="border-style:solid;border-width:2px;border-color:#5BC0DE;">
+					<div class="row">
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<h5 class="text-muted">Credit Card Information</h5>
+						</div>
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<input type="text" class="form-control"
+								ng-model="emp.cardNumber" placeholder="000000000000" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<span class="help-block text-muted small-font"> Exp
+								Month</span> <input type="text" class="form-control" ng-model="emp.cardMM" placeholder="MM" />
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<span class="help-block text-muted small-font"> Exp
+								Year</span> <input type="text" class="form-control" ng-model="emp.cardYYYY" placeholder="YYYY" />
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<span class="help-block text-muted small-font"> CVC</span> <input
+								type="text" class="form-control" ng-model="emp.cvc" placeholder="CVC" />
+						</div>
+						<div class="col-md-3 col-sm-3 col-xs-3">
+							<img
+								src="data:image/png;base64,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"
+								class="img-rounded" />
+						</div>
+					</div>
+					<div class="row ">
+						<div class="col-md-12 pad-adjust">
+
+							<input type="text" class="form-control"
+								ng-model="emp.cardName" placeholder="Name On The Card" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="checkbox">
+								<label> <input type="checkbox" checked
+									ng-model="emp.saveCC" class="text-muted"> Save details for future payments.
+								</label>
+							</div>
+						</div>
+					</div>
+			</div>
             <!-- Payment Info -->
             <br>
-            <button ng-click="register(user)" ng-disabled="error" class="btn btn-info block full-width m-b">Register</button>
+            <button ng-click="empRegister(emp)" ng-disabled="error" class="btn btn-info block full-width m-b">Register</button>
             <!-- Added by Srinivas Thungathurti for ASQ Upgrade2.0.Added Clear form button to clear the registration form details. -->
-            <button ng-click="clear(user)" ng-disabled="error" class="btn btn-info block full-width m-b">Clear</button>
+            <button ng-click="empClear(emp)" ng-disabled="error" class="btn btn-info block full-width m-b">Clear</button>
         </div>
         <div class="copyright">
             <p>&copy; 2016 Blue Collar Jobs</p>
