@@ -2699,6 +2699,10 @@ app.config(function ($routeProvider, $httpProvider, $locationProvider) {
 			templateUrl: 'partials/login.html',
 			controller: 'loginCtrl'
 		}).
+		when('/contact', {
+			templateUrl: 'partials/contact.html',
+			controller: 'loginCtrl'
+		}).
 		//Added by Srinivas Thungathurti for ASQ Upgrade 2.0.New screens Forget Password added.
 		when('/forgetPasswd', {
 			templateUrl: 'partials/forgetPassword.html',

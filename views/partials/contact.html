@@ -1,0 +1,91 @@
+<style>
+.jumbotron {
+background: #358CCE;
+color: #FFF;
+border-radius: 0px;
+}
+.jumbotron-sm { padding-top: 0px;
+padding-bottom: 0px; }
+.jumbotron small {
+color: #FFF;
+}
+.h3 small {
+font-size: 18px;
+}
+</style>
+<img class="banner" src="img/bluecollar.jpg" alt="background" width="1265" height="255"/>
+<div class="jumbotron jumbotron-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-lg-6">
+                <h3 class="h3">
+                    Contact us</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well well-sm">
+                <form>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">
+                                Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
+                                </span>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">
+                                Subject</label>
+                            <select id="subject" name="subject" class="form-control" required="required">
+                                <option value="na" selected="">Choose One:</option>
+                                <option value="service">General Inquiry</option>
+                                <option value="suggestions">Suggestions</option>
+                                <option value="product">Technical Issues</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="name">
+                                Message</label>
+                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
+                                placeholder="Message"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                            Send Message</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <form>
+            <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
+            <address>
+                <strong><font color="blue"">Blue Collar Hunt Inc.</font></strong><br>
+                XXXX N First St, Suite ZZZ<br>
+                San Jose, CA 94157<br>
+                <abbr title="Phone">
+                    Ph:</abbr>
+                (408) xxx-xxxx
+            </address>
+            <address>
+            <img width="190" src="http://maps.googleapis.com/maps/api/staticmap?center=san+jose&zoom=10&scale=false&size=190x145&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of san jose">
+            </address>
+            </form>
+        </div>
+    </div>
+</div>
