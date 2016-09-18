@@ -10,8 +10,8 @@ var ids = {
     returnURL: 'http://www.bluecollarhunt.com/auth/google/callback'
   },
    linkedin: {
-    consumerKey: '7515ix697gi6oz',
-    consumerSecret: 'zPbAKreoQuQg3U3H',
+    consumerKey: '7578yq7jpw4ui9',
+    consumerSecret: '5fHsmNyBb3bEYWlV',
     callbackURL: 'http://www.bluecollarhunt.com/auth/linkedin/callback',
     scope: ['r_emailaddress', 'r_basicprofile']
   }
