@@ -44,6 +44,7 @@ var PMModel = require('./models/PMModel.js');
 var historyModel = require('./models/historyModels.js');
 var certModel = require('./models/certModel.js');
 var empModel = require("./models/empModel.js");
+var contactModel = require("./models/contactModel.js");
 var paymentModel = require("./models/paymentModel.js");
 var fs  = require('fs');
 var ejs = require('ejs');
@@ -445,6 +446,18 @@ app.post('/register', function(req, res) {
 	
 });
 
+
+app.post('/saveContactMessage', function(req, res) {
+		var newUser = new contactModel(req.body);
+		newUser.save(function(err, result) {
+			if(result) {
+				res.send("0");
+			} else {
+				res.send("ERROR "+err);
+			}
+		});
+});
+
 app.post('/login', passPort.authenticate('local'),function(req, res) {
 	var user = req.user;
 	res.json(user);
@@ -475,7 +488,7 @@ app.post("/plans/bluecollarhunt_dev", function(req, res) {
 	  //Create user in the Database
 	//var password = encrypt(req.body.password);
 	//req.body.password = password;
-	console.log(req.body.id);
+	console.log(req.body.uid);
 	empModel.findOne({
 		id : req.body.uid
 	}, function(err, result) {
@@ -523,7 +536,8 @@ app.post("/plans/bluecollarhunt_dev", function(req, res) {
 			if(req.body.saveCC == "Y") { 
 			var newPayment = new paymentModel(req.body.card);
 			newPayment.save(function(err, user) {
-				
+				if(err) console.log("ERROR:paymet "+err);
+				console.log("Payment Source added successfully");
 			});
 			}
 	  } 
@@ -537,9 +551,10 @@ app.post("/plans/bluecollarhunt_dev", function(req, res) {
 	  }, function (err, customer) {
 	    if (err) {
 	      //var msg = customer.error.message || "Unknown";
-	      var msg = err || "Unknown";
-	      console.log(msg);
-	      res.send("Error while processing your payment: " + msg);
+	      var msg = err.message;
+	      console.log("msg: "+msg);
+	      console.log("err: "+err);
+	      //res.send(msg);
 	    }
 	    else {
 	      var id = customer.id;

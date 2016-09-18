@@ -9,8 +9,8 @@ padding-bottom: 0px; }
 .jumbotron small {
 color: #FFF;
 }
-.h3 small {
-font-size: 18px;
+.h4 small {
+font-size: 10px;
 }
 </style>
 <img class="banner" src="img/bluecollar.jpg" alt="background" width="1265" height="255"/>
@@ -18,7 +18,7 @@ font-size: 18px;
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-lg-6">
-                <h3 class="h3">
+                <h3 class="h4">
                     Contact us</h3>
             </div>
         </div>
@@ -33,21 +33,21 @@ font-size: 18px;
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name">
-                                Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" />
+                                <font color="red">*</font>&nbsp;Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" ng-model="contact.name"/>
                         </div>
                         <div class="form-group">
                             <label for="email">
-                                Email Address</label>
+                                <font color="red">*</font>&nbsp;Email Address</label>
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                                 </span>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" /></div>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" ng-model="contact.email"/></div>
                         </div>
                         <div class="form-group">
                             <label for="subject">
-                                Subject</label>
-                            <select id="subject" name="subject" class="form-control" required="required">
+                                <font color="red">*</font>&nbsp;Subject</label>
+                            <select id="subject" name="subject" class="form-control" required="required" ng-model="contact.subject">
                                 <option value="na" selected="">Choose One:</option>
                                 <option value="service">General Inquiry</option>
                                 <option value="suggestions">Suggestions</option>
@@ -58,13 +58,13 @@ font-size: 18px;
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name">
-                                Message</label>
+                                <font color="red">*</font>&nbsp;Message</label>
                             <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
-                                placeholder="Message"></textarea>
+                                placeholder="Message" ng-model="contact.message"></textarea>
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary pull-right" id="btnContactUs">
+                        <button class="btn btn-primary pull-right" id="btnContactUs" ng-click="saveMessage(contact)">
                             Send Message</button>
                     </div>
                 </div>

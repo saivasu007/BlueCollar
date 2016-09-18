@@ -5,26 +5,20 @@
     <link rel="stylesheet" href="css/style.css"/>
     <meta charset="UTF-8">
 </head>
-<style>
-.credit-card-div  span {
-    padding-top:10px;
-        }
-.credit-card-div img {
-    padding-top:30px;
-}
-.credit-card-div .small-font {
-    font-size:9px;
-}
-.credit-card-div .pad-adjust {
-    padding-top:10px;
-}
-</style>
 <body width="1280" height="800">
 <img class="banner" src="img/bluecollar.jpg" alt="background" width="1265" height="255"/>
-<div class="middle-box text-center loginscreen animated fadeInDown" style="padding-top:0px;">
-    <div>
-        <h3>Register to Blue Collar Jobs Portal</h3>
-        <div class="m-t"  >
+<div class="middle-box">
+<div class="container" style="padding-left:0px;">
+<div class="row">
+<div class="col-xs-12 col-md-4">
+<div class="panel panel-default site-panel-box">
+            <div class="panel-heading display-table" >
+                    <div class="row display-tr" >
+                        <h3 class="panel-title display-td" >Blue Collar</h3>
+                        <h3 class="panel-title display-td" >Registration</h3>
+                    </div>                    
+            </div>
+            <div class="panel-body" style="padding:10px;">
             <div class="form-group">
 				<input type="text" ng-model="emp.uid" class="form-control" placeholder="Employer User ID">
 			</div>
@@ -35,7 +29,7 @@
 				<input type="text" ng-model="emp.email" class="form-control" placeholder="Email Address" ng-change="">
 			</div>
             <div class="form-group">
-                <input type="text" ng-model="emp.contactNum" class="form-control" placeholder="Contact Number">
+                <input type="text" id="phone" ng-model="emp.contactNum" class="form-control" placeholder="Contact Number" ng-blur="formatContactNum(emp)">
             </div>
             <div class="form-group">
                 <input type="text" ng-model="emp.address1" class="form-control" placeholder="Address1">
@@ -45,7 +39,6 @@
             </div>
             <div class="form-group">
                 <input type="text" id="zip" ng-model="emp.zipcode" class="form-control" placeholder="Zip Code" ng-change="testZipCode()" data-toggle="tooltip2" data-placement="top" data-original-title="Please use only numbers">
-                <span ng-show="zipCodeErr && emp.zipcode != ''" style="color:red;">Please enter valid Zipcode.</span>
             </div>
             <div class="form-group">
                 <span class="{{myClass}}"><input type="password" ng-model="emp.passwd1" class="form-control" placeholder="New Password" ng-change="testPassword()"></span>
@@ -53,63 +46,123 @@
             <div class="form-group">
                 <span class="{{myClass}}"><input type="password" ng-model="emp.passwd2" ng-change="testPassword2()" class="form-control" placeholder="Confirm Password"></span>
             </div>
+            <div class="form-group">
+                <input type="Radio" ng-model="emp.amount"  ng-value="0" style="align:left" ng-click="disableCardInfo(emp)"><b>&nbsp;Free Trial</b>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="Radio" ng-model="emp.amount"  ng-value="1999" ng-click="disableCardInfo(emp)"><b>&nbsp;$19.99/mo</b>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
             <!-- Payment Info -->
-            <div class="credit-card-div" style="border-style:solid;border-width:2px;border-color:#5BC0DE;">
-					<div class="row">
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<h5 class="text-muted">Credit Card Information</h5>
-						</div>
-						<div class="col-md-12 col-sm-12 col-xs-12">
-							<input type="text" class="form-control"
-								ng-model="emp.cardNumber" placeholder="000000000000" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<span class="help-block text-muted small-font"> Exp
-								Month</span> <input type="text" class="form-control" ng-model="emp.cardMM" placeholder="MM" />
-						</div>
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<span class="help-block text-muted small-font"> Exp
-								Year</span> <input type="text" class="form-control" ng-model="emp.cardYYYY" placeholder="YYYY" />
-						</div>
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<span class="help-block text-muted small-font"> CVC</span> <input
-								type="text" class="form-control" ng-model="emp.cvc" placeholder="CVC" />
-						</div>
-						<div class="col-md-3 col-sm-3 col-xs-3">
-							<img
-								src="data:image/png;base64,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"
-								class="img-rounded" />
-						</div>
-					</div>
-					<div class="row ">
-						<div class="col-md-12 pad-adjust">
-
-							<input type="text" class="form-control"
-								ng-model="emp.cardName" placeholder="Name On The Card" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="checkbox">
-								<label> <input type="checkbox" checked
-									ng-model="emp.saveCC" class="text-muted"> Save details for future payments.
-								</label>
+            <div id="cardInfo" class="container" style="padding-left:0px;">
+    <div class="row">
+        <div class="col-xs-12 col-md-4">
+            <!-- CREDIT CARD FORM STARTS HERE -->
+            <div class="panel panel-default site-panel-box">
+                <div class="panel-heading display-table" >
+                    <div class="row display-tr" >
+                        <h3 class="panel-title display-td" >Payment Details</h3>
+                        <div class="display-td" >                            
+                            <img class="img-responsive pull-right" src="img/credit_cards.png">
+                        </div>
+                    </div>                    
+                </div>
+                <div class="panel-body" style="padding:10px;">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    
+                                    <div class="input-group">
+                                        <input 
+                                            type="tel"
+                                            id="cardNum"
+                                            class="form-control"
+                                            ng-model="emp.cardNumber"
+                                            ng-change="formatCC()"
+                                            placeholder="Valid Card Number"
+                                            autocomplete="cc-number"
+                                            required autofocus 
+                                        />
+                                        <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
+                                    </div>
+                                </div>                            
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-7 col-md-7">
+                                <div class="form-group">
+                                    
+                                    <input 
+                                        type="tel" 
+                                        class="form-control" 
+                                        id="expiry"
+                                        ng-model="emp.cardExpiry"
+                                        ng-change="formatExpiry()"
+                                        placeholder="MM / YYYY"
+                                        autocomplete="cc-exp"
+                                        required 
+                                    />
+                                </div>
+                            </div>
+                            <div class="col-xs-5 col-md-5 pull-right">
+                                <div class="form-group">
+                                    
+                                    <input 
+                                        type="tel" 
+                                        class="form-control"
+                                        id="cvc"
+                                        ng-model="emp.cvc"
+                                        ng-change="formatCVC()"
+                                        placeholder="CVC"
+                                        autocomplete="cc-csc"
+                                        required
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" ng-model="emp.cardName" placeholder="Name on the card"/>
+                                </div>
+                            </div>                        
+                        </div>
+                        <div class="row">
+						<div class="col-xs-12">
+							<div class="form-group">
+								<input type="checkbox" ng-checked=true
+									ng-model="emp.saveCC" ng-value=true> <font color="blue"><b>Save card details for future payments.</b></font>
 							</div>
 						</div>
 					</div>
-			</div>
-            <!-- Payment Info -->
-            <br>
-            <button ng-click="empRegister(emp)" ng-disabled="error" class="btn btn-info block full-width m-b">Register</button>
-            <!-- Added by Srinivas Thungathurti for ASQ Upgrade2.0.Added Clear form button to clear the registration form details. -->
-            <button ng-click="empClear(emp)" ng-disabled="error" class="btn btn-info block full-width m-b">Clear</button>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2016 Blue Collar Jobs</p>
+                        <div class="row" style="display:none;">
+                            <div class="col-xs-12">
+                                <p class="payment-errors"></p>
+                            </div>
+                        </div>
+                </div>
+            </div>            
+            <!-- CREDIT CARD FORM ENDS HERE -->
         </div>
     </div>
 </div>
+            <!-- Payment Info -->
+            <br>
+            <div class="container" style="padding-left:0px;">
+            <div class="row">
+			<div class="col-xs-12 col-md-4">
+            <button ng-click="empRegister(emp)" ng-disabled="error" class="btn btn-info block full-width m-b">Register</button>
+            <!-- Added by Srinivas Thungathurti for ASQ Upgrade2.0.Added Clear form button to clear the registration form details. -->
+            <button ng-click="empClear(emp)" ng-disabled="error" class="btn btn-info block full-width m-b">Clear</button>
+            </div>
+            </div></div>
+        </div>
+        <br/><br/>
+        <hr/>
+        <div class="copyright">
+            <p>&copy; 2016 Blue Collar Hunt. All rights reserved.</p>
+        </div>
+        </div>
 </body>
-

@@ -1,13 +1,15 @@
 <body width="1280" height="800">
 <img class="banner" src="img/bluecollar.jpg" alt="background" width="1265" height="255"/>
 <ng-form name="loginForm">
-<div class="middle-box text-center loginscreen  animated fadeInDown" style="padding-top:0px;">
-    <div>
-        <h3>Welcome to BlueCollar Jobs Portal!</h3>
-        <p>Perfect website for you to Search and Apply the Blue Collar Jobs.</p>
-        <div class="m-t">
+<div class="middle-box">
+<br/>
+<div class="container" style="padding-left:0px;">
+<div class="row">
+<div class="col-xs-12 col-md-4">
+<div class="panel panel-default site-panel-box">
+	<div class="panel-body" style="padding:10px;">
             <div class="form-group">
-                <input type="text" ng-model="user.email" class="form-control" style="display:inline-block;" placeholder="Email" ng-change="testLoginName()" ng-required="true">
+                <input type="text" ng-model="user.email" class="form-control" style="display:inline-block;" placeholder="User ID" ng-change="testLoginName()" ng-required="true">
                 <span ng-show="loginEmailErr && user.email != undefined" style="color:red;display:inline-block;">invalid email address</span>
             </div>
             <div class="form-group">
@@ -16,14 +18,10 @@
             </div>
             <br>
             <button ng-click="login(user)" class="btn btn-info block full-width m-b" ng-disabled="loginForm.$invalid">Login</button>
-
-            <a href="/forgetPasswd"><small>Forgot password?</small></a><br/><br/>
-        </div>
-        <div class="copyright">
-            <p>&copy; 2016 BlueCollar Jobs</a></p>
-        </div>
-    </div>
+      </div>
 </div>
+</div>
+</div></div></div>
 <!-- For Social Login -->
 <br/><br/><br/><br/>
 <div id="social" class="right-box text-center sociallogin  animated fadeInDown" style="border-style:double;border-width:2px;border-color:#5BC0DE;">
@@ -35,9 +33,9 @@
 			<area shape="poly" Coords="4,44,196,43,196,73,5,73" href="/auth/facebook">
 			<area shape="poly" Coords="4,80,196,82,197,112,5,111" href="/auth/linkedin">
 			</map>
-			<p><small><b>By signing up, I agree to Blue Collar Jobs <br/>Portal Terms of Service,Privacy Policy<br/> and other Terms.</b></small></p> 
+			<p><small><b style="color:blue">By signing up, I agree to Blue Collar Jobs <br/>Portal Terms of Service,Privacy Policy<br/> and other Terms.</b></small></p> 
 		</p>
-</div>	
+</div>
 <!-- End for Social Login -->
 </ng-form>
 </body>

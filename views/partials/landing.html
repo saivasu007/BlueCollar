@@ -1,41 +1,45 @@
 <body width="1280" height="800">
 <img class="banner" src="img/bluecollar.jpg" alt="background" width="1265" height="255"/>
+<h3 style="color:#5BC0DE">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Welcome to BlueCollar Jobs Portal!</h3>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Website for you to Search and Apply the Blue Collar Jobs.</p>
 <ng-form name="loginForm">
-<div class="text-center loginscreen  animated fadeInDown" style="padding-top:0px;">
-    <div>
-        <h3>Welcome to BlueCollar Jobs Portal!</h3>
-        <p>Perfect website for you to Search and Apply the Blue Collar Jobs.</p>
-        <br/>
-        <div class="m-t">
-        	<div class="form-group">
-        	<a href="/login"><button style="width: 135px; height: 30px; font-size: 16px" class="btn btn-primary"  ng-click="" ng-disabled="">
-				<span class="glyphicon glyphicon-ok-sign"></span>  Job Seeker
-		</button></a>
-		<a href="/empSignIn"><button style="width: 125px; height: 30px; font-size: 16px" class="btn btn-primary"  ng-click="" ng-disabled="">
-				<span class="glyphicon glyphicon-ok-sign"></span>  Employer
-		</button></a>
-		<a href="/contact"><button style="width: 125px; height: 30px; font-size: 16px" class="btn btn-primary"  ng-click="" ng-disabled="">
-				<span class="glyphicon glyphicon-ok-sign"></span>  Contact Us
-		</button></a>
-        	</div>
-        	<br/><br/>
+<div class="middle-box">
+<div class="container">
+<div class="row">
+<div class="col-xs-12 col-md-4">
+<div class="panel panel-default site-panel-box">
+        <div class="panel-body" style="padding-top:50px;padding-bottom:0px;padding-left:40px;padding-right:0px;">
             <div class="form-group">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="text" ng-model="user.search" class="form-control" style="display:inline;width:240px" placeholder="Search" ng-change="testLoginName()" ng-required="true">
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="text" id="Autocomplete" ng-model="user.location" style="display:inline;width:240px" class="form-control" placeholder="Location" ng-autocomplete="result1" details="details1" options="options1"/>
+                <input type="text" ng-model="user.search" class="form-control" style="width:280px" placeholder="Search" ng-change="testLoginName()" ng-required="true">
+            </div>
+            <div class="form-group">
+            <input type="text" id="Autocomplete" ng-model="user.location" style="width:280px" class="form-control" placeholder="Location" ng-autocomplete="result1" details="details1" options="options1"/>
             </div>
             <div class="form-group">
             <button style="margin: 35px 42px 60px 45px; width: 145px; height: 40px; font-size: 16px" class="btn btn-warning"  ng-click="" ng-disabled="">
 				<span class="glyphicon glyphicon-ok-sign"></span>  Search Jobs
 			</button>
             </div>
-            <br>
         </div>
-        <div class="copyright">
-            <p>&copy; 2016 BlueCollar Jobs</a></p>
+</div></div></div></div></div>
+<br/><br/><br/>
+<div id="social" class="right-box text-center sociallogin  animated fadeInDown" style="border-style:double;border-width:2px;border-color:#5BC0DE;padding-top:20px;padding-bottom:20px;">
+    	<p>
+	    	<a href="/login"><button style="width: 135px; height: 30px; font-size: 16px" class="btn btn-primary"  ng-click="" ng-disabled="">
+				<span class="glyphicon glyphicon-ok-sign"></span>  Job Seeker
+		</button></a><br/><br/>
+		<a href="/empSignIn"><button style="width: 125px; height: 30px; font-size: 16px" class="btn btn-primary"  ng-click="" ng-disabled="">
+				<span class="glyphicon glyphicon-ok-sign"></span>  Employer
+		</button></a><br/><br/>
+		<a href="/contact"><button style="width: 125px; height: 30px; font-size: 16px" class="btn btn-primary"  ng-click="" ng-disabled="">
+				<span class="glyphicon glyphicon-ok-sign"></span>  Contact Us
+		</button></a>
+		</p>
+</div>
+<div class="middle-box" style="margin-left:460px;">
+<div class="copyright">
+            <p>&copy; 2016 BlueCollar Hunt. All rights reserved.</p>
         </div>
-    </div>
 </div>
 </ng-form>
 </body>

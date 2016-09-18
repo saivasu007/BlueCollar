@@ -7,7 +7,8 @@ var paymentSchema = new mongoose.Schema({
     cardMM: Number,
     cardYYYY: Number,
     cvc: Number,
-    cardName: String
+    cardName: String,
+    lastUpdated: Date
 });
 
 

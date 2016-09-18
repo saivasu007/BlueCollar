@@ -475,13 +475,17 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 	$scope.empRegister = function(emp) {
 		//For Stripe card transactions.
 		Stripe.setPublishableKey('pk_test_obXvmdYNSzC5Ou0vL9x9sI6Q');
+		var saveCardInfo = emp.saveCC;
+		if(saveCardInfo == true) saveCardInfo = "Y";
 		var amount = emp.amount;
 		if(emp.passwd1 == emp.passwd2) emp.password = emp.passwd1;
+		var cardMM = emp.cardExpiry.substring(0,2);
+		var cardYYYY = emp.cardExpiry.substring(5,9);
 		Stripe.card.createToken({
 		    number: emp.cardNumber,
 		    cvc: emp.cvc,
-		    exp_month: emp.cardMM,
-		    exp_year: emp.cardYYYY
+		    exp_month: cardMM,
+		    exp_year: cardYYYY
 		  }, amount, function(status,response) {
 			  alert(response.toSource());
 			  emp.stripeToken = response.id;
@@ -499,27 +503,29 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 						activeIn: emp.activeIn,
 						expiryDate: emp.expiryDate,
 						subscriber: emp.subscriber,
-						saveCC: emp.saveCC,
+						saveCC: saveCardInfo,
 						card:{
 							uid: emp.uid,
 							cardNumber: emp.cardNumber,
-							cardMM: emp.cardMM,
-							cardYYYY: emp.cardYYYY,
+							cardMM: cardMM,
+							cardYYYY: cardYYYY,
 							cardName: emp.cardName,
-							cvc: emp.cvc
+							cvc: emp.cvc,
+							lastUpdated: moment(new Date()).format('MM/DD/YYYY, h:mm:ss a')
 						}
 				}
 				$http.post('/plans/bluecollarhunt_dev', empData).success(function (resp) {
-					alert("In post");
 					if (resp != "0") {
 						alert("Success! Please login with your registered credentials as created.");
-						$rootScope.currentUser = resp;					
-						$location.path('/login');
+						//$rootScope.currentUser = null;					
+						$location.path('/empSignIn');
 					} else {
-						alert("Sorry, the account \"" + emp.email + "\" has already been registered! Please create a new one.")
+						alert("Ooops, there is a issue and Please try again!!")
 					}
-				})
-				return;
+				}).error(function (err) {
+					alert("ERROR: "+err.message);
+				});
+				//return;
 		  });
 	}
 	
@@ -540,6 +546,30 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 		})
 		return;
 	} */
+	
+	$scope.formatCC = function() {
+		var input = document.getElementById('cardNum');
+		payform.cardNumberInput(input);
+	}
+	
+	$scope.formatExpiry = function() {
+		var input = document.getElementById('expiry');
+		payform.expiryInput(input);
+	}
+	
+	$scope.formatCVC = function() {
+		var input = document.getElementById('cvc');
+		payform.cvcInput(input);
+	}
+	
+	$scope.disableCardInfo = function(emp) {
+		if(emp.amount > 0) $("#cardInfo").show();
+		else $("#cardInfo").hide();
+	}
+	
+	$scope.formatContactNum = function(emp) {
+		
+	}
 });
 
 app.controller('landingCtrl', function ($scope, $rootScope, $http, $routeParams, $location) {
@@ -698,6 +728,32 @@ console.log('uploader', uploader);
 	};
 
 });
+
+
+app.controller('contactCtrl', function ($q, $scope, $rootScope, $http, $location) {
+	   
+		$scope.saveMessage = function(contact) {
+			alert(contact);
+			var postData = { 
+					name: contact.name,
+					email: contact.email,
+					subject: contact.subject,
+					message: contact.message,
+					msgDate: new Date()
+				};
+			$http.post('/saveContactMessage',postData).success(function (response){
+				if(response == "0") {
+				   alert("Message sent successfully!");
+				   $scope.contact = "";
+				   $location.url('/contact');
+				}
+			}).error(function (err) {
+				alert("Error!");
+				console.log(err);
+			});
+	}
+});
+
 
 //Updated by Srinivas Thungathurti for ASQ Upgrade 2.0
 app.controller('profileCtrl', function ($q, $scope, $rootScope, $http, $location) {	
@@ -2701,7 +2757,7 @@ app.config(function ($routeProvider, $httpProvider, $locationProvider) {
 		}).
 		when('/contact', {
 			templateUrl: 'partials/contact.html',
-			controller: 'loginCtrl'
+			controller: 'contactCtrl'
 		}).
 		//Added by Srinivas Thungathurti for ASQ Upgrade 2.0.New screens Forget Password added.
 		when('/forgetPasswd', {
