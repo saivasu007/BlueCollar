@@ -487,9 +487,8 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 		    exp_month: cardMM,
 		    exp_year: cardYYYY
 		  }, amount, function(status,response) {
-			  alert(response.toSource());
 			  emp.stripeToken = response.id;
-				alert(emp.stripeToken);
+				alert("Token: "+emp.stripeToken);
 				var empData = {
 						email: emp.email,
 						uid: emp.uid,
@@ -2795,6 +2794,10 @@ app.config(function ($routeProvider, $httpProvider, $locationProvider) {
 			resolve: {
 				loggedin: checkLoggedIn
 			}
+		}).
+		when('/register', {
+			templateUrl: 'partials/register.html',
+			controller: 'registerCtrl'
 		}).
 		when('/empRegister', {
 			templateUrl: 'partials/empRegister.html',
