@@ -5,8 +5,8 @@ var ids = {
     callbackURL: 'http://www.bluecollarhunt.com/auth/facebook/callback'
   },
   google: {
-    clientID: '1003631882203-h39iko7mudtca2h2mmqjpi1ekpac8q6s.apps.googleusercontent.com',
-    clientSecret: 'KWuXkAMVlf4aXuuXrYTK8cC0',
+    clientID: '8146498752-hdommt7s414bmhlpocl3euaklqsqriel.apps.googleusercontent.com',
+    clientSecret: '78cFdH1dYrKXtRDsyckA1s4Z',
     returnURL: 'http://www.bluecollarhunt.com/auth/google/callback'
   },
    linkedin: {
