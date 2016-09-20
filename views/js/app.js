@@ -677,7 +677,6 @@ app.controller('loginCtrl', function ($scope, $rootScope, $http, $routeParams, $
 });
 
 app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $interval,FileUploader) {
-
 	$rootScope.wrong = 0;
 	$rootScope.report = {type:'',wrong:[]};
 	var uploader = $scope.uploader = new FileUploader();
@@ -715,7 +714,7 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
         console.log('onCompleteAll');
     };
 
-console.log('uploader', uploader);
+    console.log('uploader', uploader);
 	
 
 	$scope.logout = function () {
@@ -725,7 +724,120 @@ console.log('uploader', uploader);
 			$rootScope.user = undefined;
 		})
 	};
+	
+	/* Connect Dropbox for Resume Upload Functionality. */
+	
+	$scope.dropbox = function() {
+		var options = {
+			    // Required. Called when a user selects an item in the Chooser.
+			    success: function(files) {
+			        alert("Here's the file link: " + files[0].link)
+			    },
 
+			    // Optional. Called when the user closes the dialog without selecting a file
+			    // and does not include any parameters.
+			    cancel: function() {
+
+			    },
+
+			    // Optional. "preview" (default) is a preview link to the document for sharing,
+			    // "direct" is an expiring link to download the contents of the file. For more
+			    // information about link types, see Link types below.
+			    linkType: "preview", // or "direct"
+
+			    // Optional. A value of false (default) limits selection to a single file, while
+			    // true enables multiple file selection.
+			    multiselect: false, // or true
+
+			    // Optional. This is a list of file extensions. If specified, the user will
+			    // only be able to select files with these extensions. You may also specify
+			    // file types, such as "video" or "images" in the list. For more information,
+			    // see File types below. By default, all extensions are allowed.
+			    extensions: ['.pdf', '.doc', '.docx'],
+			};
+		var button = Dropbox.createChooseButton(options);
+		document.getElementById("dropboxChooser").appendChild(button);
+	}
+	
+	/* Connect Google Drive for Resume Upload Functionality. */
+	
+	// The Browser API key obtained from the Google API Console.
+    // Replace with your own Browser API key, or your own key.
+    var developerKey = 'AIzaSyDQGmR4Lvd89tAhrPvnn1OjV2zwECRCDP4';
+
+    // The Client ID obtained from the Google API Console. Replace with your own Client ID.
+    var clientId = "8146498752-hdommt7s414bmhlpocl3euaklqsqriel.apps.googleusercontent.com";
+
+    // Replace with your own App ID. (Its the first number in your Client ID)
+    var appId = "8146498752";
+
+    // Scope to use to access user's Drive items.
+    var scope = ['https://www.googleapis.com/auth/drive.readonly'];
+
+    var pickerApiLoaded = false;
+    var oauthToken;
+
+    // Use the Google API Loader script to load the google.picker script.
+    $scope.loadPicker = function() {
+      gapi.load('auth', {'callback': $scope.onAuthApiLoad()});
+      gapi.load('picker', {'callback': $scope.onPickerApiLoad()});
+    }
+
+    $scope.onAuthApiLoad = function() {
+      window.gapi.auth.authorize(
+          {
+            'client_id': clientId,
+            'scope': scope,
+            'immediate': false
+          }, function() {
+        	  oauthToken = gapi.auth.getToken().access_token;
+        	  pickerApiLoaded = true;
+              $scope.createPicker();
+          });
+    }
+
+    $scope.onPickerApiLoad = function() {
+      pickerApiLoaded = true;
+    }
+
+    /*
+    $scope.handleAuthResult = function(authResult) {
+    	alert("handleAuthResult");
+      if (authResult && !authResult.error) {
+        oauthToken = authResult.access_token;
+        $scope.createPicker();
+      }
+    }
+    */
+
+    // Create and render a Picker object for searching images.
+    $scope.createPicker = function() {
+      if (pickerApiLoaded && oauthToken) {
+        var view = new google.picker.View(google.picker.ViewId.DOCS);
+        view.setMimeTypes("image/png,application/pdf,application/msword");
+        var picker = new google.picker.PickerBuilder()
+            .enableFeature(google.picker.Feature.NAV_HIDDEN)
+            .enableFeature(google.picker.Feature.MULTISELECT_ENABLED)
+            .setAppId(appId)
+            .setOAuthToken(oauthToken)
+            .addView(view)
+            .addView(new google.picker.DocsUploadView())
+            .setDeveloperKey(developerKey)
+            //.setCallback($scope.pickerCallback())
+            .build();
+         picker.setVisible(true);
+      }
+    }
+
+    // A simple callback implementation.
+    $scope.pickerCallback = function(data) {
+    	alert(data.action);
+      if (data.action == google.picker.Action.PICKED) {
+    	  alert(google.picker.Action.PICKED);
+        var fileId = data.docs[0].id;
+        alert('The user selected: ' + fileId);
+      }
+    }
 });
 
 
@@ -2713,6 +2825,42 @@ app.controller('navCtrl', function ($scope, $http, $location, $rootScope){
 });
 
 app.controller('testCtrl', function ($scope, $http, $location, $rootScope){
+	
+	//Delete below commented code if not needed.
+	/*$scope.showPicker = function() {
+		alert("Picker");
+		google.setOnLoadCallback(createPicker);
+	    google.load('picker', '1');
+	}
+
+    // Create and render a Picker object for searching images
+    // and uploading files.
+    function createPicker() {
+        // Create a view to search images.
+        var view = new google.picker.View(google.picker.ViewId.DOCS);
+        view.setMimeTypes('image/png,image/jpeg');
+
+        // Use DocsUploadView to upload documents to Google Drive.
+        var uploadView = new google.picker.DocsUploadView();
+
+        var picker = new google.picker.PickerBuilder().
+            addView(view);
+            addView(uploadView);
+            setAppId("8146498752-hdommt7s414bmhlpocl3euaklqsqriel.apps.googleusercontent.com");
+            setCallback(pickerCallback);
+            build();
+        picker.setVisible(true);
+    }
+
+    // A simple callback implementation.
+    function pickerCallback(data) {
+        if (data.action == google.picker.Action.PICKED) {
+            var fileId = data.docs[0].id;
+            alert('The user selected: ' + fileId);
+        }
+    }
+    */
+	
     $scope.logout = function () {
         $http.post('/logout',$rootScope.user).success(function () {
             $location.url('/');

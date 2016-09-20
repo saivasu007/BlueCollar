@@ -1,5 +1,6 @@
 <head>
         <title>Resume Upload</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
         <style>
             .my-drop-zone { border: dotted 3px lightgray; }
             .nv-file-over { border: dotted 3px red; } 
@@ -52,6 +53,9 @@
                             <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone">
                                 Select or Drop Files Here
                             </div>
+                            <div data-ng-init="dropbox()" id="dropboxChooser" width=160 height=45></div>
+                            <!-- <div data-ng-init="onApiLoad()" id="container1234"></div>  -->
+                            <div id="googlePicker"><a href="" ng-click="loadPicker()"><img src="./img/drive_icon.png"/ width=160 height=45></a></div>
                         </div>
                     </div>
                 </div>
@@ -125,9 +129,7 @@
 			<hr>
 		</div>
 	</div>
-
-
-
+<div id="result"></div>
 	<!-- Footer -->
 	<footer>
 		<div class="container">
