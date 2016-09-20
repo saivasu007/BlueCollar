@@ -1,37 +1,78 @@
-<body width="1280" height="800">
-<img class="banner" src="img/bluecollar.jpg" alt="background" width="1265" height="255"/>
-<ng-form name="loginForm">
-<div class="middle-box">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Blue Collar Hunt Employer Login Page</title>
+  </head>
+<body>
 <div class="container" style="padding-left:0px;">
 <div class="row">
-<div class="col-xs-12 col-md-4">
-<div class="panel panel-default site-panel-box">
-    <div>
-        <div class="panel-body" style="padding:10px;">
+<br/>
+<div class="col-xs-50 col-md-40">
+<div class="panel panel-default site-panel-box" style="height:175px;">
+<div class="panel-body" style="padding:60px;height:175px;">
+		    <div style="text-align:center">
+			<div class="form-group" style="display:inline-block;">
+            <a href="/login"><button style="margin-top:-57px;width: 145px; height: 35px; font-size: 16px" class="btn btn-primary"  ng-click="">
+				<span class="glyphicon"></span>  Seeker
+			</button></a>
+            </div>
+            <div class="form-group" style="display:inline-block;float:center">
+            <a href="/empSignIn"><button style="margin-top:-57px;width: 145px; height: 35px; font-size: 16px" class="btn btn-primary"  ng-click="">
+				<span class="glyphicon"></span>  Employer
+			</button></a>
+            </div>
+            </div>
+            <div style="text-align:center">
+			<div class="form-group" style="display:inline-block;">
+                <input type="text" ng-model="user.search" class="form-control" style="width:280px" placeholder="Search" ng-change="testLoginName()" ng-required="true">
+            </div>
+            <div class="form-group" style="display:inline-block;">
+            <input type="text" id="Autocomplete" ng-model="user.location" style="width:280px" class="form-control" placeholder="Location" ng-autocomplete="result1" details="details1" options="options1" />
+            </div>
+            <div class="form-group" style="display:inline-block;">
+            <button style="margin-top:-57px;width: 145px; height: 35px; font-size: 16px" class="btn btn-warning"  onclick="javascript:alert('WIP')">
+				<span class="glyphicon glyphicon-ok-sign"></span>  Search Jobs
+			</button>
+            </div>
+            </div>
+</div></div></div></div></div>
+<div class="container" style="padding-left:0px;">
+<div class="row">
+<div class="col-xs-50 col-md-40">
+<div class="panel panel-default site-panel-box" style="height:550px;">
+<div class="middle-box">
+<div class="panel-body" style="padding:10px;">
             <div class="form-group">
-                <input type="text" ng-model="user.email" class="form-control" style="display:inline-block;" placeholder="Emp Userid" ng-change="testLoginName()" ng-required="true">
+                <input type="text" ng-model="user.email" class="form-control" style="display:inline-block;width:280px;" placeholder="Emp Userid" ng-change="testLoginName()" ng-required="true">
                 <span ng-show="loginEmailErr && user.email != undefined" style="color:red;display:inline-block;">invalid email address</span>
             </div>
             <div class="form-group">
-                <input type="password" ng-model="user.password" ng-keydown="pressEnter($event,user)" class="form-control" placeholder="Password" ng-change="testPassword()" ng-required="true">
+                <input type="password" ng-model="user.password" ng-keydown="pressEnter($event,user)" class="form-control" placeholder="Password" ng-change="testPassword()" ng-required="true" style="width:280px;">
                 <span ng-show="passwordShort && user.password != undefined" style="color:red">&nbsp;&nbsp;Password must be at least 6 characters</span>
             </div>
             <div class="form-group">
-                <input type="text" ng-model="user.empID" class="form-control" style="display:inline-block;" placeholder="Emp Unique ID" ng-required="true">
+                <input type="text" ng-model="user.empID" class="form-control" style="display:inline-block;" placeholder="Emp Unique ID" ng-required="true" style="width:280px;">
                 <span ng-show="loginEmailErr && user.email != undefined" style="color:red;display:inline-block;">invalid Employee Unique ID</span>
             </div>
             <br>
             <button ng-click="login(user)" class="btn btn-info block full-width m-b" ng-disabled="loginForm.$invalid">Jump In</button>
             <br/><br/>
             <a class="btn btn-info btn-block" href="/empRegister">Register</a>
-			<!-- <a href="/forgotPassWd"><small>Forgot password?</small></a><br/><br/>  -->
-        </div>
-    </div>
-</div></div></div></div></div>
-<div class="middle-box" style="margin-left:460px;">
+</div></div>
+</div></div></div></div>
+<footer>
+<div class="container" style="padding-left:0px;">
+<div class="row">
+<div class="col-xs-50 col-md-40">
+<div class="panel panel-default site-panel-box" style="height:175px;">
+<div class="panel-body" style="padding:55px;">
+<div class="middle-box" style="margin-left:400px;">
 <div class="copyright">
             <p>&copy; 2016 BlueCollar Hunt. All rights reserved.</p>
         </div>
 </div>
-</ng-form>
+</div></div></div></div></div>
+</footer>
 </body>
+</html>

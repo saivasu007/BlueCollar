@@ -1,40 +1,70 @@
-<style>
-.jumbotron {
-background: #358CCE;
-color: #FFF;
-border-radius: 0px;
-}
-.jumbotron-sm { padding-top: 0px;
-padding-bottom: 0px; }
-.jumbotron small {
-color: #FFF;
-}
-.h4 small {
-font-size: 10px;
-}
-</style>
-<img class="banner" src="img/bluecollar.jpg" alt="background" width="100%" height="255"/>
-<div class="jumbotron jumbotron-sm">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-lg-6">
-                <h3 class="h4">
-                    Contact us</h3>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Blue Collar Hunt Contact Page</title>
+    <style>
+		.jumbotron {
+		background: #358CCE;
+		color: #FFF;
+		border-radius: 0px;
+		}
+		.jumbotron-sm { padding-top: 0px;
+		padding-bottom: 0px; }
+		.jumbotron small {
+		color: #FFF;
+		}
+		.h4 small {
+		font-size: 10px;
+		}
+	</style>
+  </head>
+<body>
+<div class="container" style="padding-left:0px;">
+<div class="row">
+<br/>
+<div class="col-xs-50 col-md-40">
+<div class="panel panel-default site-panel-box" style="height:175px;">
+<div class="panel-body" style="padding:60px;height:175px;">
+		    <div style="text-align:center">
+			<div class="form-group" style="display:inline-block;">
+            <a href="/login"><button style="margin-top:-57px;width: 145px; height: 35px; font-size: 16px" class="btn btn-primary"  ng-click="">
+				<span class="glyphicon"></span>  Seeker
+			</button></a>
             </div>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div class="well well-sm">
+            <div class="form-group" style="display:inline-block;float:center">
+            <a href="/empSignIn"><button style="margin-top:-57px;width: 145px; height: 35px; font-size: 16px" class="btn btn-primary"  ng-click="">
+				<span class="glyphicon"></span>  Employer
+			</button></a>
+            </div>
+            </div>
+            <div style="text-align:center">
+			<div class="form-group" style="display:inline-block;">
+                <input type="text" ng-model="user.search" class="form-control" style="width:280px" placeholder="Search" ng-change="testLoginName()" ng-required="true">
+            </div>
+            <div class="form-group" style="display:inline-block;">
+            <input type="text" id="Autocomplete" ng-model="user.location" style="width:280px" class="form-control" placeholder="Location" ng-autocomplete="result1" details="details1" options="options1" />
+            </div>
+            <div class="form-group" style="display:inline-block;">
+            <button style="margin-top:-57px;width: 145px; height: 35px; font-size: 16px" class="btn btn-warning"  onclick="javascript:alert('WIP')">
+				<span class="glyphicon glyphicon-ok-sign"></span>  Search Jobs
+			</button>
+            </div>
+            </div>
+</div></div></div></div></div>
+
+<div class="container" style="padding-left:0px;">
+<div class="row">
+<div class="col-xs-50 col-md-40">
+<div class="panel panel-default site-panel-box" style="height:550px;">
+<div class="well well-sm" style="width:675px;margin-top:50px;margin-left:80px;">
                 <form>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="name">
                                 <font color="red">*</font>&nbsp;Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" ng-model="contact.name"/>
+                            <input type="text" class="form-control" id="name" placeholder="Enter name" required="required" ng-model="contact.name" style="width:280px"/>
                         </div>
                         <div class="form-group">
                             <label for="email">
@@ -42,12 +72,12 @@ font-size: 10px;
                             <div class="input-group">
                                 <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span>
                                 </span>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" ng-model="contact.email"/></div>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" required="required" ng-model="contact.email" style="width:240px"/></div>
                         </div>
                         <div class="form-group">
                             <label for="subject">
                                 <font color="red">*</font>&nbsp;Subject</label>
-                            <select id="subject" name="subject" class="form-control" required="required" ng-model="contact.subject">
+                            <select id="subject" name="subject" class="form-control" required="required" ng-model="contact.subject" style="width:280px">
                                 <option value="na" selected="">Choose One:</option>
                                 <option value="service">General Inquiry</option>
                                 <option value="suggestions">Suggestions</option>
@@ -60,7 +90,7 @@ font-size: 10px;
                             <label for="name">
                                 <font color="red">*</font>&nbsp;Message</label>
                             <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
-                                placeholder="Message" ng-model="contact.message"></textarea>
+                                placeholder="Message" ng-model="contact.message" style="width:310px;height:190px;"></textarea>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -69,23 +99,34 @@ font-size: 10px;
                     </div>
                 </div>
                 </form>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <form style="padding-left:100px;">
+                </div>
+<div id="address" class="text-center" style="margin:-320px 0 0 800px;">
             <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
             <address>
                 <strong><font color="blue"">Blue Collar Hunt Inc.</font></strong><br>
                 XXXX N First St, Suite ZZZ<br>
-                San Jose, CA 94157<br>
+                San Jose, CA XXXXX<br>
                 <abbr title="Phone">
                     Ph:</abbr>
                 (408) xxx-xxxx
             </address>
             <address>
-            <img width="190" src="http://maps.googleapis.com/maps/api/staticmap?center=san+jose&zoom=10&scale=false&size=190x145&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of san jose">
+            <img width="360" height="145" src="http://maps.googleapis.com/maps/api/staticmap?center=san+jose&zoom=10&scale=false&size=190x145&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of san jose">
             </address>
-            </form>
         </div>
-    </div>
+</div></div></div></div>
+<footer>
+<div class="container" style="padding-left:0px;">
+<div class="row">
+<div class="col-xs-50 col-md-40">
+<div class="panel panel-default site-panel-box" style="height:175px;">
+<div class="panel-body" style="padding:55px;">
+<div class="middle-box" style="margin-left:400px;">
+<div class="copyright">
+            <p>&copy; 2016 BlueCollar Hunt. All rights reserved.</p>
+        </div>
 </div>
+</div></div></div></div></div>
+</footer>
+</body>
+</html>
