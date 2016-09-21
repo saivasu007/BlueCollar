@@ -755,8 +755,13 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
 			    // see File types below. By default, all extensions are allowed.
 			    extensions: ['.pdf', '.doc', '.docx'],
 			};
-		var button = Dropbox.createChooseButton(options);
-		document.getElementById("dropboxChooser").appendChild(button);
+		//Make sure the browser support the Dropbox Chooser by checking the compatability.
+		if(Dropbox.isBrowserSupported()) {
+			Dropbox.choose(options);
+		} else {
+			var button = Dropbox.createChooseButton(options);
+			document.getElementById("dropboxChooser").appendChild(button);
+		}
 	}
 	
 	/* Connect Google Drive for Resume Upload Functionality. */

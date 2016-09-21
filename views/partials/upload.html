@@ -37,93 +37,33 @@
 <div class="row">
 <div class="col-xs-50 col-md-40">
 <div class="panel panel-default site-panel-box" style="height:550px;">
-<div class="panel-body" style="padding:10px;">
+<div class="panel-body" style="padding:25px;">
 
 <div class="content">
 		<div class="container">
 			<!-- Content -->
-			<hr>
-			
 			<div class="row">
-
+			<br/><br/>
                 <div class="col-md-3">
 
-                    <h3>Upload files</h3>
-
-                    <div ng-show="uploader.isHTML5">
+                    <div ng-show="uploader.isHTML5" style="padding-left:70px;">
                           <div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
-                            <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone">
-                                Select or Drop Files Here
+                            <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone" style="border-style:dotted;border-color:#5BC0DE;border-width: 5px;width:375px;height:195px;">
+                                Drag & Drop Resume Here
                             </div>
-                            <div data-ng-init="dropbox()" id="dropboxChooser" width=160 height=45></div>
-                            <!-- <div data-ng-init="onApiLoad()" id="container1234"></div>  -->
-                            <div id="googlePicker"><a href="" ng-click="loadPicker()"><img src="./img/drive_icon.png"/ width=160 height=45></a></div>
                         </div>
                     </div>
                 </div>
+                
+                <div class="col-md-3" style="padding-left:350px;">
 
-                <div class="col-md-9" style="margin-bottom: 40px">
-
-                    <h3>Upload queue</h3>
-                    <p>Queue length: {{ uploader.queue.length }}</p>
-
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th width="50%">Name</th>
-                                <th ng-show="uploader.isHTML5">Size</th>
-                                <th ng-show="uploader.isHTML5">Progress</th>
-                                <th>Status</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="item in uploader.queue">
-                                <td><strong>{{ item.file.name }}</strong></td>
-                                <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
-                                <td ng-show="uploader.isHTML5">
-                                    <div class="progress" style="margin-bottom: 0;">
-                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
-                                    </div>
-                                </td>
-                                <td class="text-center">
-                                    <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
-                                    <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
-                                    <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
-                                </td>
-                                <td nowrap>
-                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-                                        <span class="glyphicon glyphicon-upload"></span> Upload
-                                    </button>
-                                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
-                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-                                        <span class="glyphicon glyphicon-trash"></span> Remove
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <div>
-                        <div>
-                            Queue progress:
-                            <div class="progress" style="">
-                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                    <div ng-show="uploader.isHTML5">
+                          <div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
+                            <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone" style="border-style:dotted;border-color:#5BC0DE;border-width: 5px;width:375px;height:195px;">
+                                Drag & Drop Cover Letter Here
                             </div>
                         </div>
-                        <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
-                            <span class="glyphicon glyphicon-upload"></span> Upload all
-                        </button>
-                        <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
-                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel all
-                        </button>
-                        <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
-                            <span class="glyphicon glyphicon-trash"></span> Remove all
-                        </button>
                     </div>
-
                 </div>
 
             </div>
@@ -131,7 +71,25 @@
 			<hr>
 		</div>
 	</div>
-
+<div>
+<!-- <div data-ng-init="dropbox()" id="dropboxChooser" width=160 height=45></div> -->
+<!-- <div data-ng-init="onApiLoad()" id="container1234"></div>  -->
+<div class="form-group" style="padding-left:150px;">
+      <select ng-model="selectedState" ng-options="state.abbreviation as state.name for state in states" style="font-size: 14px; width: 280px; height: 32px; display:inline-block;">
+	  </select>
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <select ng-model="selectedState" ng-options="state.abbreviation as state.name for state in states" style="font-size: 14px; width: 280px; height: 32px; display:inline-block;">
+	  </select>
+</div>
+<br/><br/>
+<div style="text-align:center">
+<div id="dropboxChooser" class="form-group" style="border-style:solid;border-color:#5BC0DE;border-width: 5px;display:inline-block;"><a href="" ng-click="dropbox()"><img src="./img/dropbox_icon.jpg"/ width=158 height=40></a></div>
+<br/>
+ <div id="googlePicker" class="form-group" style="border-style:solid;border-color:#5BC0DE;border-width: 5px;display:inline-block;"><a href="" ng-click="loadPicker()"><img src="./img/drive_icon.png"/ width=178 height=40></a></div>
+</div>
+</div>
 </div></div></div></div></div>
 <footer>
 <div class="container" style="padding-left:0px;">
