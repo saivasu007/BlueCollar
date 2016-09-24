@@ -52,10 +52,18 @@
                 <div class="col-md-3">
 
                     <div ng-show="uploader.isHTML5" style="padding-left:70px;">
-                          <div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
+                          <div nv-file-drop="" ng-click="launchFilePicker()" uploader="uploader" options="{ url: '/foo' }">
                             <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone" style="border-style:dotted;border-color:#5BC0DE;border-width: 5px;width:375px;height:195px;">
                                 Drag & Drop Resume Here
+                            <div ng-hide="uploader.isHTML5"><input id="fileDialog" type="file" nv-file-select="" uploader="uploader"/></div>
                             </div>
+                        </div>
+                        <div>
+                        <td ng-show="uploader.isHTML5">
+                                    <div class="progress" style="margin-bottom: 0;width:375px">
+                                        <div class="progress-bar" role="progressbar" ng-style="{ 'width': progress + '%' }"></div>
+                                    </div>
+                                </td>
                         </div>
                     </div>
                 </div>
@@ -63,10 +71,17 @@
                 <div class="col-md-3" style="padding-left:350px;">
 
                     <div ng-show="uploader.isHTML5">
-                          <div nv-file-drop="" uploader="uploader" options="{ url: '/foo' }">
-                            <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone" style="border-style:dotted;border-color:#5BC0DE;border-width: 5px;width:375px;height:195px;">
+                          <div nv-file-drop=""  uploader="uploaderCover" options="{ url: '/foo' }">
+                            <div nv-file-over="" uploader="uploaderCover" over-class="another-file-over-class" class="well my-drop-zone" style="border-style:dotted;border-color:#5BC0DE;border-width: 5px;width:375px;height:195px;">
                                 Drag & Drop Cover Letter Here
                             </div>
+                        </div>
+                        <div>
+                        <td ng-show="uploader.isHTML5">
+                                    <div class="progress" style="margin-bottom: 0;width:375px">
+                                        <div class="progress-bar" role="progressbar"  ng-style="{ 'width': coverProgress + '%' }"></div>
+                                    </div>
+                        </td>
                         </div>
                     </div>
                 </div>
@@ -79,20 +94,22 @@
 <div>
 <!-- <div data-ng-init="dropbox()" id="dropboxChooser" width=160 height=45></div> -->
 <!-- <div data-ng-init="onApiLoad()" id="container1234"></div>  -->
-<div class="form-group" style="padding-left:150px;">
-      <select ng-model="selectedState" ng-options="state.abbreviation as state.name for state in states" style="font-size: 14px; width: 280px; height: 32px; display:inline-block;">
+<div class="form-group" style="padding-left:80px;">
+      <select ng-model="selectedState" ng-options="state.abbreviation as state.name for state in states" style="font-size: 14px; width: 380px; height: 32px; display:inline-block;margin-right:80px;">
 	  </select>
-	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <select ng-model="selectedState" ng-options="state.abbreviation as state.name for state in states" style="font-size: 14px; width: 280px; height: 32px; display:inline-block;">
+	  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <select ng-model="selectedState" ng-options="state.abbreviation as state.name for state in states" style="font-size: 14px; width: 380px; height: 32px; display:inline-block;">
 	  </select>
 </div>
 <br/><br/>
-<div style="text-align:center">
-<div id="dropboxChooser" class="form-group" style="border-style:solid;border-color:#5BC0DE;border-width: 5px;display:inline-block;"><a href="" ng-click="dropbox()"><img src="./img/dropbox_icon.jpg"/ width=158 height=40></a></div>
+<div style="margin-left:340px;">
+<!-- <div id="dropboxChooser" class="form-group" style="border-style:solid;border-color:#5BC0DE;border-width: 5px;width:170px;margin-left:175px;">  -->
+<a href="" ng-click="dropbox()"><img src="./img/dropbox_icon.jpg" width=158 height=40 style="border-style:solid;border-color:#5BC0DE;border-width: 5px;float:left;"></a>
+<!--  </div> -->
 <br/>
- <div id="googlePicker" class="form-group" style="border-style:solid;border-color:#5BC0DE;border-width: 5px;display:inline-block;"><a href="" ng-click="loadPicker()"><img src="./img/drive_icon.png"/ width=178 height=40></a></div>
+<!-- <div id="googlePicker" class="form-group" style="border-style:solid;border-color:#5BC0DE;border-width: 5px;width:170px;margin-left:175px;"> -->
+<a href="" ng-click="loadPicker()"><img src="./img/drive_icon.png" width=158 height=40 style="border-style:solid;border-color:#5BC0DE;border-width: 5px;float:left;"></a>
+<!-- </div> -->
 </div>
 </div>
 </div></div></div></div></div>

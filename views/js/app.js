@@ -680,10 +680,13 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
 	$rootScope.wrong = 0;
 	$rootScope.report = {type:'',wrong:[]};
 	var uploader = $scope.uploader = new FileUploader();
+	var uploaderCover = $scope.uploaderCover = new FileUploader();
 	uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
         console.log('onWhenAddingFileFailed', item, filter, options);
     };
     uploader.onAfterAddingFile = function(fileItem) {
+    	$scope.progress = "";
+    	fileItem.upload();
         console.log('onAfterAddingFile', fileItem);
     };
     uploader.onAfterAddingAll = function(addedFileItems) {
@@ -693,9 +696,11 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
         console.log('onBeforeUploadItem', item);
     };
     uploader.onProgressItem = function(fileItem, progress) {
+    	$scope.progress = progress;
         console.log('onProgressItem', fileItem, progress);
     };
     uploader.onProgressAll = function(progress) {
+    	$scope.progress = progress;
         console.log('onProgressAll', progress);
     };
     uploader.onSuccessItem = function(fileItem, response, status, headers) {
@@ -708,13 +713,58 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
         console.log('onCancelItem', fileItem, response, status, headers);
     };
     uploader.onCompleteItem = function(fileItem, response, status, headers) {
+    	alert("Upload Success");
         console.log('onCompleteItem', fileItem, response, status, headers);
     };
     uploader.onCompleteAll = function() {
         console.log('onCompleteAll');
     };
+    
+    uploaderCover.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
+        console.log('onWhenAddingFileFailed', item, filter, options);
+    };
+    uploaderCover.onAfterAddingFile = function(fileItem) {
+    	$scope.coverProgress = "";
+    	fileItem.upload();
+        console.log('onAfterAddingFile', fileItem);
+    };
+    uploaderCover.onAfterAddingAll = function(addedFileItems) {
+        console.log('onAfterAddingAll', addedFileItems);
+    };
+    uploaderCover.onBeforeUploadItem = function(item) {
+        console.log('onBeforeUploadItem', item);
+    };
+    uploaderCover.onProgressItem = function(fileItem, progress) {
+    	$scope.coverProgress = progress;
+        console.log('onProgressItem', fileItem, progress);
+    };
+    uploaderCover.onProgressAll = function(progress) {
+    	$scope.coverProgress = progress;
+        console.log('onProgressAll', progress);
+    };
+    uploaderCover.onSuccessItem = function(fileItem, response, status, headers) {
+        console.log('onSuccessItem', fileItem, response, status, headers);
+    };
+    uploaderCover.onErrorItem = function(fileItem, response, status, headers) {
+        console.log('onErrorItem', fileItem, response, status, headers);
+    };
+    uploaderCover.onCancelItem = function(fileItem, response, status, headers) {
+        console.log('onCancelItem', fileItem, response, status, headers);
+    };
+    uploaderCover.onCompleteItem = function(fileItem, response, status, headers) {
+    	alert("Upload Success");
+        console.log('onCompleteItem', fileItem, response, status, headers);
+    };
+    uploaderCover.onCompleteAll = function() {
+        console.log('onCompleteAll');
+    };
 
     console.log('uploader', uploader);
+    console.log('uploader', uploaderCover);
+    
+    $scope.launchFilePicker = function(){
+    	angular.element(document.querySelector('#fileDialog')).click();
+    }
 	
 
 	$scope.logout = function () {
@@ -729,10 +779,25 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
 	/* Connect Dropbox for Resume Upload Functionality. */
 	
 	$scope.dropbox = function() {
+		var fileType;
 		var options = {
 			    // Required. Called when a user selects an item in the Chooser.
 			    success: function(files) {
-			        alert("Here's the file link: " + files[0].link)
+			        if(files[0].name.substring(files[0].name.indexOf(".") == "PDF")) fileType = "application/pdf";
+			        else if(files[0].name.substring(files[0].name.indexOf(".") == "DOC")) fileType = "application/msword";
+			        else if(files[0].name.substring(files[0].name.indexOf(".") == "DOCX")) fileType = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+			        var files = {
+                        name: files[0].name,
+                        type: fileType,
+                        contents: files[0].link
+			        };
+			        $http.post('/uploadResume',files).success(function (response) {
+			        	$location.url('/upload');
+			        }).error(function (err) {
+			        	if(err) {
+			        		alert("Error while uploading file to server and Please try again!.");
+			        	}
+			        });
 			    },
 
 			    // Optional. Called when the user closes the dialog without selecting a file
@@ -744,7 +809,7 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
 			    // Optional. "preview" (default) is a preview link to the document for sharing,
 			    // "direct" is an expiring link to download the contents of the file. For more
 			    // information about link types, see Link types below.
-			    linkType: "preview", // or "direct"
+			    linkType: "direct", // or "direct"
 
 			    // Optional. A value of false (default) limits selection to a single file, while
 			    // true enables multiple file selection.
@@ -778,7 +843,7 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
     var appId = "8146498752";
 
     // Scope to use to access user's Drive items.
-    var scope = ['https://www.googleapis.com/auth/drive.readonly'];
+    var scope = ['https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/drive.file','https://www.googleapis.com/auth/drive.metadata'];
 
     var pickerApiLoaded = false;
     var oauthToken;
@@ -787,6 +852,12 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
     $scope.loadPicker = function() {
       gapi.load('auth', {'callback': $scope.onAuthApiLoad()});
       gapi.load('picker', {'callback': $scope.onPickerApiLoad()});
+      gapi.load('client', function() {
+    	  
+      });
+      gapi.client.load('drive', 'v3', function() {
+    	 
+      });
     }
 
     $scope.onAuthApiLoad = function() {
@@ -829,7 +900,42 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
             .addView(view)
             .addView(new google.picker.DocsUploadView())
             .setDeveloperKey(developerKey)
-            //.setCallback($scope.pickerCallback())
+            .setCallback(function(data) {
+            	      if (data.action == google.picker.Action.PICKED) {
+            	        var fileId = data.docs[0].id;
+            	        var fileRootName = data.docs[0].name.split('.').shift(),
+            	        fileExtension = data.docs[0].name.split('.').pop(),
+            	        filePathBase = './uploads' + '/',
+            	        fileRootNameWithBase = filePathBase + fileRootName,
+            	        filePath = fileRootNameWithBase + '.' + fileExtension;
+
+			        	var restRequest = gapi.client.request({
+			                    path: '/drive/v2/files/' + fileId
+			            });
+			        	restRequest.then(function(resp) {
+			        		var fileDownloadUrl = resp.result.webContentLink;
+			        		$http.get('/convertStream?filePath='+filePath+'&contents='+fileDownloadUrl).success(function (response) {
+	    			        	 alert("Uploaded Successfully!")
+	    			        	 /*
+	    			        	 window.gapi.client.drive.files.get({
+	  	            	           fileId: fileId,
+	  	            	           alt: 'media'
+	  	            	        }).on('end', function() {
+	  	            	          console.log('Done');
+	  	            	      }).on('error', function(err) {
+	  	            	        console.log('Error during download', err);
+	  	            	      }).pipe(dest);
+	  	            	      */
+	    			        }).error(function (err) {
+	    			        	if(err) {
+	    			        		alert("Error while uploading file to server and Please try again!.");
+	    			        	}
+	    			        });
+			        		}, function(reason) {
+			        		  alert('Error: ' + reason.result.error.message);
+			        	});
+            	      }
+            	    })
             .build();
          picker.setVisible(true);
       }
@@ -837,11 +943,8 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
 
     // A simple callback implementation.
     $scope.pickerCallback = function(data) {
-    	alert(data.action);
       if (data.action == google.picker.Action.PICKED) {
-    	  alert(google.picker.Action.PICKED);
         var fileId = data.docs[0].id;
-        alert('The user selected: ' + fileId);
       }
     }
 });
@@ -850,7 +953,6 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
 app.controller('contactCtrl', function ($q, $scope, $rootScope, $http, $location) {
 	   
 		$scope.saveMessage = function(contact) {
-			alert(contact);
 			var postData = { 
 					name: contact.name,
 					email: contact.email,

@@ -24,6 +24,7 @@ var pageDir = path.resolve(__dirname + '/views/partials');
 var properties = propertiesReader('applicationResources.file');
 var crypto = require("crypto");
 var multer = require("multer");
+var http = require("https");
 
 
 var app = express();
@@ -51,7 +52,7 @@ var fs  = require('fs');
 var ejs = require('ejs');
 var config = require('./oauth.js');
 var DIR = './uploads/';
-var upload = multer({dest: DIR});
+//var upload = multer({dest: DIR});
 //For Stripe payment
 var stripeApiKey = "sk_test_uipgrU7ikmbLSRJVJ9vf7mgI";
 var stripeApiKeyTesting = "pk_test_obXvmdYNSzC5Ou0vL9x9sI6Q";
@@ -72,73 +73,6 @@ var pwdResetSubject = properties.get("app.email.subjectResetPwd");
 var resetPwdTemplate = properties.get("app.email.resetPwdTem");
 var resetConfirmSubject = properties.get("app.email.subjectConfirmResetPwd");
 var resetConfirmTemplate = properties.get("app.email.resetConfirmTem");
-
-// Utils
-function randomNfromM(N, A) {
-	var i = 0, j, arr = [], M = A.length - 1, result = [];
-	while (i < N) {
-		j = Math.floor(Math.random() * (M + 1));
-		if (arr.indexOf(j) < 0) {
-			arr.push(j);
-			i++
-		}
-	}
-	for (var k = 0; k < arr.length; k++) {
-		result.push(A[arr[k]]._id);
-
-	}
-	return result
-}
-
-function getQuestionFromModel(Model, num) {
-	return function(callback) {
-		Model.find({}, {
-			_id : 1
-		}, function(err, result) {
-			var questionIDs = randomNfromM(num, result);
-			Model.find({
-				_id : {
-					$in : questionIDs
-				}
-			}, function(err, result) {
-				callback(null, result);
-			})
-		});
-	}
-}
-
-function randomAllNfromM(A) {
-	var i = 0, j, arr = [], M = A.length - 1, result = [];
-	while (i < M) {
-		j = Math.floor(Math.random() * (M + 1));
-		if (arr.indexOf(j) < 0) {
-			arr.push(j);
-			i++
-		}
-	}
-	for (var k = 0; k < arr.length; k++) {
-		result.push(A[arr[k]]._id);
-
-	}
-	return result
-}
-
-function getAllQuestionFromModel(Model) {
-	return function(callback) {
-		Model.find({}, {
-			_id : 1
-		}, function(err, result) {
-			var questionIDs = randomAllNfromM(result);
-			Model.find({
-				_id : {
-					$in : questionIDs
-				}
-			}, function(err, result) {
-				callback(null, result);
-			})
-		});
-	}
-}
 
 //Function added for encrypting the passwords in the Portal.
 function encrypt(pass){
@@ -180,26 +114,33 @@ app.use(passPort.session());
 app.use(multer({
 	  dest: DIR,
 	  limits: { fileSize: 10 * 1024 * 1024},
+	  filename: function (req, file, cb) {
+	        cb(null, file.originalname + '-' + Date.now());
+	        console.log("file name "+file.originalname);
+	  },
 	  onFileUploadStart: function (file) {
 	    console.log(file.originalname + ' is starting ...');
 	  },
 	  onFileUploadComplete: function (file) {
-	    console.log(file.fieldname + ' uploaded to  ' + file.path);
+	    console.log(file.originalname + ' uploaded to  ' + file.path);
 	  }
 }).array('file'));
 
+/*
 app.get('/api', function (req, res) {
-	  res.end('file catcher example');
+	  res.end('Upload file to server');
 });
 
 app.post('/api', function (req, res) {
 	  upload(req, res, function (err) {
+		console.log("From upload file is "+req.file);
 	    if (err) {
 	      return res.end(err.toString());
 	    }
 	    res.end('File is uploaded');
 	  });
 });
+*/
 
 // passport config
 passPort.use(new localStrategy({
@@ -566,6 +507,60 @@ app.post("/plans/bluecollarhunt_dev", function(req, res) {
 	  });
 	});
 
+app.post('/uploadResume', function(req, res) {
+	var fileRootName = req.body.name.split('.').shift(),
+    fileExtension = req.body.name.split('.').pop(),
+    filePathBase = './uploads' + '/',
+    fileRootNameWithBase = filePathBase + fileRootName,
+    filePath = fileRootNameWithBase + '.' + fileExtension,
+    fileID = 2,
+    fileBuffer;
+	
+    while (fs.existsSync(filePath)) {
+        filePath = fileRootNameWithBase + '(' + fileID + ').' + fileExtension;
+        fileID += 1;
+    }
+    
+    var file = fs.createWriteStream(filePath);
+    console.log("From Dropbox "+ file);
+    console.log("Writing file contents to buffer");
+    console.log("Contents "+req.body.contents)
+    var request = http.get(req.body.contents, function(response) {
+      response.pipe(file);
+    });
+    res.sendStatus(200);
+});
+
+app.get('/convertStream', function(req, res) {
+    console.log("Converting file destination to stream");
+    console.log(req.query.filePath);
+    console.log(req.query.contents+'&export=download');
+	var file = fs.createWriteStream(req.query.filePath);
+	download(req.query.contents+'&export=download');
+	var request = http.get(req.query.contents+'&export=download', function(response) {
+	      response.pipe(file);
+	});
+	res.sendStatus(200);
+});
+
+function download(url) {
+	  var data = "";
+	  var request = http.get(url, function(res) {
+
+	    res.on('data', function(chunk) {
+	      data += chunk;
+	    });
+
+	    res.on('end', function() {
+	      console.log(data);
+	    })
+	  });
+
+	  request.on('error', function(e) {
+	    console.log("Got error: " + e.message);
+	  });
+}
+
 //Forgot Password functionality.
 app.post('/forgot', function(req, res) {
 	      crypto.randomBytes(20, function(err, buf) {
@@ -679,134 +674,6 @@ app.post('/reset', function(req, res) {
       });
 });
 //End Forgot Password functionality here.
-
-app.get('/quiz', function(req, res) {
-	var jobs = [ getQuestionFromModel(EPModel, 11),
-			getQuestionFromModel(GKModel, 11),
-			getQuestionFromModel(MAModel, 11),
-			getQuestionFromModel(PMModel, 11),
-			getQuestionFromModel(SCMModel, 12),
-			getQuestionFromModel(SQMModel, 12),
-			getQuestionFromModel(SVVModel, 12) ];
-	async.parallel(jobs, function(err, result) {
-		var returnVal = [];
-		result.forEach(function(value, index, array) {
-			for ( var obj in value) {
-				returnVal.push(value[obj])
-			}
-			if (index == array.length - 1) {
-				res.send(returnVal)
-			}
-		})
-	})
-});
-
-app.post('/practise', function(req, res) {
-	var jobs = [];
-	console.log(req.body);
-	if (req.body.GK) {
-		jobs.push(getQuestionFromModel(GKModel, req.body.GK))
-	}
-	if (req.body.EP) {
-		jobs.push(getQuestionFromModel(EPModel, req.body.EP))
-	}
-	if (req.body.MA) {
-		jobs.push(getQuestionFromModel(MAModel, req.body.MA))
-	}
-	if (req.body.PM) {
-		jobs.push(getQuestionFromModel(PMModel, req.body.PM))
-	}
-	if (req.body.SQM) {
-		jobs.push(getQuestionFromModel(SQMModel, req.body.SQM))
-	}
-	if (req.body.SCM) {
-		jobs.push(getQuestionFromModel(SCMModel, req.body.SCM))
-	}
-	if (req.body.SVV) {
-		jobs.push(getQuestionFromModel(SVVModel, req.body.SVV))
-	}
-	async.parallel(jobs, function(err, result) {
-		var returnVal = [];
-		result.forEach(function(value, index, array) {
-			for ( var obj in value) {
-				returnVal.push(value[obj])
-			}
-			if (index == array.length - 1) {
-				res.send(returnVal)
-			}
-		})
-	})
-
-});
-
-app.post('/saveRecord', function(req, res) {
-	var newRecord = new historyModel(req.body);
-	var key1 = req.body.key;
-	newRecord.save(function(err, result) {
-		if (err) {
-			res.send('error')
-		} else {
-			res.send(result)
-		}
-	})
-});
-
-app.post('/getRecord', function(req, res) {
-	var query = req.body.date ? {
-		email : req.body.email,
-		date : req.body.date
-	} : {
-		email : req.body.email
-	}
-	historyModel.find(query).exec(function(err, result) {
-		res.send(result)
-	})
-});
-
-app.post('/getRecordForChart', function (req,res) {
-    //get practise history logic
-    historyModel.find({
-        email:req.body.email,
-        mode:req.body.mode
-    })
-        .sort({time: -1})
-        .limit(req.body.number)
-        .exec(function (err, result) {
-        res.send(result)
-    })
-
-});
-
-//Get all the Users information for Admin User Info screen.
-app.post('/getUsers', function(req, res) {
-	if(req.body.email != undefined) {
-	var query = req.body.search ? {
-		email : req.body.email
-	} : {
-		email : req.body.email
-	}
-	userModel.find(query).exec(function(err, result) {
-		res.send(result)
-	})
-	} else {
-	userModel.find().exec(function(err, result) {
-		res.send(result)
-	})
-	}
-});
-
-app.post('/getUserInfo', function(req, res) {
-	userModel.findOne({
-		email : req.body.search
-	}, function(err, result) {
-		res.send(result);
-	});
-});
-
-app.post('/getQuestionInfo', function(req, res) {
-	    console.log("Returning all the question info for selected Category");
-		res.sendStatus(200);
-});
 
 //Update user profile in the system.
 app.post('/updateProfile', function(req, res) {
