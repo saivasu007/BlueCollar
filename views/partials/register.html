@@ -43,6 +43,8 @@
 <div class="panel panel-default site-panel-box" style="height:550px;">
 <div class="middle-box">
         <div class="panel-body" style="padding:10px;">
+        <div class="panel panel-default site-panel-box" style="height:480px;">
+		<div class="panel-body" style="padding:10px;">
             <div class="form-group">
 				<input type="text" ng-model="user.email" class="form-control" placeholder="Email Address" ng-change="testUsername()">
 				<span ng-show="usernameErr && user.email != ''" style="color:red;display:inline-block;">invalid email address</span>
@@ -75,6 +77,7 @@
             <br/><br/>
             <button ng-click="clear(user)" ng-disabled="error" class="btn btn-info block full-width m-b">Clear</button>
         </div>
+        </div></div>
 </div></div></div></div></div>
 <footer>
 <div class="container" style="padding-left:0px;">
@@ -83,11 +86,11 @@
 <div class="panel panel-default site-panel-box" style="height:175px;">
 <div class="panel-body" style="padding:55px;">
 <div class="middle-box" style="margin-left:400px;">
-<div class="copyright">
-            <p>&copy; 2016 BlueCollar Hunt. All rights reserved.</p>
-        </div>
 </div>
 </div></div></div></div></div>
+<div class="copyright">
+     <p>&copy; 2016 Blue Collar Hunt. All rights reserved.</p>
+</div>
 </footer>
 </body>
 </html>

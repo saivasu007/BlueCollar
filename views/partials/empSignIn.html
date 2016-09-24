@@ -43,6 +43,8 @@
 <div class="panel panel-default site-panel-box" style="height:550px;">
 <div class="middle-box">
 <div class="panel-body" style="padding:10px;">
+		<div class="panel panel-default site-panel-box" style="height:300px;">
+		<div class="panel-body" style="padding:10px;">
             <div class="form-group">
                 <input type="text" ng-model="user.email" class="form-control" style="display:inline-block;width:280px;" placeholder="Emp Userid" ng-change="testLoginName()" ng-required="true">
                 <span ng-show="loginEmailErr && user.email != undefined" style="color:red;display:inline-block;">invalid email address</span>
@@ -59,7 +61,9 @@
             <button ng-click="login(user)" class="btn btn-info block full-width m-b" ng-disabled="loginForm.$invalid">Jump In</button>
             <br/><br/>
             <a class="btn btn-info btn-block" href="/empRegister">Register</a>
+</div>
 </div></div>
+</div>
 </div></div></div></div>
 <footer>
 <div class="container" style="padding-left:0px;">
@@ -69,7 +73,7 @@
 <div class="panel-body" style="padding:55px;">
 <div class="middle-box" style="margin-left:400px;">
 <div class="copyright">
-            <p>&copy; 2016 BlueCollar Hunt. All rights reserved.</p>
+            <p>&copy; 2016 Blue Collar Hunt. All rights reserved.</p>
         </div>
 </div>
 </div></div></div></div></div>

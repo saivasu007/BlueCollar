@@ -11,6 +11,7 @@
 <div class="col-xs-50 col-md-40">
 <div class="panel panel-default site-panel-box" style="height:175px;">
 <div class="panel-body" style="padding:60px;height:175px;">
+
 		    <div style="text-align:center">
 			<div class="form-group" style="display:inline-block;">
             <a href="/login"><button style="margin-top:-57px;width: 145px; height: 35px; font-size: 16px" class="btn btn-primary"  ng-click="">
@@ -43,6 +44,8 @@
 <div class="panel panel-default site-panel-box" style="height:550px;">
 <div class="middle-box">
 <div class="panel-body" style="padding:10px;">
+<div class="panel panel-default site-panel-box" style="height:300px;">
+<div class="panel-body" style="padding:10px;">
 			<div class="form-group">
                 <input type="text" ng-model="user.email" class="form-control" style="width:280px" placeholder="User ID" ng-change="testLoginName()" ng-required="true">
                 <span ng-show="loginEmailErr && user.email != undefined" style="color:red;display:inline-block;">invalid email address</span>
@@ -55,9 +58,12 @@
             <button ng-click="login(user)" class="btn btn-info block full-width m-b" style="width:280px" ng-disabled="loginForm.$invalid">Login</button>
             <br/><br/>
             <a class="btn btn-info btn-block" href="/register">Sign Up</a>
-</div></div>           
-<div id="social" class="right-box text-center" style="margin:0 0 0 -275px;padding-top:20px;">
-        <br/><br/>
+</div>
+</div></div>
+</div>           
+<div id="social" class="right-box text-center" style="margin:0 0 0 -310px;padding-top:70px;">
+	<div class="panel panel-default site-panel-box" style="height:225px;">
+		<div class="panel-body" style="padding:10px;">
     	<p>
 	    	<img src="img/social.png" usemap = #social border=0>
 			<map name=social>
@@ -65,9 +71,10 @@
 			<area shape="poly" Coords="4,44,196,43,196,73,5,73" href="/auth/facebook">
 			<area shape="poly" Coords="4,80,196,82,197,112,5,111" href="/auth/linkedin">
 			</map>
-			<p><small><b style="color:blue">By signing up, I agree to Blue Collar Jobs <br/>Portal Terms of Service,Privacy Policy<br/> and other Terms.</b></small></p> 
+			<p><small><b style="color:blue">By signing up, I agree to Blue Collar Hunt <br/>Portal Terms of Service,Privacy Policy<br/> and other Terms.</b></small></p> 
 		</p>
 </div>
+</div></div>
 </div></div></div></div>
 <footer>
 <div class="container" style="padding-left:0px;">
@@ -76,11 +83,13 @@
 <div class="panel panel-default site-panel-box" style="height:175px;">
 <div class="panel-body" style="padding:55px;">
 <div class="middle-box" style="margin-left:400px;">
-<div class="copyright">
-            <p>&copy; 2016 BlueCollar Hunt. All rights reserved.</p>
-        </div>
 </div>
-</div></div></div></div></div>
+</div>
+</div>
+</div></div></div>
+<div class="copyright">
+     <p>&copy; 2016 Blue Collar Hunt Inc. All rights reserved.</p>
+</div>
 </footer>
 </body>
 </html>

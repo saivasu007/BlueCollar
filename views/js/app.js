@@ -763,7 +763,7 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
     console.log('uploader', uploaderCover);
     
     $scope.launchFilePicker = function(){
-    	angular.element(document.querySelector('#fileDialog')).click();
+    	('#fileDialog').trigger('click');
     }
 	
 

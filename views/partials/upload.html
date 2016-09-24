@@ -55,7 +55,7 @@
                           <div nv-file-drop="" ng-click="launchFilePicker()" uploader="uploader" options="{ url: '/foo' }">
                             <div nv-file-over="" uploader="uploader" over-class="another-file-over-class" class="well my-drop-zone" style="border-style:dotted;border-color:#5BC0DE;border-width: 5px;width:375px;height:195px;">
                                 Drag & Drop Resume Here
-                            <div ng-hide="uploader.isHTML5"><input id="fileDialog" type="file" nv-file-select="" uploader="uploader"/></div>
+                            <div ng-hide="uploader.isHTML5"><input id="fileDialog" type="file" nv-file-select="" uploader="uploader" ng-click="javascript:alert('hi')"/></div>
                             </div>
                         </div>
                         <div>
@@ -120,11 +120,11 @@
 <div class="panel panel-default site-panel-box" style="height:175px;">
 <div class="panel-body" style="padding:55px;">
 <div class="middle-box" style="margin-left:400px;">
-<div class="copyright">
-            <p>&copy; 2016 BlueCollar Hunt. All rights reserved.</p>
-        </div>
 </div>
 </div></div></div></div></div>
+<div class="copyright">
+     <p>&copy; 2016 Blue Collar Hunt. All rights reserved.</p>
+</div>
 </footer>
 </body>
 </html>
