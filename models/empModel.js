@@ -7,14 +7,10 @@ var empSchema = new mongoose.Schema({
     email: String,
     password: String,
     contactNum: String,
-    address1: String,
-    address2: String,
-    city: String,
-    state: String,
-    zipcode: String,
+    address: String,
+    empUniqueID: String,
     activeIn: String,
     expiryDate: String,
-    subscriber: String,
     saveCC: String
 });
 
