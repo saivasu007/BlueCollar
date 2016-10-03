@@ -32,10 +32,12 @@ var port = properties.get('process.env.port');
 app.use(express.static(__dirname + '/views'));
 var mongodbUrl = properties.get('mongodb.connect.url');
 mongoose.connect(mongodbUrl);
-//For Profile Picture at use level.
+//For Profile Picture at use level.Delete below code as not needed.
+/*
 var mongooseThumbnailLib = require('mongoose-thumbnail');
 var mongooseThumbnailPlugin = mongooseThumbnailLib.thumbnailPlugin;
 var uploads_base = path.join(__dirname, "uploads");
+*/
 
 
 // models
