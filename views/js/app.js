@@ -3,7 +3,7 @@
  * @author : Srinivas Thungathurti
  * @description : Modified for ASQ Upgrade 2.0 changes for Sprint 1 (Registration and Login requirements).
  */
-var app = angular.module('blueCollarApp', ['ngRoute', 'highcharts-ng','toggle-switch','timer','ui.bootstrap','ngAutocomplete','angularFileUpload','reader','ngImageInputWithPreview','ngFlash']);
+var app = angular.module('blueCollarApp', ['ngRoute', 'highcharts-ng','toggle-switch','timer','ui.bootstrap','ngAutocomplete','angularFileUpload','ngImageInputWithPreview','ngFlash']);
 
 
 //Added by Srinivas Thungathurti for ASQ Upgrade2.0 for adding calendar fields on register/profile/updateUserInfo screens.
