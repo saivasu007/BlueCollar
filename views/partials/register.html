@@ -40,9 +40,21 @@
 <div class="container" style="padding-left:0px;">
 <div class="row">
 <div class="col-xs-50 col-md-40">
-<div class="panel panel-default site-panel-box" style="height:550px;">
+<div class="panel panel-default site-panel-box" style="height:600px;">
 <div class="middle-box">
-        <div class="panel-body" style="padding:10px;">
+        <div class="panel-body" style="padding:0px;">
+        
+        <div id="errMsgArea" ng-show="errorMsg" class="panel panel-default site-panel-box" style="height:52px;">
+		<div class="panel-body" style="padding:0px;">
+			<div class="form-group">
+			<flash-message
+    			duration="5000"
+    			show-close="true"
+    			on-dismiss="ClearMessages(flash)"></flash-message>
+    		</div>
+		</div>
+		</div>
+        
         <div class="panel panel-default site-panel-box" style="height:480px;">
 		<div class="panel-body" style="padding:10px;">
             <div class="form-group">
@@ -56,14 +68,12 @@
                 <input id="lName" type="text" ng-model="user.lastName" class="form-control" placeholder="Last Name">
             </div>
             <div class="form-group">
-            <select ng-model="selectedState" ng-options="state.abbreviation as state.name for state in states" style="font-size: 14px; width: 300px; height: 32px; display: inline;">
-			</select>
-			</div>
-            <div class="form-group">
                 <input type="text" id="zip" ng-model="user.zipcode" class="form-control" placeholder="Zip Code" ng-change="testZipCode()" data-toggle="tooltip2" data-placement="top" data-original-title="Please use only numbers">
                 <span ng-show="zipCodeErr && user.zipcode != ''" style="color:red;">Please enter valid Zipcode.</span>
             </div>
-            <!-- End Upgrade 2.0 Here. -->
+            <div class="form-group">
+                <input type="file" id="profPic" name="myImage" ng-model="user.image" class="form-control" image-with-preview accept="image/jpeg,image/png" placeholder="Upload Profile Image">
+            </div>
             <div class="form-group">
                 <span class="{{myClass}}"><input type="password" ng-model="user.passwd1" class="form-control" placeholder="New Password" ng-change="testPassword()"></span>
     			<span ng-show="passwordShort && user.passwd1 != ''" style="color:red">password must be at least 6 characters</span>
@@ -78,7 +88,17 @@
             <button ng-click="clear(user)" ng-disabled="error" class="btn btn-info block full-width m-b">Clear</button>
         </div>
         </div></div>
-</div></div></div></div></div>
+</div>
+
+<div id="profile" class="right-box text-center" style="margin:0 0 0 -310px;padding-top:70px;">
+	<div class="panel panel-default site-panel-box" style="height:175px;width:200px;border:2px solid">
+		<div class="panel-body" style="padding:0px;">
+		<img ng-if="user.image != undefined" ng-src="{{user.image.src}}" style="height:171px;width:196px;"/>
+		<img ng-if="user.image == undefined" src="img/preview.png" style="height:125px;width:160px;"/></div>
+</div>
+</div></div>
+
+</div></div></div></div>
 <footer>
 <div class="container" style="padding-left:0px;">
 <div class="row">

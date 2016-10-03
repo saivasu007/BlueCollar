@@ -56,9 +56,19 @@
 <div class="container" style="padding-left:0px;">
 <div class="row">
 <div class="col-xs-50 col-md-40">
-<div class="panel panel-default site-panel-box" style="height:550px;">
-<br/><br/>
-<div class="well well-sm" style="width:675px;margin-top:50px;margin-left:80px;">
+<div class="panel panel-default site-panel-box" style="height:610px;padding:20px;">
+<br/>
+<div id="errMsgArea" ng-show="errorMsg" class="panel panel-default site-panel-box" style="height:52px;width:700px;margin:0 0 0 60px;">
+		<div class="panel-body" style="padding:0px;">
+			<div class="form-group">
+			<flash-message
+    			duration="5000"
+    			show-close="true"
+    			on-dismiss="ClearMessages(flash)"></flash-message>
+    		</div>
+		</div>
+</div>
+<div class="well well-sm" style="width:700px;height:310px;margin-top:29px;margin-left:60px;float:left;padding:20px;">
                 <form>
                 <div class="row">
                     <div class="col-md-6">
@@ -90,8 +100,8 @@
                         <div class="form-group">
                             <label for="name">
                                 <font color="red">*</font>&nbsp;Message</label>
-                            <textarea name="message" id="message" class="form-control" rows="9" cols="25" required="required"
-                                placeholder="Message" ng-model="contact.message" style="width:310px;height:190px;"></textarea>
+                            <textarea name="message" id="message" class="form-control" rows="9" cols="26" required="required"
+                                placeholder="Message" ng-model="contact.message" style="width:312px;height:190px;"></textarea>
                         </div>
                     </div>
                     <div class="col-md-12">
@@ -101,7 +111,9 @@
                 </div>
                 </form>
                 </div>
-<div id="address" class="text-center" style="margin:-320px 0 0 800px;">
+<div class="panel panel-default site-panel-box" style="height:310px;width:330px;float:right;margin:26px;">
+<div class="panel-body" style="padding:0px;">
+<div id="address" class="text-center" style="margin:20px 0 0 10px;">
             <legend><span class="glyphicon glyphicon-globe"></span> Our office</legend>
             <address>
                 <strong><font color="blue"">Blue Collar Hunt Inc.</font></strong><br>
@@ -112,9 +124,16 @@
                 (408) xxx-xxxx
             </address>
             <address>
-            <img width="360" height="145" src="http://maps.googleapis.com/maps/api/staticmap?center=san+jose&zoom=10&scale=false&size=190x145&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of san jose">
+            <img width="300" height="120" src="http://maps.googleapis.com/maps/api/staticmap?center=san+jose&zoom=10&scale=false&size=190x145&maptype=roadmap&format=png&visual_refresh=true" alt="Google Map of san jose">
             </address>
         </div>
+        </div>
+        </div>
+<div class="panel panel-default site-panel-box" style="width:1060px;height:120px;margin:370px 0 0 60px;">
+<div class="panel-body" style="padding:10px;">
+Welcome to Blue Collar Hunt Inc is a new trend setting corporation in the Blue Collar Job market industry which is located in San jose (South Bayarea). 
+</div></div>
+
 </div></div></div></div>
 <footer>
 <div class="container" style="padding-left:0px;">

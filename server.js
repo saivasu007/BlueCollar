@@ -32,6 +32,11 @@ var port = properties.get('process.env.port');
 app.use(express.static(__dirname + '/views'));
 var mongodbUrl = properties.get('mongodb.connect.url');
 mongoose.connect(mongodbUrl);
+//For Profile Picture at use level.
+var mongooseThumbnailLib = require('mongoose-thumbnail');
+var mongooseThumbnailPlugin = mongooseThumbnailLib.thumbnailPlugin;
+var uploads_base = path.join(__dirname, "uploads");
+
 
 // models
 var userModel = require('./models/userModel.js');
@@ -57,6 +62,11 @@ var DIR = './uploads/';
 var stripeApiKey = "sk_test_uipgrU7ikmbLSRJVJ9vf7mgI";
 var stripeApiKeyTesting = "pk_test_obXvmdYNSzC5Ou0vL9x9sI6Q";
 var stripe = require('stripe')(stripeApiKey);
+var MongoClient = require('mongodb').MongoClient,
+GridStore = require('mongodb').GridStore,
+ObjectID = require('mongodb').ObjectID;
+
+
 
 var emailTransport = properties.get('app.email.transport');
 var serviceUser = properties.get('SMTP.service.user');
@@ -96,11 +106,23 @@ function renderTemplate (name, data) {
 	  return ejs.render(tpl, data);
 }
 
+function randomNumber() {
+	var num;
+	num = parseInt((Math.random() * 9 + 1) * Math.pow(10,4), 10);
+	return num;
+}
+
 // register middle-ware
+/*
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
 	extended : true
 }));
+*/
+
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
 app.use(cookieParser());
 app.use(session({
 	secret : "secret",
@@ -111,44 +133,39 @@ app.use(session({
 app.use(passPort.initialize());
 app.use(passPort.session());
 
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, DIR)
+    },
+    filename: function (req, file, cb) {
+        cb(null, file.originalname + '-' + Date.now())
+  }
+});
+
 app.use(multer({
-	  dest: DIR,
+	  storage: storage,
 	  limits: { fileSize: 10 * 1024 * 1024},
-	  filename: function (req, file, cb) {
-	        cb(null, file.originalname + '-' + Date.now());
-	        console.log("file name "+file.originalname);
-	  },
-	  onFileUploadStart: function (file) {
-	    console.log(file.originalname + ' is starting ...');
-	  },
-	  onFileUploadComplete: function (file) {
-	    console.log(file.originalname + ' uploaded to  ' + file.path);
+	  fileFilter: function (req, file, cb) {
+		 if (!file.originalname.match(/\.(doc|docx|pdf)$/)) {
+		        return cb(new Error('Only DOC,DOCX and PDF files are allowed!'));
+		 }
+		 cb(null, true);
 	  }
 }).array('file'));
 
-/*
-app.get('/api', function (req, res) {
-	  res.end('Upload file to server');
-});
-
-app.post('/api', function (req, res) {
-	  upload(req, res, function (err) {
-		console.log("From upload file is "+req.file);
-	    if (err) {
-	      return res.end(err.toString());
-	    }
-	    res.end('File is uploaded');
-	  });
-});
-*/
+//For Profile Picture.
+//app.use('/uploads', express.static(uploads_base));
 
 // passport config
 passPort.use(new localStrategy({
 	usernameField : 'email',
 	passwordField : 'password',
-	session : false
-}, function(username, password, done) {
+	session : false,
+	passReqToCallback : true
+}, function(req, username, password, done) {
 	// authentication method
+	console.log("userType "+ req.body.userType);
+	if(req.body.userType == "U") {
 	userModel.findOne({
 		email : username,
 		password : encrypt(password)
@@ -165,6 +182,26 @@ passPort.use(new localStrategy({
         }
         return  done(null, false)
     })
+	} else if(req.body.userType == "E") {
+		empModel.findOne({
+			email : username,
+			password : encrypt(password),
+			empUniqueID : req.body.empUniqueID
+		}, function (err, user) {
+	        if (err) return done(err);
+	        /*
+	        if (user) {
+	        	var date = new Date();
+	        	var formatDate = date.getMonth() + 1 + '/' + date.getDate() + '/' +  date.getFullYear();
+	            if (new Date(user.expiryDate) < new Date(formatDate)) {
+	            	console.log(user.email+" expired in ASQ Exam Portal.Please contact Administrator.");
+	                return done(err+" expired");
+	            }
+	            return done(null, user)
+	        } */
+	        return  done(null, user)
+	    })
+	  }
 }));
 
 passPort.serializeUser(function(user, done) {
@@ -336,11 +373,31 @@ passPort.use(new GoogleStrategy({
 	  }
 ));
 
+//For Profile Picture
+app.get('/uploadPic', function(req, res) {
+	picture.find (err, pictures,function() {
+		if(err) res.send(err);
+		else res.send(pictures);
+	});
+});
+
+app.post('/uploadPic', function(req, res) {
+	console.log(req.body);
+	picture = new Picture({ title: req.body.title });
+	picture.set('photo.file', req.files.photo);
+	picture.save(err,function(){
+		if(err) res.send(err);
+		else res.sendStatus(200);
+	})
+	
+});
 
 // routes
 app.post('/register', function(req, res) {
 	var password = encrypt(req.body.password);
 	req.body.password = password;
+	var email = req.body.email;
+	console.log("email "+email);
 	userModel.findOne({
 		email : req.body.email
 	}, function(err, result) {
@@ -349,10 +406,38 @@ app.post('/register', function(req, res) {
 		} else {
 			var newUser = new userModel(req.body);
 			newUser.save(function(err, user) {
+				console.log("req.body.email "+req.body.email);
+				if(req.body.imageName != "") {
+					console.log("Start profile picture upload process");
+					console.log(req.body);
+					MongoClient.connect(mongodbUrl, function(err, db) {
+						  var gridStore = new GridStore(db, new ObjectID(),req.body.imageName, "w",{
+							  "email": email,
+							  "content_type": req.body.imageContentType,
+							  "metadata":{
+							      "author": req.user.lastName,
+							      "email": email
+							  }
+							  });
+						  gridStore.open(function(err, gridStore) {
+							var stream = gridStore.stream(true);
+						    gridStore.write(req.body.imageContents, function(err, gridStore) {
+						      gridStore.close(function(err, result) {
+						      });
+						      stream.on("end", function(err) {
+						    	  db.close();
+						      });
+						   });
+						  });
+						  console.log("Finished profile picture upload to MongoDB");
+				});
+				}
 				req.login(user, function() {
 					res.json(user);
 				});
+			});
 			//send email after successful registration.
+				/*
 				var smtpTransport = mailer.createTransport(emailTransport, {
 					service : "Gmail",
 					auth : {
@@ -380,13 +465,62 @@ app.post('/register', function(req, res) {
 						console.log("Message sent: " + response.message);
 					}
 				   smtpTransport.close();
-				});
+				});*/
 			    //End email communication here.
-			})
 		}
 	});
 	
 });
+
+app.post('/uploadProfile', function(req, res) {
+	console.log("uploading file to MongoDB");
+	MongoClient.connect(mongodbUrl, function(err, db) {
+		  var gridStore = new GridStore(db, new ObjectID(),req.user.firstName+"_"+req.body.name, "w",{
+			  "content_type": "video/webm",
+			  "metadata":{
+			      "author": req.user.lastName
+			  }
+			  });
+		  gridStore.open(function(err, gridStore) {
+			var stream = gridStore.stream(true);
+		    gridStore.write(req.body.contents, function(err, gridStore) {
+		      gridStore.close(function(err, result) {
+		      });
+		      stream.on("end", function(err) {
+		    	  db.close();
+		      });
+		   });
+		  });
+		  console.log("Finished resume upload to MongoDB");
+		});
+	res.sendStatus(200);
+});
+
+app.post('/uploadVideo', function(req, res) {
+	console.log("uploading stream to MongoDB");
+	MongoClient.connect(mongodbUrl, function(err, db) {
+		  var gridStore = new GridStore(db, new ObjectID(),req.user.firstName+"_"+req.body.name, "w",{
+			  "content_type": "video/webm",
+			  "metadata":{
+				  "email": req.body.email,
+			      "author": req.user.lastName
+			  }
+			  });
+		  gridStore.open(function(err, gridStore) {
+			var stream = gridStore.stream(true);
+		    gridStore.write(req.body.contents, function(err, gridStore) {
+		      gridStore.close(function(err, result) {
+		      });
+		      stream.on("end", function(err) {
+		    	  db.close();
+		      });
+		   });
+		  });
+		  console.log("Finished stream upload to MongoDB");
+		});
+	res.sendStatus(200);
+});
+
 
 
 app.post('/saveContactMessage', function(req, res) {
@@ -401,6 +535,11 @@ app.post('/saveContactMessage', function(req, res) {
 });
 
 app.post('/login', passPort.authenticate('local'),function(req, res) {
+	var user = req.user;
+	res.json(user);
+});
+
+app.post('/empSignIn', passPort.authenticate('local'),function(req, res) {
 	var user = req.user;
 	res.json(user);
 });
@@ -431,8 +570,12 @@ app.post("/plans/bluecollarhunt_dev", function(req, res) {
 	//var password = encrypt(req.body.password);
 	//req.body.password = password;
 	console.log(req.body.uid);
+	var empUniqueID = req.body.empUniqueID+randomNumber();
+	req.body.empUniqueID = empUniqueID;
+	var password = encrypt(req.body.password);
+	req.body.password = password;
 	empModel.findOne({
-		id : req.body.uid
+		email : req.body.email
 	}, function(err, result) {
 		if (result) {
 			res.send("0");
@@ -475,7 +618,7 @@ app.post("/plans/bluecollarhunt_dev", function(req, res) {
 			    //End email communication here.
 			    */
 			});
-			if(req.body.saveCC == "Y") { 
+			if(req.body.saveCC == "Y" && req.body.amount != 0) { 
 			var newPayment = new paymentModel(req.body.card);
 			newPayment.save(function(err, user) {
 				if(err) console.log("ERROR:paymet "+err);
@@ -506,6 +649,28 @@ app.post("/plans/bluecollarhunt_dev", function(req, res) {
 	    }
 	  });
 	});
+
+//For Free Employer Registrations.
+app.post("/empFreeRegister", function(req, res) {
+	var empUniqueID = req.body.empUniqueID+randomNumber();
+	req.body.empUniqueID = empUniqueID;
+	var password = encrypt(req.body.password);
+	req.body.password = password;
+	empModel.findOne({
+		email : req.body.email
+	}, function(err, result) {
+		if (result) {
+			res.send("0");
+		} else {
+			var newUser = new empModel(req.body);
+			newUser.save(function(err, user) {
+				req.login(user, function() {
+					res.json(user);
+				});
+			});
+	  } 
+	});
+});
 
 app.post('/uploadResume', function(req, res) {
 	var fileRootName = req.body.name.split('.').shift(),
@@ -560,6 +725,42 @@ function download(url) {
 	    console.log("Got error: " + e.message);
 	  });
 }
+
+app.post('/getUserInfo', function(req, res) {
+	console.log(req.body.search);
+	var email = req.body.search;
+	userModel.findOne({
+		email : req.body.search
+	}, function(err, result) {
+		if(result) {
+			MongoClient.connect(mongodbUrl, function(err, db) {
+				db.collection('fs.files')
+				  .find({ "metadata.email" : email})
+				  .toArray(function(err, files) {
+				    if (err) {
+				    	console.log("ERROR "+err);
+				    	throw err;
+				    }
+				    files.forEach(function(file) {
+				      
+				    	  var gridStore = new GridStore(db, file.filename,"r");
+						  gridStore.open(function(err, gridStore) {
+							var stream = gridStore.stream(true);
+						    gridStore.read(function(err, dataURL) {
+						    	console.log("Stream reading..");
+						    	res.send(dataURL);
+						   });
+						   stream.on("end", function(err) {
+						       db.close();
+						   });
+						  });
+						  console.log("Finished stream retrieval from MongoDB");
+				    });
+				  });
+			});
+		}
+	});
+});
 
 //Forgot Password functionality.
 app.post('/forgot', function(req, res) {

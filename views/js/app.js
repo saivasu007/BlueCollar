@@ -3,7 +3,7 @@
  * @author : Srinivas Thungathurti
  * @description : Modified for ASQ Upgrade 2.0 changes for Sprint 1 (Registration and Login requirements).
  */
-var app = angular.module('blueCollarApp', ['ngRoute', 'highcharts-ng','toggle-switch','timer','ui.bootstrap','ngAutocomplete','angularFileUpload']);
+var app = angular.module('blueCollarApp', ['ngRoute', 'highcharts-ng','toggle-switch','timer','ui.bootstrap','ngAutocomplete','angularFileUpload','reader','ngImageInputWithPreview','ngFlash']);
 
 
 //Added by Srinivas Thungathurti for ASQ Upgrade2.0 for adding calendar fields on register/profile/updateUserInfo screens.
@@ -81,6 +81,25 @@ app.controller('DatepickerCtrl', function ($scope) {
 		  };
 });
 
+app.directive("ngFileSelect",function(){
+	  return {
+	    link: function($scope,el){
+	      
+	      el.bind("change", function(e){
+	        alert("Hello Change");
+	        $scope.file = (e.srcElement || e.target).files[0];
+	        $scope.getFile();
+	      })
+	    }
+	  }
+});
+
+app.filter("trustUrl", ['$sce', function ($sce) {
+    return function (recordingUrl) {
+        return $sce.trustAsResourceUrl(recordingUrl);
+    };
+}]);
+
 app.controller('indexCtrl', function($scope, ObserverService, $location, $anchorScroll) {
 	$scope.gototop = function() {
 		$location.hash('top');
@@ -92,219 +111,13 @@ app.controller('indexCtrl', function($scope, ObserverService, $location, $anchor
 	});
 });
 
-app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
+app.controller('registerCtrl', function($q, $scope, $location, $rootScope, $http,Flash) {
 	$scope.error = false;
 	$scope.checkEmail = false;
 	//Added by Srinivas Thungathurti for ASQ Upgrade 2.0.
 	$scope.passwordErr = false;
     $scope.usernameErr = false;
     $scope.passwordShort = false;
-	$scope.states = [
-	                 {
-	                     "name": "Alabama",
-	                     "abbreviation": "AL"
-	                 },
-	                 {
-	                     "name": "Alaska",
-	                     "abbreviation": "AK"
-	                 },
-	                 {
-	                     "name": "Arizona",
-	                     "abbreviation": "AZ"
-	                 },
-	                 {
-	                     "name": "Arkansas",
-	                     "abbreviation": "AR"
-	                 },
-	                 {
-	                     "name": "California",
-	                     "abbreviation": "CA"
-	                 },
-	                 {
-	                     "name": "Colorado",
-	                     "abbreviation": "CO"
-	                 },
-	                 {
-	                     "name": "Connecticut",
-	                     "abbreviation": "CT"
-	                 },
-	                 {
-	                     "name": "Delaware",
-	                     "abbreviation": "DE"
-	                 },
-	                 {
-	                     "name": "District Of Columbia",
-	                     "abbreviation": "DC"
-	                 },
-	                 {
-	                     "name": "Florida",
-	                     "abbreviation": "FL"
-	                 },
-	                 {
-	                     "name": "Georgia",
-	                     "abbreviation": "GA"
-	                 },
-	                 {
-	                     "name": "Hawaii",
-	                     "abbreviation": "HI"
-	                 },
-	                 {
-	                     "name": "Idaho",
-	                     "abbreviation": "ID"
-	                 },
-	                 {
-	                     "name": "Illinois",
-	                     "abbreviation": "IL"
-	                 },
-	                 {
-	                     "name": "Indiana",
-	                     "abbreviation": "IN"
-	                 },
-	                 {
-	                     "name": "Iowa",
-	                     "abbreviation": "IA"
-	                 },
-	                 {
-	                     "name": "Kansas",
-	                     "abbreviation": "KS"
-	                 },
-	                 {
-	                     "name": "Kentucky",
-	                     "abbreviation": "KY"
-	                 },
-	                 {
-	                     "name": "Louisiana",
-	                     "abbreviation": "LA"
-	                 },
-	                 {
-	                     "name": "Maine",
-	                     "abbreviation": "ME"
-	                 },
-	                 {
-	                     "name": "Maryland",
-	                     "abbreviation": "MD"
-	                 },
-	                 {
-	                     "name": "Massachusetts",
-	                     "abbreviation": "MA"
-	                 },
-	                 {
-	                     "name": "Michigan",
-	                     "abbreviation": "MI"
-	                 },
-	                 {
-	                     "name": "Minnesota",
-	                     "abbreviation": "MN"
-	                 },
-	                 {
-	                     "name": "Mississippi",
-	                     "abbreviation": "MS"
-	                 },
-	                 {
-	                     "name": "Missouri",
-	                     "abbreviation": "MO"
-	                 },
-	                 {
-	                     "name": "Montana",
-	                     "abbreviation": "MT"
-	                 },
-	                 {
-	                     "name": "Nebraska",
-	                     "abbreviation": "NE"
-	                 },
-	                 {
-	                     "name": "Nevada",
-	                     "abbreviation": "NV"
-	                 },
-	                 {
-	                     "name": "New Hampshire",
-	                     "abbreviation": "NH"
-	                 },
-	                 {
-	                     "name": "New Jersey",
-	                     "abbreviation": "NJ"
-	                 },
-	                 {
-	                     "name": "New Mexico",
-	                     "abbreviation": "NM"
-	                 },
-	                 {
-	                     "name": "New York",
-	                     "abbreviation": "NY"
-	                 },
-	                 {
-	                     "name": "North Carolina",
-	                     "abbreviation": "NC"
-	                 },
-	                 {
-	                     "name": "North Dakota",
-	                     "abbreviation": "ND"
-	                 },
-	                 {
-	                     "name": "Ohio",
-	                     "abbreviation": "OH"
-	                 },
-	                 {
-	                     "name": "Oklahoma",
-	                     "abbreviation": "OK"
-	                 },
-	                 {
-	                     "name": "Oregon",
-	                     "abbreviation": "OR"
-	                 },
-	                 {
-	                     "name": "Pennsylvania",
-	                     "abbreviation": "PA"
-	                 },
-	                 {
-	                     "name": "Rhode Island",
-	                     "abbreviation": "RI"
-	                 },
-	                 {
-	                     "name": "South Carolina",
-	                     "abbreviation": "SC"
-	                 },
-	                 {
-	                     "name": "South Dakota",
-	                     "abbreviation": "SD"
-	                 },
-	                 {
-	                     "name": "Tennessee",
-	                     "abbreviation": "TN"
-	                 },
-	                 {
-	                     "name": "Texas",
-	                     "abbreviation": "TX"
-	                 },
-	                 {
-	                     "name": "Utah",
-	                     "abbreviation": "UT"
-	                 },
-	                 {
-	                     "name": "Vermont",
-	                     "abbreviation": "VT"
-	                 },
-	                 {
-	                     "name": "Virginia",
-	                     "abbreviation": "VA"
-	                 },
-	                 {
-	                     "name": "Washington",
-	                     "abbreviation": "WA"
-	                 },
-	                 {
-	                     "name": "West Virginia",
-	                     "abbreviation": "WV"
-	                 },
-	                 {
-	                     "name": "Wisconsin",
-	                     "abbreviation": "WI"
-	                 },
-	                 {
-	                     "name": "Wyoming",
-	                     "abbreviation": "WY"
-	                 }
-	               ];
 
 	//Updated by Srinivas Thungathurti for newly added registration field information for ASQ Upgrade 2.0.
 	$scope.user = {
@@ -313,16 +126,8 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 		lastName:'',
 		passwd1:'',
 		passwd2:'',
-		address1:'',
-		city:'',
-		state:'',
 		zipcode:'',
-		role:'',
-		activeIn:'',
-		expiryDate:'',
-		subscriber:'',
-		birthDate:''
-		
+		image:''
 	};
 
 	$scope.verify = function () {
@@ -342,7 +147,7 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 	$scope.clear = function () {
         if(confirm("Are you sure to clear the form?")) { 
         	$scope.user = {}
-        	$scope.selectedState = "";
+        	$("#profPic").val('');
         }
     };
     
@@ -439,27 +244,26 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 			$scope.error = true;
 		}
 	};
+	
+	$scope.ClearMessages = function(flash) {
+		$scope.errorMsg = false;
+	}
 
 	//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	//Updated by Srinivas Thungathurti for ASQ Upgrade 2.0.Additional registration fields added for Validation.
 	$scope.register = function (user){
 		
-		var currentDate = new moment();
-		var expDate = moment(currentDate.add(3,'months')).format('MM/DD/YYYY');
-		
-		if ($scope.user.email == "" || $scope.user.firstName == "" || $scope.user.lastName == "" || $scope.user.passwd1 == "" || $scope.user.passwd2 == "" || $scope.user.address1 == "" || $scope.user.city == "" || $scope.user.state.name == "" || $scope.user.zipcode == "" || $scope.user.birthDate == "" || $scope.user.birthDate == undefined) {
-			alert("We need your complete personal information! Please fill in all the blanks.");
+		if ($scope.user.email == "" || $scope.user.firstName == "" || $scope.user.lastName == "" || $scope.user.passwd1 == "" || $scope.user.passwd2 == "" || $scope.user.zipcode == "") {
+			//alert("We need your complete personal information! Please fill in all the blanks.");
+			$scope.errorMsg = true;
+			Flash.create('Info', "Please fill in all the blanks.",0, {class: 'alert-info', id: 'custom-id'}, true);
 		}
 		else {
-			$scope.user.state = $scope.user.state.name;
 			$scope.user.password = $scope.user.passwd1;
-			$scope.user.expiryDate = expDate;
-			$scope.user.role = "user";
-			$scope.user.activeIn = "Y";
-			$scope.user.subscriber = "No";
-			$scope.user.state = $scope.selectedState;
-			$scope.user.birthDate = moment($scope.user.birthDate).format('MM/DD/YYYY');
-
+			$scope.user.imageContents = $scope.user.image.src;
+			$scope.user.imageContentType = $scope.user.image.src.substring(5,15);
+			$scope.user.imageName = document.getElementById("profPic").value;
+			alert($scope.user.email);
 			$http.post('/register', user).success(function (response) {
 				if (response != "0") {
 					alert("Success! Please login with your registered email \"" + user.email + "\" and password you created.");
@@ -474,10 +278,12 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 	
 	$scope.empRegister = function(emp) {
 		//For Stripe card transactions.
+		var amount = emp.amount;
+		$scope.emp.password = $scope.emp.passwd1;
+		if(amount > 0) {
 		Stripe.setPublishableKey('pk_test_obXvmdYNSzC5Ou0vL9x9sI6Q');
 		var saveCardInfo = emp.saveCC;
 		if(saveCardInfo == true) saveCardInfo = "Y";
-		var amount = emp.amount;
 		if(emp.passwd1 == emp.passwd2) emp.password = emp.passwd1;
 		var cardMM = emp.cardExpiry.substring(0,2);
 		var cardYYYY = emp.cardExpiry.substring(5,9);
@@ -493,12 +299,10 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 						email: emp.email,
 						uid: emp.uid,
 						password: emp.password,
+						empUniqueID : emp.name.substring(0,4),
 						contactNum: emp.contactNum,
 						name: emp.name,
-						address1: emp.address1,
-						city: emp.city,
-						state: emp.state,
-						zipcode: emp.zipcode,
+						address: emp.address1,
 						activeIn: emp.activeIn,
 						expiryDate: emp.expiryDate,
 						subscriber: emp.subscriber,
@@ -526,6 +330,32 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 				});
 				//return;
 		  });
+		} else {
+				var empData = {
+					email: emp.email,
+					uid: emp.uid,
+					password: emp.password,
+					empUniqueID : emp.name.substring(0,4),
+					contactNum: emp.contactNum,
+					name: emp.name,
+					address: emp.address1,
+					activeIn: emp.activeIn,
+					expiryDate: emp.expiryDate,
+					subscriber: emp.subscriber,
+					saveCC: "NA"
+				}
+				$http.post('/empFreeRegister', empData).success(function (resp) {
+					if (resp != "0") {
+						alert("Success! Please login with your registered credentials.");
+						$rootScope.currentUser = null;					
+						$location.path('/empSignIn');
+					} else {
+						alert("Ooops, there is a issue and Please try again!!")
+					}
+				}).error(function (err) {
+					alert("ERROR: "+err.message);
+				});
+		}
 	}
 	
 	/*$scope.stripeResponseHandler = function(status,response) {
@@ -569,6 +399,15 @@ app.controller('registerCtrl', function($scope, $location, $rootScope, $http) {
 	$scope.formatContactNum = function(emp) {
 		
 	}
+
+	$scope.getFile = function () {
+        alert("getFile");
+        fileReader.readAsDataUrl($scope.file, $scope)
+                      .then(function(result) {
+                    	  alert(result);
+                          $scope.imageSrc = result;
+       });
+    };
 });
 
 app.controller('landingCtrl', function ($scope, $rootScope, $http, $routeParams, $location) {
@@ -577,8 +416,22 @@ app.controller('landingCtrl', function ($scope, $rootScope, $http, $routeParams,
     $scope.details1 = '';
 });
 
-app.controller('loginCtrl', function ($scope, $rootScope, $http, $routeParams, $location) {
+app.controller('loginCtrl', function ($scope, $rootScope, $http, $routeParams, $location,Flash) {
 	$scope.login = function (user){
+		if(user == undefined) { 
+			$scope.errorMsg = true;
+			Flash.create('warning', "Please enter Username or Password.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			return;
+		} else if(user.email == undefined) { 
+			$scope.errorMsg = true;
+			Flash.create('warning', "Please enter Username.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			return;
+		} else if(user.password == undefined) { 
+			$scope.errorMsg = true;
+			Flash.create('warning', "Please enter Password.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			return;
+		}
+		$scope.user.userType = "U";
 		$http.post('/login', user).success(function (response){
 			console.log(response);
 			$rootScope.currentUser = response;
@@ -589,7 +442,8 @@ app.controller('loginCtrl', function ($scope, $rootScope, $http, $routeParams, $
 			} else if(err != "Bad Request") {
 				alert("User account expired in ASQ Exam Portal."+"\n"+"      	    Please contact administrator.");
 			} else {
-				alert("Please enter Username or Password.");
+				$scope.errorMsg = true;
+				Flash.create('Info', "Please enter valid Username or Password.",0, {class: 'alert-info', id: 'custom-id'}, true);
 			}
 		})
 	};
@@ -649,6 +503,148 @@ app.controller('loginCtrl', function ($scope, $rootScope, $http, $routeParams, $
 		}).error(function (err) {
 			if(err = "NotFound" ) {
 				alert("Email ID not registered in ASQ Portal.");
+			}
+		})
+	};
+	
+	$scope.pwReset = function (user){
+		var postData = {
+				password: user.password1,
+				token: $routeParams.token
+		}
+		$http.post('/reset', postData).success(function (response){
+			console.log(response);
+			alert("Password Updated Successfully.");
+			$location.url('/login');
+		}).error(function (err) {
+			if(err) {
+				alert("Error while updating password.Please try again!.");
+			}
+		})
+	};
+	
+	$scope.ClearMessages = function(flash) {
+		$scope.errorMsg = false;
+	}
+
+	$scope.pressEnter = function (e,user) {
+		if (e.keyCode == 13){
+			$scope.login(user);
+		}
+	};
+});
+
+app.controller('empLoginCtrl', function ($scope, $rootScope, $http, $routeParams, $location,Flash) {
+	
+	$scope.empLogin = function (user){
+
+		if(user == undefined) { 
+			$scope.errorMsg = true;
+			Flash.create('warning', "Please enter Username or Password & Unique Emp ID.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			return;
+		} else if(user.email == undefined && user.password != undefined && user.empUniqueID != undefined) { 
+			$scope.errorMsg = true;
+			Flash.create('warning', "Please enter Employer Email.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			return;
+		} else if(user.email != undefined && user.password == undefined && user.empUniqueID != undefined) { 
+			$scope.errorMsg = true;
+			Flash.create('warning', "Please enter Password.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			return;
+		} else if(user.email != undefined && user.password != undefined && user.empUniqueID == undefined) { 
+			$scope.errorMsg = true;
+			Flash.create('warning', "Please enter Emp Unique ID.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			return;
+		} else if(user.email != undefined && user.password == undefined && user.empUniqueID == undefined) { 
+			$scope.errorMsg = true;
+			Flash.create('warning', "Please enter Password & Emp Unique ID.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			return;
+		} else if(user.email == undefined && user.password != undefined && user.empUniqueID == undefined) { 
+			$scope.errorMsg = true;
+			Flash.create('warning', "Please enter Employer Email & Emp Unique ID.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			return;
+		} else if(user.email == undefined && user.password == undefined && user.empUniqueID != undefined) { 
+			$scope.errorMsg = true;
+			Flash.create('warning', "Please enter Employer Email & Password.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			return;
+		}
+		
+		$scope.user.userType = "E";
+		$http.post('/empSignIn', user).success(function (response){
+			$rootScope.currentUser = response;
+			$location.url('/empHome');
+		}).error(function (err) {
+			if(err == "Unauthorized") {
+				$scope.errorMsg = true;
+				Flash.create("warning","Email or password does not match! Please login again.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			} else if(err != "Bad Request") {
+				$scope.errorMsg = true;
+				Flash.create("warning","User Subscription expired in Blue Collar Hunt Portal."+"\n"+"      	    Please contact administrator.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			} else {
+				$scope.errorMsg = true;
+				Flash.create("warning","Please enter Username or Password or Unique Employer ID.",0, {class: 'alert-warning', id: 'custom-id'}, true);
+			}
+		})
+	};
+	
+	$scope.ClearMessages = function(flash) {
+		$scope.errorMsg = false;
+	}
+	
+	//Test on the length of first password.
+    $scope.testPasswordLen = function () {
+        $scope.passwordShort = $scope.user.password1.length <= 5
+    };
+    
+	//Test if both passwords match.
+    $scope.testPassword = function () {
+    	if($scope.user.password2 != "") {
+           $scope.passwordErr = ($scope.user.password1 != $scope.user.password2);
+    	}
+    };
+    
+    //Validate the email entered is valid.
+    $scope.testLoginName = function () {
+        var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        if($scope.user.email != "") {
+           $scope.loginEmailErr = !re.test($scope.user.email);
+        } else {
+           $scope.loginEmailErr = false;
+        }
+    };
+
+    //test on the length of the password entered.
+    $scope.testPassword = function () {
+        $scope.passwordShort = $scope.user.password.length <= 5
+    };
+    //End changes for ASQ Upgrade2.0.
+    
+    if($scope.email == undefined) $scope.disable = true;
+
+	$scope.testEmail = function() {
+		var re = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		if($scope.email == undefined || $scope.email == "") {
+			$scope.emailErr = false;
+			$scope.disable = true;
+		}
+		else {
+			$scope.emailErr = !re.test($scope.email);
+			if($scope.emailErr == true) $scope.disable = true;
+			else $scope.disable = false;
+		}
+	};
+	
+	//Added for ASQ Upgrade2.0 for adding Forgot Password Functionality.
+	$scope.forgot = function (emailID){
+		var postData = {
+			email: emailID
+		}
+		$http.post('/forgot', postData).success(function (response){
+			console.log(response);
+			alert("Please check the registered email for instructions.");
+			$location.url('/login');
+		}).error(function (err) {
+			if(err = "NotFound" ) {
+				alert("Email ID not registered in Blue Collar Hunt Portal.");
 			}
 		})
 	};
@@ -949,9 +945,27 @@ app.controller('homeCtrl', function ($q, $scope, $rootScope, $http, $location, $
     }
 });
 
+app.controller('empHomeCtrl', function ($q, $scope, $rootScope, $http, $location, $interval) {
+	$rootScope.wrong = 0;
+	$rootScope.report = {type:'',wrong:[]};
 
-app.controller('contactCtrl', function ($q, $scope, $rootScope, $http, $location) {
-	   
+	$scope.logout = function () {
+		alert("Logout of application");
+		$http.post('/logout',$rootScope.user).success(function () {
+			$location.url('/');
+			$rootScope.currentUser = undefined;
+			$rootScope.user = undefined;
+		})
+	};
+});
+
+
+app.controller('contactCtrl', function ($q, $scope, $rootScope, $http, $location,Flash) {
+	
+		$scope.ClearMessages = function(flash) {
+			$scope.errorMsg = false;
+		}
+	    
 		$scope.saveMessage = function(contact) {
 			var postData = { 
 					name: contact.name,
@@ -962,7 +976,8 @@ app.controller('contactCtrl', function ($q, $scope, $rootScope, $http, $location
 				};
 			$http.post('/saveContactMessage',postData).success(function (response){
 				if(response == "0") {
-				   alert("Message sent successfully!");
+				   $scope.errorMsg = true;
+				   Flash.create("success","Message sent successfully!",0, {class: 'alert-info', id: 'custom-id'}, true);
 				   $scope.contact = "";
 				   $location.url('/contact');
 				}
@@ -976,6 +991,27 @@ app.controller('contactCtrl', function ($q, $scope, $rootScope, $http, $location
 
 //Updated by Srinivas Thungathurti for ASQ Upgrade 2.0
 app.controller('profileCtrl', function ($q, $scope, $rootScope, $http, $location) {
+	
+	$scope.userInfo = function (){
+		$scope.search = $rootScope.currentUser.email;
+		var postData ={
+				search: $scope.search
+		};
+		$http.post('/getUserInfo',postData).success(function (response) {
+			/*$rootScope.user.image = response;
+			$rootScope.currentUser = response;
+			alert($rootScope.currentUser);
+			*/
+			$rootScope.dataUrl = response;
+			$location.url('/profile');
+		}).error(function (err) {
+			alert("Error!");
+			console.log(err);
+		})
+	};
+	
+	$scope.userInfo();
+	
 	$scope.logout = function () {
 		$http.post('/logout',$rootScope.user).success(function () {
 			$location.url('/');
@@ -2400,41 +2436,6 @@ app.controller('navCtrl', function ($scope, $http, $location, $rootScope){
 
 app.controller('testCtrl', function ($scope, $http, $location, $rootScope){
 	
-	//Delete below commented code if not needed.
-	/*$scope.showPicker = function() {
-		alert("Picker");
-		google.setOnLoadCallback(createPicker);
-	    google.load('picker', '1');
-	}
-
-    // Create and render a Picker object for searching images
-    // and uploading files.
-    function createPicker() {
-        // Create a view to search images.
-        var view = new google.picker.View(google.picker.ViewId.DOCS);
-        view.setMimeTypes('image/png,image/jpeg');
-
-        // Use DocsUploadView to upload documents to Google Drive.
-        var uploadView = new google.picker.DocsUploadView();
-
-        var picker = new google.picker.PickerBuilder().
-            addView(view);
-            addView(uploadView);
-            setAppId("8146498752-hdommt7s414bmhlpocl3euaklqsqriel.apps.googleusercontent.com");
-            setCallback(pickerCallback);
-            build();
-        picker.setVisible(true);
-    }
-
-    // A simple callback implementation.
-    function pickerCallback(data) {
-        if (data.action == google.picker.Action.PICKED) {
-            var fileId = data.docs[0].id;
-            alert('The user selected: ' + fileId);
-        }
-    }
-    */
-	
     $scope.logout = function () {
         $http.post('/logout',$rootScope.user).success(function () {
             $location.url('/');
@@ -2470,7 +2471,14 @@ app.config(function ($routeProvider, $httpProvider, $locationProvider) {
 		}).
 		when('/empSignIn', {
 			templateUrl: 'partials/empSignIn.html',
-			controller: 'landingCtrl'
+			controller: 'empLoginCtrl'
+		}).
+		when('/empHome', {
+			templateUrl: 'partials/empHome.html',
+			controller: 'empHomeCtrl',
+			resolve: {
+				loggedin: checkLoggedIn
+			}
 		}).
 		when('/login', {
 			templateUrl: 'partials/login.html',

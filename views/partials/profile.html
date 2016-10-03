@@ -4,24 +4,45 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Blue Collar Hunt User Profile Page</title>
   </head>
-<body>
+<body data-ng-init="userInfo()">
 <div class="container" style="padding-left:0px;">
 <div class="row">
 <br/>
 <div class="col-xs-50 col-md-40">
 <div class="panel panel-default site-panel-box" style="height:175px;">
 <div class="panel-body" style="padding:60px;height:175px;">
-		    <div style="text-align:center">
-			<h2 style="color:#5BC0DE">My Profile</h2>
-</div></div></div></div></div>
+	<div style="text-align:right">
+	<h4>Welcome to Blue Collar Hunt {{currentUser.firstName}}</h4>
+	</div>
+	<div style="text-align:center">
+		<h2 style="color:#5BC0DE">My Profile</h2>
+	</div>
+</div></div></div></div>
 
 <div class="container" style="padding-left:0px;">
 <div class="row">
 <div class="col-xs-50 col-md-40">
 <div class="panel panel-default site-panel-box" style="height:550px;">
 <div class="panel-body" style="padding:10px;">
-<img class="banner" src="img/BlueCollar_Profile.png" alt="background" width="100%" height="530px"/>
-</div></div></div></div></div>
+<!-- <img class="banner" src="img/BlueCollar_Profile.png" alt="background" width="100%" height="530px"/> -->
+<!-- For Profile Image and Details -->
+<div class="panel panel-default site-panel-box" style="width:220px;height:450px;margin:35px 0 0 20px;float:left">
+<div class="panel-body" style="padding:20px;">
+<img ng-src="{{dataUrl | trustUrl}}" style="height:125px;width:175px;" />
+</div></div>
+<!-- For Most Talended Skills and Recommendations/Views -->
+<div class="panel panel-default site-panel-box" style="width:875px;height:315px;margin:35px 0 0 250px;">
+<div class="panel-body" style="padding:5px;">
+<!-- <h5>{{currentUser.firstName}} {{currentUser.lastName}}</h5> -->
+<div class="panel panel-default site-panel-box" style="width:400px;height:305px;margin:0 0 0 450px;float:right;border:2px dotted">
+<div class="panel-body" style="padding:20px;">
+</div></div>
+</div></div>
+<!-- For Recommended Jobs list -->
+<div class="panel panel-default site-panel-box" style="width:875px;height:125px;margin:10px 0 0 250px;">
+<div class="panel-body" style="padding:20px;">
+</div></div>
+</div></div></div></div></div></div>
 <footer>
 <div class="container" style="padding-left:0px;">
 <div class="row">
@@ -29,11 +50,11 @@
 <div class="panel panel-default site-panel-box" style="height:175px;">
 <div class="panel-body" style="padding:55px;">
 <div class="middle-box" style="margin-left:400px;">
-<div class="copyright">
-            <p>&copy; 2016 BlueCollar Hunt. All rights reserved.</p>
-        </div>
 </div>
 </div></div></div></div></div>
+<div class="copyright">
+     <p>&copy; 2016 BlueCollar Hunt. All rights reserved.</p>
+</div>
 </footer>
 </body>
 </html>

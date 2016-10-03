@@ -43,10 +43,22 @@
 <div class="panel panel-default site-panel-box" style="height:550px;">
 <div class="middle-box">
 <div class="panel-body" style="padding:10px;">
+
+		<div id="errMsgArea" ng-show="errorMsg" class="panel panel-default site-panel-box" style="height:74px;width:300px;">
+		<div class="panel-body" style="padding:0px;">
+			<div class="form-group">
+			<flash-message
+    			duration="5000"
+    			show-close="true"
+    			on-dismiss="ClearMessages(flash)"></flash-message>
+    		</div>
+		</div>
+		</div>
+
 		<div class="panel panel-default site-panel-box" style="height:300px;">
 		<div class="panel-body" style="padding:10px;">
             <div class="form-group">
-                <input type="text" ng-model="user.email" class="form-control" style="display:inline-block;width:280px;" placeholder="Emp Userid" ng-change="testLoginName()" ng-required="true">
+                <input type="text" ng-model="user.email" class="form-control" style="display:inline-block;width:280px;" placeholder="Emp User Email" ng-change="testLoginName()" ng-required="true">
                 <span ng-show="loginEmailErr && user.email != undefined" style="color:red;display:inline-block;">invalid email address</span>
             </div>
             <div class="form-group">
@@ -54,11 +66,11 @@
                 <span ng-show="passwordShort && user.password != undefined" style="color:red">&nbsp;&nbsp;Password must be at least 6 characters</span>
             </div>
             <div class="form-group">
-                <input type="text" ng-model="user.empID" class="form-control" style="display:inline-block;" placeholder="Emp Unique ID" ng-required="true" style="width:280px;">
+                <input type="text" ng-model="user.empUniqueID" class="form-control" style="display:inline-block;width:280px;" placeholder="Emp Unique ID" ng-required="true">
                 <span ng-show="loginEmailErr && user.email != undefined" style="color:red;display:inline-block;">invalid Employee Unique ID</span>
             </div>
             <br>
-            <button ng-click="login(user)" class="btn btn-info block full-width m-b" ng-disabled="loginForm.$invalid">Jump In</button>
+            <button ng-click="empLogin(user)" class="btn btn-info block full-width m-b" ng-disabled="">Jump In</button>
             <br/><br/>
             <a class="btn btn-info btn-block" href="/empRegister">Register</a>
 </div>
@@ -72,11 +84,11 @@
 <div class="panel panel-default site-panel-box" style="height:175px;">
 <div class="panel-body" style="padding:55px;">
 <div class="middle-box" style="margin-left:400px;">
-<div class="copyright">
-            <p>&copy; 2016 Blue Collar Hunt. All rights reserved.</p>
-        </div>
 </div>
 </div></div></div></div></div>
+<div class="copyright">
+     <p>&copy; 2016 Blue Collar Hunt. All rights reserved.</p>
+</div>
 </footer>
 </body>
 </html>
